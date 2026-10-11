@@ -8,7 +8,8 @@ import { catName } from "@/data/categories";
 import { Center, ErrorState } from "@/components/Feedback";
 import { loadCards, review, Rating } from "@/lib/fsrs";
 import { Icon } from "@/components/Icon";
-import { Pinyin } from "@/components/Pinyin";
+import { Pinyin, PinyinMasked, PinyinToggle } from "@/components/Pinyin";
+import { usePinyinHidden } from "@/lib/pinyin-pref";
 import { Mascot } from "@/components/Mascot";
 import { ProgressBar } from "@/components/ProgressBar";
 import {
@@ -34,6 +35,9 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
   const [todayCount, setTodayCount] = useState(0);
   const [slow, setSlow] = useState(false);
   const seenRef = useRef<Set<number>>(new Set());
+  // หย่าพินอิน (m1-6): ซ่อนพินอินด้านหน้าบัตร · ปุ่ม "ดูพินอิน" อยู่นอกบัตร (บัตรเป็นปุ่มพลิก — ห้ามซ้อนปุ่มในปุ่ม)
+  const [pinyinHidden] = usePinyinHidden();
+  const [peekId, setPeekId] = useState<number | null>(null); // แอบดูพินอินของบัตรไหนแล้ว (เปลี่ยนบัตร = ซ่อนใหม่เอง)
 
   // โหมดชุดวันนี้ (ค่าเริ่มต้น — กฎ m1-8/ON-06): เสิร์ฟทีละมื้อ 10 คำ ไม่โยนทั้งหมวด
   // ?all=1 หรือโหมดตรวจของหฤทัย = เห็นทั้งชุดแบบเดิม
@@ -237,6 +241,7 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
     );
   }
 
+  const frontPinyinShown = !pinyinHidden || peekId === word.id;
   return (
     <div className="flex flex-col items-center gap-6 p-5">
       <div className="w-full">
@@ -275,6 +280,10 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
             </Link>
           </div>
         )}
+        {/* หย่าพินอิน (m1-6) — ซ่อนพินอินด้านหน้าบัตร · ปุ่ม "ดูพินอินใบนี้" ใต้บัตรเพื่อแอบดูทีละใบ */}
+        <div className="mt-2 flex justify-end">
+          <PinyinToggle />
+        </div>
       </div>
 
       {/* บัตรคำ — คลิกเพื่อพลิก */}
@@ -285,7 +294,11 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
         {!flipped ? (
           <>
             <div className="text-8xl font-bold text-slate-900">{word.hanzi}</div>
-            <Pinyin text={word.pinyin} className="mt-4 text-2xl font-medium" />
+            {frontPinyinShown ? (
+              <Pinyin text={word.pinyin} className="mt-4 text-2xl font-medium" />
+            ) : (
+              <PinyinMasked text={word.pinyin} className="mt-4 text-2xl font-medium" />
+            )}
             <div className="mt-6 text-xs text-slate-400">แตะเพื่อดูคำแปล</div>
           </>
         ) : (
@@ -300,6 +313,17 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
           </>
         )}
       </button>
+
+      {/* ปุ่มแอบดูพินอิน — แยกจากปุ่มพลิกบัตร (ไม่ซ้อนปุ่มในปุ่ม) */}
+      {!flipped && !frontPinyinShown && (
+        <button
+          type="button"
+          onClick={() => setPeekId(word.id)}
+          className="-mt-3 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-ocean-700 ring-1 ring-ocean-200 transition hover:bg-ocean-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocean-300"
+        >
+          ดูพินอินใบนี้
+        </button>
+      )}
 
       {/* ปุ่มเสียง + เลื่อน */}
       <div className="flex w-full items-center justify-between gap-3">

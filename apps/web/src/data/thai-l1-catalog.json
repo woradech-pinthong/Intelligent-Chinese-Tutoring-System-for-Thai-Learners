@@ -1,0 +1,521 @@
+{
+  "name": "Thai-L1 Error Catalog",
+  "version": "v1-draft",
+  "status": "pending_review_haruthai",
+  "created": "2026-07-12",
+  "note": "ร่างจาก workflow ค้นวิจัย + ตรวจ citation แบบ adversarial · ทุกรายการต้องผ่านหฤทัย (HSK5) ก่อนเข้า item bank · ห้ามใช้ตัวเลข %/citation ที่ยังไม่ verified",
+  "kc_scheme": "TL-<GROUP>-<CODE>",
+  "kc_index": [
+    {
+      "kc_code": "TL-TONE-T2AS3",
+      "group_id": "TL-TONE",
+      "error_th": "ออกเสียง/ฟังแยกเสียง 2 (หยางผิง, เส้นเสียงขึ้น 35) ไม่ถูก โดยขึ้นไม่ชันพอหรือเริ่มที่ระดับต่ำเกิน ทำให้เพี้ยนไปคล้ายเสียง 3 (214). เป็นครึ่งหนึ่งของ 'คู่สับสน 2/3' ที่งานวิจัยชี้ว่าหนักที่สุด"
+    },
+    {
+      "kc_code": "TL-TONE-T3AS2",
+      "group_id": "TL-TONE",
+      "error_th": "ออกเสียง/ฟังแยกเสียง 3 (สั่งเซิง, ลงแล้วขึ้น 214) โดยละช่วง 'กดลงต่ำตอนต้น' เหลือแต่ช่วงขึ้น ทำให้เพี้ยน/ถูกเข้าใจเป็นเสียง 2 (35). เป็นทิศทางที่มีหลักฐานเชิงตัวเลขชัดที่สุด (T3→T2)"
+    },
+    {
+      "kc_code": "TL-TONE-T3HALF",
+      "group_id": "TL-TONE",
+      "error_th": "ผลิตเสียง 3 ในพยางค์เดี่ยว/ท้ายประโยค ไม่เต็ม contour — ออกเป็น 'ครึ่งเสียงสาม' (ต่ำล้วน 21 ไม่มีช่วงยกขึ้นท้าย). ต่างจาก TL-TONE-T3AS2 ตรงที่นี่ 'ขาดหางขึ้น' ไม่ใช่ 'ขาดหัวกด'"
+    },
+    {
+      "kc_code": "TL-TONE-T3SANDHI",
+      "group_id": "TL-TONE",
+      "error_th": "ไม่แปลงเสียงตามกฎ tone sandhi ของเสียง 3: เมื่อเสียง 3 + เสียง 3 อยู่ติดกัน พยางค์หน้าต้องออกเป็นเสียง 2 (3+3 → 2+3) แต่ผู้เรียนออกเป็น 3+3 ตรงตามพินอินที่เขียน"
+    },
+    {
+      "kc_code": "TL-TONE-T4OVER",
+      "group_id": "TL-TONE",
+      "error_th": "ออกเสียง 4 (ชวี่เซิง, ตกจากสูงลงต่ำ 51) 'ตกช้า/ลากยาว' เกินไป ไม่ตกคมและสั้นแบบเจ้าของภาษา — เป็นส่วนหนึ่งของอาการ 'สำเนียงต่างชาติทางวรรณยุกต์' (foreign/洋腔洋调)"
+    },
+    {
+      "kc_code": "TL-RETRO-SH-S",
+      "group_id": "TL-RETRO",
+      "error_th": "ออกเสียง sh [ʂ] (ม้วนลิ้น) เป็น s [s] แบบไทย (ส) — ไม่ม้วนปลายลิ้น ทำให้ 是 shì ฟังเป็น 四 sì, 老师 lǎoshī เป็น 'lǎosī'"
+    },
+    {
+      "kc_code": "TL-RETRO-ZH-JZ",
+      "group_id": "TL-RETRO",
+      "error_th": "ออกเสียง zh [tʂ] เป็น จ /tɕ/ (คล้าย j) หรือแบนเป็น z [ts] — 中国 Zhōngguó ฟังเป็น 'jōngguó/zōngguó', 找 zhǎo เป็น 早 zǎo"
+    },
+    {
+      "kc_code": "TL-RETRO-CH-CQ",
+      "group_id": "TL-RETRO",
+      "error_th": "ออกเสียง ch [tʂʰ] เป็น ช /tɕʰ/ (คล้าย q) หรือแบนเป็น c [tsʰ] — 吃 chī ฟังเป็น 'qī/cī', 茶 chá เป็น 'cá'"
+    },
+    {
+      "kc_code": "TL-RETRO-R-L",
+      "group_id": "TL-RETRO",
+      "error_th": "ออกเสียง r [ʐ]/[ɻ] (ม้วนลิ้น) เป็น ล /l/ หรือ ร ไทย (รัว/tap) — 热 rè ฟังเป็น 'lè', 人 rén เป็น 'lén', 日 rì เป็น 'lì'"
+    },
+    {
+      "kc_code": "TL-RETRO-FLAT-MERGE",
+      "group_id": "TL-RETRO",
+      "error_th": "แยก 'เสียงม้วนลิ้น' (翘舌 zh/ch/sh) กับ 'เสียงไม่ม้วนลิ้น' (平舌 z/c/s) ไม่ออก ทั้งการฟังและการสะกดพินอิน — สลับ/ยุบเป็นเสียงเดียว เช่น 四 sì ↔ 十 shí, 早 zǎo ↔ 找 zhǎo"
+    },
+    {
+      "kc_code": "TL-GRAM-DE-ORDER",
+      "group_id": "TL-GRAM",
+      "error_th": "วางส่วนขยาย (คุณศัพท์/แสดงความเป็นเจ้าของ) + 的 ผิดตำแหน่ง คือเอาไปไว้ 'หลัง' คำนามแบบไทย แทนที่จะไว้ 'หน้า' คำนาม เช่น พูด 书我的 / 衣服红色的 แทน 我的书 / 红色的衣服"
+    },
+    {
+      "kc_code": "TL-GRAM-MW",
+      "group_id": "TL-GRAM",
+      "error_th": "ข้อผิดวลีลักษณนาม 3 แบบ: (ก) เรียงลำดับผิด — จีนใช้ จำนวน+ลักษณนาม+นาม (三本书) แต่ผู้เรียนเรียงตามไทย นาม+จำนวน+ลักษณนาม; (ข) เลือกลักษณนามผิด/ใช้ 个 พร่ำเพรื่อแทนตัวที่ถูก; (ค) ละลักษณนาม"
+    },
+    {
+      "kc_code": "TL-GRAM-COMPL",
+      "group_id": "TL-GRAM",
+      "error_th": "บทเสริม (补语) — วางผิดตำแหน่ง / ละ / เลือกผิด โดยเฉพาะบทเสริมระดับ V+得+adj (说得很好) และบทเสริมผล V+result (听懂, 吃完)"
+    },
+    {
+      "kc_code": "TL-GRAM-LE",
+      "group_id": "TL-GRAM",
+      "error_th": "ใช้คำช่วย 了 (le) ผิด — ใส่พร่ำเพรื่อ / ละ / วางผิดตำแหน่ง เพราะจับคู่ 了 = 'แล้ว' แบบตรงตัวทุกครั้ง"
+    },
+    {
+      "kc_code": "TL-GRAM-ADV",
+      "group_id": "TL-GRAM",
+      "error_th": "วางคำวิเศษณ์/ส่วนขยายกริยา (状语) ผิดตำแหน่ง — จีนวางไว้ 'หน้ากริยา' (也/都/常常/在+สถานที่) แต่ผู้เรียนวางตามลำดับไทย"
+    }
+  ],
+  "groups": [
+    {
+      "group_id": "TL-TONE",
+      "group_name_th": "วรรณยุกต์ภาษาจีน (เน้นคู่สับสน เสียง 2 หยางผิง 35 ↔ เสียง 3 สั่งเซิง 214)",
+      "summary_th": "กลุ่มนี้คือจุดผิดวรรณยุกต์ของผู้เรียนไทย โดยแกนหลักคือ \"คู่เสียง 2/3\" ซึ่งงานวิจัยทุกชิ้นชี้ตรงกันว่าเป็นจุดยากที่สุด บริบท: ภาษาจีนมี 4 วรรณยุกต์ ภาษาไทยมี 5 คนไทยจึงมี \"ความได้เปรียบด้านการรับรู้ (perception)\" เพราะคุ้นระบบเสียงวรรณยุกต์อยู่แล้ว แต่ contour ไม่ตรงกันพอดี ปัญหาหนักอยู่ที่ (ก) เสียง 2 (ขึ้น 35) กับเสียง 3 (ลงแล้วขึ้น 214) ซึ่งทั้งคู่มี \"ช่วงขึ้น\" คล้ายกัน และ (ข) การผลิตเสียง (production) เสียง 3 แบบเต็ม contour. หลักฐานหลัก 3 ระดับ: (1) การรับรู้ — Rungruang (2017) พบเสียง 3 ยากสุด เสียง 2 รองลงมา (ลำดับความง่าย T4>T1>T2>T3) และ Li (2016) พบว่าความสับสนรุนแรงที่สุดของคนไทยคือคู่ T2-T3; (2) การผลิตเสียง (acoustic) — Zhang & Liu (2020) พบเสียง 2 \"ขึ้นไม่พอ/register ต่ำ\" และเสียง 3 \"ทำ contour เต็มไม่ได้ในพยางค์เดี่ยว/ท้ายประโยค\"; (3) หลักฐานเชิงตัวเลขล่าสุด — Zhang et al. (2025) กับผู้เรียนไทย 22 คน พบความแม่นเสียง 3 ตกจาก 76%→66% เมื่อพูดเสียงดัง และการระบุผิดเสียง 3 ส่วนใหญ่ถูกเข้าใจเป็นเสียง 2 (ทิศทาง T3→T2 ชัดเจน). สำหรับ HSK 1–2 ควรทำ KC หลักที่คู่ 2/3 ก่อน (ดักด้วยข้อฟัง minimal pair) ส่วน T3 sandhi (3+3→2+3 เช่น 你好) เป็นกฎที่ทดสอบได้ตรงและคุ้มค่า. หมายเหตุความซื่อตรง: ตัวเลข Rungruang/Li มาจาก \"การรับรู้/สัมภาษณ์\" กลุ่มเล็ก (n=14 และ n=24 ตามลำดับ) และบางส่วนเป็นผู้ฟังที่ยังไม่เคยเรียนจีน; Zhang et al. 2025 เป็นผู้เรียนระดับสูง (HSK4–6) ในบริบทเสียงดังเฉพาะ — ควรใช้เป็นทิศทาง ไม่ใช่เกณฑ์ตัดสินเป๊ะ.",
+      "sub_errors": [
+        {
+          "kc_code": "TL-TONE-T2AS3",
+          "error_th": "ออกเสียง/ฟังแยกเสียง 2 (หยางผิง, เส้นเสียงขึ้น 35) ไม่ถูก โดยขึ้นไม่ชันพอหรือเริ่มที่ระดับต่ำเกิน ทำให้เพี้ยนไปคล้ายเสียง 3 (214). เป็นครึ่งหนึ่งของ 'คู่สับสน 2/3' ที่งานวิจัยชี้ว่าหนักที่สุด",
+          "thai_cause_th": "ภาษาไทยไม่มีวรรณยุกต์ที่มี contour ตรงกับ 35 เป๊ะ ๆ; เสียงจัตวา (rising) ของไทยเริ่มต่ำและขึ้นช้ากว่า ผู้เรียนถ่ายโอน (transfer) มาใช้กับเสียง 2 ทำให้ช่วงขึ้นไม่คม และเพราะเสียง 3 ก็มี 'ช่วงขึ้นท้าย' เหมือนกัน สมองจึงจับคู่ 2↔3 สลับกัน",
+          "example": "麻 má (เสียง2) ↔ 马 mǎ (เสียง3); 十 shí (2) ↔ 是 shì/事; 国 guó ใน 中国 Zhōngguó (2); 谁 shéi (2)",
+          "distractor_idea_th": "ข้อฟัง (audio → เลือกพินอิน): เปิดเสียงคำว่า 麻 má แล้วให้เลือกระหว่าง má / mǎ / mā / mà — ตัวลวงหลัก = mǎ (เสียง3). หรือข้อ 'เติมวรรณยุกต์บนพินอิน' ของ 中国 โดยตัวลวงคือ Zhōngguǒ",
+          "teaching_th": "ฝึกหูด้วย minimal pair 麻/马, 十/是, พร้อม 'ท่ามือ': เสียง 2 = ลากมือขึ้นเส้นเดียวชัน ๆ ไม่มีจุดกด; เทียบกับเสียง 3 ที่ต้อง 'กดลงก่อนแล้วค่อยขึ้น'. เน้นให้เริ่มเสียง 2 ที่ระดับกลางแล้วดันขึ้นสูงให้สุด",
+          "evidence": "Li, Y. (2016); Rungruang, A. (2017); Zhang & Liu (2020)"
+        },
+        {
+          "kc_code": "TL-TONE-T3AS2",
+          "error_th": "ออกเสียง/ฟังแยกเสียง 3 (สั่งเซิง, ลงแล้วขึ้น 214) โดยละช่วง 'กดลงต่ำตอนต้น' เหลือแต่ช่วงขึ้น ทำให้เพี้ยน/ถูกเข้าใจเป็นเสียง 2 (35). เป็นทิศทางที่มีหลักฐานเชิงตัวเลขชัดที่สุด (T3→T2)",
+          "thai_cause_th": "contour แบบ dipping (ลงแล้วขึ้น 214) ไม่มีในภาษาไทย ผู้เรียนย่อเหลือเป็น 'เสียงขึ้น' ที่ใกล้เสียงจัตวา/เสียง 2 อีกทั้งเมื่อพูดเสียงดังหรือเน้น ระดับเสียง (pitch) ถูกยกสูงขึ้น ยิ่งทำให้เสียง 3 มีลักษณะเหมือนเสียง 2",
+          "example": "马 mǎ (เสียง3) ↔ 麻 má (เสียง2); 老 lǎo ใน 老师 lǎoshī; 你 nǐ; 好 hǎo; 五 wǔ; 九 jiǔ",
+          "distractor_idea_th": "ข้อฟัง 老师 → เลือกพินอินที่ถูก โดยตัวลวง = láoshī (เสียง 2 แทนเสียง 3). หรือข้อ 马 mǎ ให้เลือก mǎ/má โดยตัวลวง má. ควรตั้ง distractor เป็นเสียง 2 เสมอ (ไม่ใช่เสียง 1/4) เพื่อดักจุดผิดนี้โดยเฉพาะ",
+          "teaching_th": "เน้นวลี 'กดต่ำก่อน' — ฝึกออกเสียง 3 เต็ม (dip ลึก) เฉพาะในคำเดี่ยว/ท้ายประโยค; minimal pair 马/麻, 买 mǎi/埋 mái. ใช้กราฟ pitch แสดงหุบ 'ลง-ขึ้น' ให้เห็นภาพ",
+          "evidence": "Zhang, H. et al. (2025) — ความแม่น T3 76%→66% เมื่อเสียงดัง และการระบุผิด T3 ส่วนใหญ่ถูกจัดเป็น T2; Zhang & Liu (2020); Rungruang, A. (2017)"
+        },
+        {
+          "kc_code": "TL-TONE-T3HALF",
+          "error_th": "ผลิตเสียง 3 ในพยางค์เดี่ยว/ท้ายประโยค ไม่เต็ม contour — ออกเป็น 'ครึ่งเสียงสาม' (ต่ำล้วน 21 ไม่มีช่วงยกขึ้นท้าย). ต่างจาก TL-TONE-T3AS2 ตรงที่นี่ 'ขาดหางขึ้น' ไม่ใช่ 'ขาดหัวกด'",
+          "thai_cause_th": "ครึ่งเสียงสาม (half-3) เป็นรูปที่ 'ถูก' เมื่ออยู่หน้าเสียงอื่นที่ไม่ใช่เสียง 3 ผู้เรียนไทยเรียนรูปนี้แล้วนำไปใช้เกินขอบเขต (overgeneralize) กับตำแหน่งเดี่ยว/ท้ายประโยคที่ต้องออก contour เต็ม เพราะภาษาไทยไม่มีเสียง 'ลง-แล้ว-ขึ้น' ให้ยึด",
+          "example": "好 hǎo ท้ายประโยค 你好! ; 五 wǔ เมื่อพูดเดี่ยว; 请问 ... 好吗? ที่ 好 อยู่ท้าย",
+          "distractor_idea_th": "เป็น KC ฝั่ง 'การผลิตเสียง' ตรวจด้วย multiple-choice ยาก จึงเหมาะกับโหมดฝึกพูด/อัดเสียงเทียบ; ถ้าจะทำข้อเลือกให้ใช้คลิปเสียง 2 แบบ (half-3 vs full-3) แล้วถามว่าอันไหน 'ท้ายประโยคถูกต้อง'",
+          "teaching_th": "แยกฝึก 2 บริบท: (1) หน้าเสียงอื่น = ออก half-3 ต่ำสั้น; (2) เดี่ยว/ท้ายประโยค = ต้องมีหางขึ้น. ให้ลากเสียง 好~ ท้ายประโยคช้า ๆ เพื่อรู้สึกช่วงยกขึ้น",
+          "evidence": "Zhang & Liu (2020) — 'T3 cannot approximate a full falling-rising contour in isolated characters and at sentence-final position'"
+        },
+        {
+          "kc_code": "TL-TONE-T3SANDHI",
+          "error_th": "ไม่แปลงเสียงตามกฎ tone sandhi ของเสียง 3: เมื่อเสียง 3 + เสียง 3 อยู่ติดกัน พยางค์หน้าต้องออกเป็นเสียง 2 (3+3 → 2+3) แต่ผู้เรียนออกเป็น 3+3 ตรงตามพินอินที่เขียน",
+          "thai_cause_th": "เป็นกฎเฉพาะภาษาจีนที่ 'เสียงเขียน ≠ เสียงพูด' ซึ่งไม่มี pattern ตรงในไทย ผู้เรียนไทยระยะต้นยึดพินอินตามหน้ากระดาษ (เสียง 3 ทั้งคู่) จึงลืมแปลง แม้ไทยจะเป็นภาษาวรรณยุกต์แต่ก็ไม่ช่วยเรื่องกฎ sandhi นี้โดยตรง",
+          "example": "你好 nǐ hǎo → อ่าน ní hǎo; 很好 hěn hǎo → hén hǎo; 你有 nǐ yǒu → ní yǒu; 老鼠 lǎo shǔ → láo shǔ",
+          "distractor_idea_th": "ข้อ 'เลือกพินอินเสียงจริงที่พูด' ของ 你好 โดยคำตอบถูก = ní hǎo และตัวลวงหลัก = nǐ hǎo (เขียนตามตัวอักษร ไม่แปลง). ดักผู้ที่ท่องพินอินตามหน้ากระดาษ",
+          "teaching_th": "สอนเป็นกฎชัด ๆ '3+3 หน้ากลายเป็น 2' พร้อมคำ HSK1 ที่เจอบ่อย (你好/很好). ฝึกอ่านออกเสียงเป็นคู่ ไม่ใช่ทีละพยางค์",
+          "evidence": "กฎ T3 sandhi เป็นสัทศาสตร์จีนมาตรฐาน (ยืนยันได้ทั่วไป เช่น StudyCLI/Hacking Chinese และงาน sandhi acquisition); หมายเหตุ: ยังไม่พบงานวิจัยที่วัด 'อัตราผิด sandhi เฉพาะผู้เรียนไทย' โดยตรงในรอบค้นนี้ — ตั้ง KC ได้แต่ยังไม่มีตัวเลข Thai-L1 รองรับ"
+        },
+        {
+          "kc_code": "TL-TONE-T4OVER",
+          "error_th": "ออกเสียง 4 (ชวี่เซิง, ตกจากสูงลงต่ำ 51) 'ตกช้า/ลากยาว' เกินไป ไม่ตกคมและสั้นแบบเจ้าของภาษา — เป็นส่วนหนึ่งของอาการ 'สำเนียงต่างชาติทางวรรณยุกต์' (foreign/洋腔洋调)",
+          "thai_cause_th": "ผู้เรียนถ่ายโอนวรรณยุกต์เอก/โท ของไทยที่มีช่วง pitch แคบกว่าและตกช้ากว่ามาใช้กับเสียง 4 ทำให้ contour การตกไม่ชันและยาวเกิน (ช่วง pitch ของวรรณยุกต์ไทยโดยรวมแคบ/ต่ำกว่าจีนเล็กน้อย)",
+          "example": "是 shì (4); 四 sì (4) ↔ 十 shí (2); 谢谢 xièxie; 再见 zàijiàn; 不 bù",
+          "distractor_idea_th": "ใช้เป็นข้อฝึกพูด/ฟังเทียบ (ตรวจ MC ยากกว่าคู่ 2/3). ถ้าทำข้อฟังคู่ 四 sì / 十 shí จะดักเสียง 4↔2 ได้บ้าง แต่เป้าหลักของ KC นี้คือ 'คุณภาพการตก' ไม่ใช่การสับสนหมวด",
+          "teaching_th": "ฝึกให้ตก 'สั้น-คม-เด็ดขาด' จากสูงสุดลงต่ำสุด เหมือนพูดสั่ง; เทียบยาว-สั้นกับเสียง 2 (ขึ้น) ให้ต่างกันชัด",
+          "evidence": "Aroonawongsa, S. et al. (2025) — วิเคราะห์เปรียบเทียบระบบวรรณยุกต์ไทย-จีน และรายงานปรากฏการณ์ 'foreign tone' ในผู้เรียนไทย; หมายเหตุ: KC นี้มีหลักฐานเชิงคุณภาพ/เปรียบเทียบ แต่ยังไม่มีตัวเลข production เฉพาะเสียง 4 ของคนไทยที่ยืนยันได้ในรอบนี้ — ให้ถ่วงน้ำหนักต่ำกว่าคู่ 2/3"
+        }
+      ],
+      "sources": [
+        {
+          "citation": "Rungruang, A. (2017). Mandarin Chinese Tonal Acquisition by Thai Speakers. Asian Social Science, 13(5), 143–152.",
+          "year": 2017,
+          "venue": "Asian Social Science 13(5), Canadian Center of Science and Education (CCSE)",
+          "url": "https://ccsenet.org/journal/index.php/ass/article/view/66757",
+          "access": "free",
+          "supports_th": "thai_relevant = TRUE. ผู้เรียนไทย (นักศึกษา ม.นเรศวร) เรียนจีนเป็น L2. สนับสนุน 'ลำดับความยาก' โดยตรง: เสียง 3 ยากสุด, เสียง 2 รองลงมา (ลำดับความง่าย T4>T1>T2>T3). ตัวเลขจาก abstract/สรุปผลค้นหา: 71% (10/14) บอกเสียง 3 ยากสุด, 64% (9/14) บอกเสียง 4 ง่ายสุด. ข้อจำกัด: เป็นการ 'รับรู้ + สัมภาษณ์รายงานตนเอง' กลุ่มเล็ก n=14 (ไม่ใช่การวัด production เชิง acoustic) — ยืนยันตัวเลขได้จาก abstract แต่ไม่ได้เปิด full text ในรอบนี้. เปิดอ่านฟรี (PDF).",
+          "verify": {
+            "exists": true,
+            "supports_claim": true,
+            "verdict": "partial",
+            "best_url": "https://ccsenet.org/journal/index.php/ass/article/view/66757",
+            "citation": "Rungruang, A., & Mu, Y. (2017). Mandarin Chinese Tonal Acquisition by Thai Speakers. Asian Social Science, 13(5), 107 (เริ่มหน้า 107). https://doi.org/10.5539/ass.v13n5p107",
+            "note_th": "งานนี้ \"มีจริงและเข้าถึงได้\" และ \"ตัวเลขตรงกับที่อ้างเป๊ะ\" แต่ให้ verdict = partial เพราะ citation ที่ให้มา \"เขียนผิด 2 จุด\" ต้องแก้ก่อนเข้าคลัง Thai-L1 (ทีมมีกฎห้ามเคลม citation ผิด)\n\nยืนยัน 3 ข้อ:\n(ก) ตีพิมพ์จริง — CCSE (Canadian Center of Science and Education), Asian Social Science, DOI 10.5539/ass.v13n5p107, มีใน ResearchGate (pub 316251366)\n(ข) เข้าถึงได้ — เปิดฟรี มี PDF ดาวน์โหลดได้ (open access)\n(ค) เนื้อหาสนับสนุนข้ออ้าง — ตรงทั้งหมด: n=14 (ชาย 2 หญิง 12); สัมภาษณ์/รายงานตนเอง 10/14 (71%) บอกเสียง 3 ยากสุด, 9/14 (64%) บอกเสียง 4 ง่ายสุด; ลำดับความง่าย tone4>tone1>tone2>tone3 (perception acc: T4 99.68%, T1 97.40%, T2 85.68%, T3 78%); เป็น perception test + structured interview (self-report) ไม่ใช่ acoustic production — ตรงกับข้อจำกัดที่ระบุไว้\n\n⚠️ จุดที่ citation ผิด (ต้องแก้):\n1) ขาดผู้เขียนร่วม — งานจริงมี 2 คน: Rungruang, A., & Mu, Y. (ที่อ้างใส่คนเดียว)\n2) เลขหน้าผิด — DOI/CCSE ระบุว่าบทความ \"เริ่มหน้า 107\" ไม่ใช่ \"143–152\" ตามที่อ้าง (ช่วงหน้า 143–152 ผิด; หน้าจบยังไม่ได้ยืนยันเป๊ะ แต่ไม่ใช่ 152 แน่นอน)\n\nหมายเหตุ: แหล่งที่เปิดไม่ได้ระบุตรง ๆ ว่าเป็น \"นักศึกษา ม.นเรศวร\" — ผู้เขียนหลัก Apichai Rungruang สังกัดนเรศวรจึงเป็นไปได้สูง แต่ยืนยันมหาวิทยาลัยของกลุ่มตัวอย่างจากแหล่งที่เปิดไม่ได้ ให้ถือว่า \"ยังไม่ยืนยัน\"\n\nสรุป: ใช้อ้างสนับสนุน thai_relevant=TRUE และลำดับความยากได้ (เนื้อหา+ตัวเลขจริง) แต่ต้องแก้ author เป็น \"Rungruang & Mu\" และแก้เลขหน้าเป็น 107 ก่อนบันทึกเข้าคลัง"
+          }
+        },
+        {
+          "citation": "Li, Y. (2016). English and Thai Speakers' Perception of Mandarin Tones. English Language Teaching, 9(1), 122–132.",
+          "year": 2016,
+          "venue": "English Language Teaching 9(1), CCSE (ERIC EJ1087096)",
+          "url": "https://www.ccsenet.org/journal/index.php/elt/article/view/55567",
+          "access": "free",
+          "supports_th": "thai_relevant = TRUE. ผู้ฟังไทย 24 คน (ยังไม่เคยเรียนจีน) ทำแบบทดสอบระบุ 4 วรรณยุกต์. สนับสนุนจุดแกน: คนไทยมี 'ความสับสนรุนแรงที่สุดที่คู่ T2-T3' และ T2/T3 ยากใกล้เคียงกัน แสดงว่าคู่ 2/3 ยากตั้งแต่ระดับการรับรู้พื้นฐานก่อนเริ่มเรียนด้วยซ้ำ. ข้อจำกัด: เป็น 'naive perception' (ผู้ฟังยังไม่ใช่ผู้เรียน) จึงบอกจุดเริ่มต้น ไม่ใช่จุดผิดหลังเรียน. เปิดฟรี (CC BY 4.0). ยืนยันชื่อผู้แต่ง = Ying Li (จากหน้าวารสาร CCSE); ผลค้นหาบางแหล่งขึ้นชื่ออื่นสลับ — ให้ยึด 'Ying Li' ตามหน้าวารสาร.",
+          "verify": {
+            "citation": "Li, Y. (2016). English and Thai Speakers' Perception of Mandarin Tones. English Language Teaching, 9(1), 122–132. https://doi.org/10.5539/elt.v9n1p122 (CCSE; ERIC EJ1087096)",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://files.eric.ed.gov/fulltext/EJ1087096.pdf",
+            "note_th": "ยืนยันครบ 3 ข้อ (verified) ตรวจแบบพยายามหักล้างแล้ว.\n\n(ก) ตีพิมพ์จริง: PDF ฉบับเต็มระบุ \"English Language Teaching; Vol. 9, No. 1; 2016\", หน้า 122, ผู้แต่ง \"Ying Li\" (Southwest University of Political Science and Law), doi:10.5539/elt.v9n1p122, ดัชนี ERIC EJ1087096, เผยแพร่โดย CCSE. ช่วงหน้า 122–132 สอดคล้อง (เริ่ม 122, ไฟล์ 11 หน้า).\n\n(ข) เข้าถึงได้ฟรี: ลิงก์ที่ทีมอ้าง (ccsenet.org/.../elt/article/view/55567) เปิดได้จริง + มี ERIC full-text PDF, ResearchGate, Semantic Scholar. best_url ที่นิ่งสุดคือ ERIC PDF ด้านบน.\n\n(ค) เนื้อหา+ตัวเลขตรงเป๊ะ (อ่านจากตัวเปเปอร์เอง ไม่ใช่แค่บทคัดย่อ):\n- \"24 adult Thai... who had no knowledge on Mandarin prior to participation\" = ผู้ฟังไทย 24 คน ยังไม่เคยเรียนจีน (naive perception) ตรงตามที่อ้าง.\n- เป็น identification test ของ 4 วรรณยุกต์ (T1–T4) ตรง.\n- ข้อแกน: \"the Thai participants' most serious confusion was in the discrimination of T2-T3\" = คนไทยสับสนรุนแรงสุดที่คู่ T2-T3 — ตรงคำต่อคำ.\n- ตาราง confusion matrix ผู้ฟังไทยยืนยันตัวเลข: T2 ตอบถูก 67.25% / เข้าใจผิดเป็น T3 = 24.71%; T3 ตอบถูก 60.98% / เข้าใจผิดเป็น T2 = 29.03% (สองช่องนี้คือ error สูงสุดในทั้งตาราง). T1=82.01%, T4=84.47% (ง่ายกว่าชัดเจน) → รองรับ \"T2/T3 ยากใกล้เคียงกันและยากที่สุด\".\n- ข้อ (3) ในบทคัดย่อ: ไทยกับอังกฤษ \"displayed very similar degrees of difficulty in the perception of Mandarin T2 and T3\" (เปรียบเทียบข้ามกลุ่ม—ข้อได้เปรียบของคนไทยหายไปที่ T2/T3).\n\nจุดที่ต้องแก้ (หักล้างเจอ 1 จุดเล็ก): ทีมระบุใบอนุญาต \"CC BY 4.0\" แต่ในตัวเปเปอร์ระบุจริงว่า \"Creative Commons Attribution license (http://creativecommons.org/licenses/by/3.0/)\" = CC BY 3.0. ยังเป็น open-access/CC BY ใช้อ้าง/นำกลับมาใช้ได้เหมือนกัน แค่เลขเวอร์ชันผิด → ควรแก้เป็น CC BY 3.0.\n\nเรื่องชื่อผู้แต่งที่กังวลว่าสลับ: ทั้งหน้าวารสารและ PDF ยืนยันเป็น \"Ying Li\" ผู้แต่งเดี่ยว (บางฐานข้อมูลย่อเป็น \"Y. Li\" เท่านั้น) — ให้ยึด Ying Li ถูกต้องแล้ว ไม่มีปัญหา. citation รูปแบบ APA ที่ทีมเขียนถูกต้อง.\n\nสรุป: ใช้อ้างสนับสนุน thai_relevant=TRUE และจุดแกน \"คู่ 2/3 ยากตั้งแต่ระดับการรับรู้พื้นฐานก่อนเริ่มเรียน\" ได้อย่างมั่นใจ. แก้เฉพาะเลขเวอร์ชัน CC BY เป็น 3.0."
+          }
+        },
+        {
+          "citation": "Zhang, L., & Liu, S. (2020). Acoustic analysis of Chinese tone production by Thai-speaking learners of L2 Chinese. Journal of Second Language Studies, 3(2).",
+          "year": 2020,
+          "venue": "Journal of Second Language Studies 3(2), John Benjamins",
+          "url": "https://www.jbe-platform.com/content/journals/10.1075/jsls.19035.zha",
+          "access": "paywall",
+          "supports_th": "thai_relevant = TRUE. ผู้เรียนไทยเรียนจีน L2, วัดเชิง acoustic (production). สนับสนุน KC ฝั่งการผลิตเสียงโดยตรง: เสียง 2 'ขึ้นไม่พอ/มี dip ที่ register ต่ำ' (→ คล้ายเสียง 3), และเสียง 3 'ทำ contour เต็มไม่ได้ในพยางค์เดี่ยว/ท้ายประโยค'. DOI: 10.1075/jsls.19035.zha. ข้อจำกัด: มีค่าใช้จ่าย (~£15) เข้าถึงได้เฉพาะบทคัดย่อ/รายการอ้างอิงฟรี — รายละเอียดนอกเหนือ abstract ยังยืนยันไม่ได้ในรอบนี้.",
+          "verify": {
+            "citation": "Zhang, L., & Liu, S. (2020). Acoustic analysis of Chinese tone production by Thai-speaking learners of L2 Chinese. Journal of Second Language Studies, 3(2), 180–204. https://doi.org/10.1075/jsls.19035.zha",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://www.jbe-platform.com/content/journals/10.1075/jsls.19035.zha",
+            "note_th": "ยืนยันครบ 3 ข้อ → verified (แต่แบบ full-text numbers ยังยืนยันไม่ได้เพราะ paywall).\n\n(ก) งานตีพิมพ์จริง: มีจริงตรงเป๊ะทุกฟิลด์ — ผู้เขียน Ling Zhang & Shi Liu (The Education University of Hong Kong), ชื่อเรื่องตรง, วารสาร Journal of Second Language Studies เล่ม 3(2) ธ.ค. 2020 หน้า 180–204, DOI 10.1075/jsls.19035.zha (สำนักพิมพ์ John Benjamins). ตัวย่อ \"Zhang, L. & Liu, S.\" = Ling/Shi ถูกต้อง. ยืนยันจาก 3 แหล่งอิสระ: jbe-platform (John Benjamins), benjamins.com catalog, Ingenta Connect.\n\n(ข) เข้าถึงได้: ลิงก์ที่อ้างเปิดได้จริง อ่าน abstract ฟรีได้ (full text เสียเงิน ~£15 ตามที่ note ไว้).\n\n(ค) เนื้อหาสนับสนุนข้ออ้าง: abstract ระบุตรงกับ KC ที่อ้างสองข้อ —\n • T2 'insufficient rise / falling-rising at lower registers' = 'เสียง 2 ขึ้นไม่พอ/มี dip ที่ register ต่ำ (→ คล้ายเสียง 3)' (contour ตก-ขึ้นที่ register ต่ำคือลักษณะที่ทำให้ T2 เพี้ยนไปคล้าย T3 จริง)\n • T3 'failed to achieve complete falling-rising contours in isolated words and sentence-final contexts' = 'เสียง 3 ทำ contour เต็มไม่ได้ในพยางค์เดี่ยว/ท้ายประโยค'\nถ้อยคำ abstract นี้ยืนยันซ้ำจาก 2 แหล่ง (snippet ของ search + หน้า publisher) จึงไม่ใช่ hallucination ของ fetch.\n\nหมายเหตุเชิงหักล้าง: ข้ออ้างที่ยกมาเป็นเชิงคุณภาพ (qualitative) ไม่ได้เคลมตัวเลข Hz/สถิติเฉพาะเจาะจงของตัวเอง ดังนั้น paywall ที่บัง full-text จึงไม่ทำให้ข้ออ้างอ่อนลง — สิ่งที่เขียนอ้างทั้งหมดมีใน abstract ฟรีครบ. ถ้าอนาคตจะเพิ่มตัวเลขเชิง acoustic เป๊ะ ๆ (เช่นค่า pitch/duration) ต้องเข้าถึง full text ก่อนถึงจะอ้างตัวเลขได้."
+          }
+        },
+        {
+          "citation": "Zhang, H., Chang, X., Liu, W., Zhang, Y., & Wang, N. (2025). Identification of Mandarin Tones in Loud Speech for Native Speakers and Second Language Learners. Behavioral Sciences, 15(8), 1062.",
+          "year": 2025,
+          "venue": "Behavioral Sciences (Basel) 15(8), MDPI (open access; PMC12383229)",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12383229/",
+          "access": "free",
+          "supports_th": "thai_relevant = TRUE. ผู้เรียนไทย 22 คน (ระดับ HSK4–6) เรียนจีน L2. หลักฐานเชิงตัวเลขล่าสุด+ทิศทางชัด: ความแม่นในการแยกเสียง 3 ตกจาก 76% (พูดปกติ) → 66% (พูดเสียงดัง) และ 'การระบุผิดของเสียง 3 ส่วนใหญ่ถูกจัดเป็นเสียง 2' (ในเสียงดัง ~32% จาก 34% ของ error เป็น T3→T2) เพราะเสียงดังดัน pitch ให้เสียง 3 มีลักษณะคล้ายเสียง 2. ข้อจำกัด: เป็นผู้เรียนระดับสูง (ไม่ใช่ HSK1–2) และเป็นบริบท 'เสียงดัง' เฉพาะ + งาน perception; ใช้เป็นทิศทาง T3→T2 ได้ดี แต่ตัวเลขอย่าตีความเป็นเกณฑ์ HSK1–2. เปิดฟรี (open access).",
+          "verify": {
+            "citation": "Zhang, H., Chang, X., Liu, W., Zhang, Y., & Wang, N. (2025). Identification of Mandarin Tones in Loud Speech for Native Speakers and Second Language Learners. Behavioral Sciences, 15(8), 1062. https://doi.org/10.3390/bs15081062",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12383229/",
+            "note_th": "ยืนยันครบ 3 ข้อ (verified).\n\n(ก) เป็นงานตีพิมพ์จริง — Behavioral Sciences (MDPI, Basel), Vol. 15, Issue 8, Article 1062, ปี 2025, DOI 10.3390/bs15081062. ตีพิมพ์ 5 ส.ค. 2025. ผู้แต่งตรงตามที่อ้าง (Zhang, Chang, Liu, Zhang, Wang). พบซ้ำหลายแหล่ง: MDPI, PMC (PMC12383229), NCBI/PubMed, ResearchGate, และ eprints ของ University of Glasgow.\n\n(ข) เข้าถึงได้จริง — ลิงก์ PMC ที่อ้าง (PMC12383229) เปิดอ่านฟรีได้ อ่าน full text ได้ครบ. (หมายเหตุ: หน้า MDPI ตรง ๆ ตอบ 403 ให้บอต แต่ PMC = แหล่ง open access ที่ใช้ยืนยันได้เต็ม)\n\n(ค) เนื้อหาสนับสนุนข้ออ้าง โดยเฉพาะตัวเลข — ตรงเป๊ะทุกตัว:\n- ผู้เรียนไทย 22 คน เรียนจีน L2: ✓ ตรง\n- ความแม่นเสียง 3 ตกจาก 76% (พูดปกติ) → 66% (พูดเสียงดัง): ✓ ตรงเป๊ะ (\"from 76 percent to 66 percent\")\n- error เสียง 3 ส่วนใหญ่ถูกจัดเป็นเสียง 2: ✓ ตรงเป๊ะ — เสียงดัง 32% จาก 34% ของ error เป็น T3→T2; พูดปกติ 22% จาก 24%\n- เหตุผล: เสียงดันดัน pitch ให้เสียง 3 (ปกติ low pitch) มีลักษณะ elevated pitch คล้ายเสียง 2: ✓ ตรง\n\nข้อควรระวัง 1 จุด (ไม่ล้มข้ออ้าง แต่ต้องแก้ให้เป๊ะในคลัง): ที่อ้างว่า \"ระดับ HSK4–6\" ไม่แม่นทั้งหมด — การกระจายจริงในเปเปอร์คือ ต่ำกว่า HSK-4 = 4 คน, HSK-4 = 6 คน, HSK-5 = 9 คน, HSK-6 = 3 คน. คือมี 4/22 คนที่ต่ำกว่า HSK4 ด้วย จึงควรเขียนเป็น \"ระดับกลาง-สูง (ส่วนใหญ่ HSK4–6, มีบางส่วนต่ำกว่า HSK4)\" ไม่ใช่ \"HSK4–6\" ล้วน.\n\nสรุปสำหรับคลัง Thai-L1: thai_relevant = TRUE ใช้ได้ (กลุ่มตัวอย่างเป็นคนไทยเรียนจีนจริง). ใช้เป็น \"ทิศทาง T3→T2\" ได้ดี และคาเวียตที่ทีมเขียนไว้ถูกต้องแล้ว — เป็นผู้เรียนระดับกลาง-สูง (ไม่ใช่ HSK1–2), เป็นบริบท 'เสียงดัง' เฉพาะ, และเป็นงาน perception (การฟังแยกเสียง) ไม่ใช่การออกเสียง จึงห้ามตีความตัวเลข 76/66% เป็นเกณฑ์ HSK1–2. เปิดฟรี (open access) ยืนยันแล้ว."
+          }
+        },
+        {
+          "citation": "Aroonawongsa, S., Juraiyanon, P., & Larblerd, T. (2025). Comparative Analysis of Tonal Systems in Chinese and Thai and Teaching Strategies for Chinese Tonal Patterns. RMUTTO Social Science Journal, 14(1).",
+          "year": 2025,
+          "venue": "วารสารสังคมศาสตร์ มทร.ตะวันออก (RMUTTO Social Science Journal) 14(1), TCI/ThaiJO",
+          "url": "https://so05.tci-thaijo.org/index.php/SocialJournal2rmutto/article/view/273858",
+          "access": "free",
+          "supports_th": "thai_relevant = TRUE. งานไทย (TCI) วิเคราะห์เปรียบเทียบระบบวรรณยุกต์ไทย-จีน + เสนอกลยุทธ์การสอนวรรณยุกต์จีนสำหรับผู้เรียนไทย และรายงานว่าผู้เรียนไทยจำนวนมากมีอาการ 'สำเนียงต่างชาติทางวรรณยุกต์ (foreign tone/洋腔洋调)'. ใช้เป็นฐาน contrastive analysis + teaching (รวมถึง KC เสียง 4). ข้อจำกัด: บทคัดย่อไม่ได้ระบุตัวเลข T2-vs-T3 เจาะจง; และการสะกดชื่อผู้แต่งเป็นการถอดอักษรโรมัน (Supaporn Aroonawongsa / Pornpen Juraiyanon / Thanuttha Larblerd) — ตรวจสอบสะกดกับหน้าวารสารอีกครั้งก่อนอ้างเป็นทางการ. เปิดฟรี (CC BY-NC-ND).",
+          "verify": {
+            "citation": "Aroonawongsa, S., Juraiyanon, P., & Larblerd, T. (2025). Comparative Analysis of Tonal Systems in Chinese and Thai and Teaching Strategies for Chinese Tonal Patterns. Rajamangala University of Technology Tawan-ok (RMUTTO) Social Science Journal, 14(1), 1–10. https://so05.tci-thaijo.org/index.php/SocialJournal2rmutto/article/view/273858",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://so05.tci-thaijo.org/index.php/SocialJournal2rmutto/article/view/273858",
+            "note_th": "ตรวจแบบพยายามหักล้าง — ผ่านครบ 3 ข้อ.\n(ก) งานจริง: หน้า ThaiJO ของ มทร.ตะวันออก ยืนยันชื่อบทความตรง, ผู้แต่ง 3 คนสะกดตรงเป๊ะ (Supaporn Aroonawongsa / Pornpen Juraiyanon / Thanuttha Larblerd), วารสาร Rajamangala University of Technology Tawan-ok Social Science Journal ปีที่ 14 ฉบับ 1 เผยแพร่ 30 มิ.ย. 2025, หน้า 1–10. มี index ซ้ำที่ ResearchGate (pub 393200525) และถูกอ้างในวารสารอื่น (SCIENTIFIC CULTURE 2026) → ไม่ใช่รายการที่แต่งขึ้น.\n(ข) เข้าถึงได้: ลิงก์ที่อ้าง (view/273858) เปิดได้, ไฟล์ PDF ดาวน์โหลดจริง (~571KB), open access TCI/ThaiJO.\n(ค) เนื้อหาสนับสนุน (เชิงคุณภาพ): บทคัดย่อระบุตรงว่าผู้เรียนไทยจำนวนมากมีอาการ 'foreign tones' (= 洋腔洋调) และเป็นการเปรียบเทียบระบบวรรณยุกต์ไทย-จีน + เสนอกลยุทธ์การสอน (gesture-assisted + ปรับลำดับสอนวรรณยุกต์) มี pre/post-test. ลำดับสอนที่พบ: เสียง1→เสียง4→เสียง3(แยกจากเสียง1)→เสียง2เทียบเสียง4 สอดคล้องกับการใช้เป็นฐาน contrastive analysis + KC เสียง4.\nข้อควรระวัง: ตัวเลข T2-vs-T3 เจาะจง 'ไม่พบ' ในบทคัดย่อ/ส่วนที่เข้าถึงได้ (PDF เป็นสตรีมบีบอัด อ่านตัวเนื้อเต็มไม่ได้ในเครื่องนี้) — แต่ข้ออ้างของทีมก็ระบุข้อจำกัดนี้ไว้แล้วและไม่ได้เคลมตัวเลข จึงไม่ถือว่า overclaim. สรุป: อ้างได้ตามที่ระบุ (thai_relevant=TRUE ยืนยัน). ถ้าจะเคลมตัวเลขวรรณยุกต์เจาะจงในอนาคต ต้องเปิดตัวเนื้อ PDF เต็มยืนยันก่อน."
+          }
+        }
+      ]
+    },
+    {
+      "group_id": "TL-RETRO",
+      "group_name_th": "พยัญชนะม้วนลิ้น retroflex (zh / ch / sh / r) — เสียงต้นที่ภาษาไทยไม่มี",
+      "summary_th": "ภาษาไทยไม่มีเสียงม้วนลิ้น (retroflex, 翘舌音) เลย ผู้เรียนไทยจึงถ่ายโอน (L1 transfer) โดยแทนด้วยเสียงไทยที่ใกล้ที่สุด: sh→ส /s/, zh→จ /tɕ/ หรือแบนเป็น z, ch→ช /tɕʰ/ หรือแบนเป็น c, และ r→ล /l/ หรือ ร (รัว/tap) ผลคือ (1) แยกเสียงม้วนลิ้น (翘舌 zh/ch/sh) กับเสียงไม่ม้วนลิ้น (平舌 z/c/s) ไม่ออกทั้งการฟังและการออกเสียง และ (2) มักยุบ zh/ch/sh ให้เป็นเสียงเดียวกัน งานของ Suphasa & Chi (2017) ที่เก็บข้อมูลกับนักศึกษาไทยพบว่า ch และ sh ยากที่สุด และเกิด fossilization (ผู้เรียนระดับสูงยังผิดจุดเดิมเท่าผู้เริ่มต้น) ส่วน Kitikanan & Al-Tamimi (2012) ยืนยันเชิงเสียงว่าไทยออก s ถูก 100% แต่ retroflex ʂ (sh) แปรปรวน จึง \"หล่น\" กลับไปใช้ s สำหรับ HSK 1–2 ที่ไม่มีสอบพูด ควรเน้นวินิจฉัย/ฝึกที่ \"หูแยกเสียง\" (minimal pair discrimination) และการสะกดพินอินให้ถูก มากกว่าการออกเสียงให้เป๊ะแบบเจ้าของภาษา แตกเป็น 5 KC ด้านล่าง หมายเหตุ: ตัวเลขเปอร์เซ็นต์ (เช่น 48%) ยืนยันจาก abstract ที่เปิดได้ไม่ได้ — ยืนยันได้เฉพาะอันดับเชิงคุณภาพว่า ch/sh ยากสุด",
+      "sub_errors": [
+        {
+          "kc_code": "TL-RETRO-SH-S",
+          "error_th": "ออกเสียง sh [ʂ] (ม้วนลิ้น) เป็น s [s] แบบไทย (ส) — ไม่ม้วนปลายลิ้น ทำให้ 是 shì ฟังเป็น 四 sì, 老师 lǎoshī เป็น 'lǎosī'",
+          "thai_cause_th": "ภาษาไทยมี /s/ (ส/ซ) แต่ไม่มี retroflex /ʂ/ ผู้เรียนจึงถ่ายโอนไปใช้ /s/ ที่ออกง่ายและมีอยู่แล้วใน L1 เป็นจุดผิดที่มีหลักฐานหนักที่สุดของกลุ่มนี้ (ch/sh ยากสุดใน Suphasa & Chi; ʂ แปรปรวนแต่ s ถูก 100% ใน Kitikanan & Al-Tamimi)",
+          "example": "是 shì (เป็น/คือ, HSK1) vs 四 sì (สี่, HSK1); 老师 lǎoshī (ครู, HSK1); 十 shí (สิบ, HSK1) vs 四 sì",
+          "distractor_idea_th": "ข้อฟัง: เปิดเสียง 是 shì แล้วให้เลือกพินอิน/ภาพ โดยมีตัวลวง 'sì/四' (เสียง s แทน sh); ข้อสะกดพินอิน 老师 มีตัวเลือกลวง 'lǎosī' คู่กับคำตอบ 'lǎoshī'",
+          "teaching_th": "ฝึกหูด้วย minimal pair 是/四, 十/四, 山 shān/桑 sāng; สอนวางลิ้น: ม้วนปลายลิ้นแตะปุ่มเหงือกด้านหลัง (เพดานแข็ง) แล้วปล่อยลมเสียดแทรก; ให้จับความรู้สึกต่างกับ ส ไทยที่ปลายลิ้นอยู่หลังฟันล่าง",
+          "evidence": "Suphasa & Chi (2017) — sh เป็นพยัญชนะที่ยากที่สุดกลุ่มหนึ่ง; Kitikanan & Al-Tamimi (2012) — retroflex ʂ ออกแปรปรวน ขณะที่ alveolar s ถูก 100% (ไทยหล่นไปใช้ s)"
+        },
+        {
+          "kc_code": "TL-RETRO-ZH-JZ",
+          "error_th": "ออกเสียง zh [tʂ] เป็น จ /tɕ/ (คล้าย j) หรือแบนเป็น z [ts] — 中国 Zhōngguó ฟังเป็น 'jōngguó/zōngguó', 找 zhǎo เป็น 早 zǎo",
+          "thai_cause_th": "ไทยไม่มี retroflex affricate /tʂ/ ผู้เรียนแทนด้วย จ /tɕ/ (เสียงที่ใกล้สุดใน L1) หรือแบนไปเป็น z ตามคู่ 平舌 เพราะแยก 翘舌/平舌 ไม่ออก",
+          "example": "中国 Zhōngguó (ประเทศจีน, HSK1); 这 zhè (นี่, HSK1); 找 zhǎo (หา, HSK2) vs 早 zǎo (เช้า, HSK1)",
+          "distractor_idea_th": "ข้อเลือกพินอินของ 中国 ใส่ตัวลวง 'zōngguó' และ 'jōngguó'; ข้อฟัง 找 zhǎo ให้แยกจาก 早 zǎo (คู่ zh/z เสียงเดียวกันต่างม้วนลิ้น)",
+          "teaching_th": "ฝึก minimal pair 找/早, 这/... ; ให้ออก จ ไทยก่อนแล้ว 'ม้วนปลายลิ้นถอยหลัง' เพื่อเทียบความต่าง; drill คู่ 平舌(z)-翘舌(zh) สลับกันเพื่อสร้าง contrast",
+          "evidence": "Suphasa & Chi (2017) — zh อยู่ในชุดพยัญชนะที่เป็นปัญหา; Cai & Lee (2015) — ไทยไม่มีชุด retroflex จึงเกิด transfer; Ma Yue (2017) — ผู้เริ่มต้นไทยมัก 'ยุบ' zh/ch/sh เป็นเสียงเดียว"
+        },
+        {
+          "kc_code": "TL-RETRO-CH-CQ",
+          "error_th": "ออกเสียง ch [tʂʰ] เป็น ช /tɕʰ/ (คล้าย q) หรือแบนเป็น c [tsʰ] — 吃 chī ฟังเป็น 'qī/cī', 茶 chá เป็น 'cá'",
+          "thai_cause_th": "ไทยไม่มี retroflex aspirated affricate /tʂʰ/ ผู้เรียนแทนด้วย ช /tɕʰ/ (ใกล้สุดใน L1) หรือแบนเป็น c; เป็นคู่กับ zh แต่แยกออกมาเพราะจุดออกเสียง/การพ่นลมต่างและ ch ยากเป็นพิเศษในข้อมูลไทย",
+          "example": "吃 chī (กิน, HSK1); 茶 chá (ชา, HSK1); 出 chū (ออก, HSK2); เทียบ 吃 chī vs 七 qī (เจ็ด, HSK1) เพื่อกัน ch→q",
+          "distractor_idea_th": "ข้อฟัง 吃 chī มีตัวลวง 'cī' และ 'qī'; ข้อสะกดพินอิน 茶 มีตัวลวง 'cá'; ข้อจับคู่ภาพอาหาร/เครื่องดื่มที่คำตอบต่างกันแค่ ch↔c/q",
+          "teaching_th": "minimal pair 吃/七 (ch/q), 茶/... ; เน้นทั้งการม้วนลิ้นและการพ่นลมแรง (aspiration) พร้อมกัน; ฝึกคู่ 平舌 c – 翘舌 ch สลับ",
+          "evidence": "Suphasa & Chi (2017) — ระบุชัดว่า ch (ร่วมกับ sh) ยากที่สุดในกลุ่ม retroflex; Ma Yue (2017) — zh/ch/sh มักถูกออกเป็นเสียงเดียวกัน"
+        },
+        {
+          "kc_code": "TL-RETRO-R-L",
+          "error_th": "ออกเสียง r [ʐ]/[ɻ] (ม้วนลิ้น) เป็น ล /l/ หรือ ร ไทย (รัว/tap) — 热 rè ฟังเป็น 'lè', 人 rén เป็น 'lén', 日 rì เป็น 'lì'",
+          "thai_cause_th": "ไทยมี /r/ (ร รัว/tap) และ /l/ ซึ่งต่างจาก Mandarin r ที่เป็น retroflex approximant/fricative ผู้เรียนจึงแทนด้วย ล หรือ ร ไทย ได้ผลเป็นเสียง 'กึ่ง r กึ่ง l' ที่ไม่ใช่ retroflex; ยิ่งไทยสลับ ร/ล ในชีวิตประจำวันอยู่แล้ว ยิ่งเสริมความสับสน",
+          "example": "热 rè (ร้อน, HSK1); 人 rén (คน, HSK1); 认识 rènshi (รู้จัก, HSK1); 日 rì (วัน, ใน 生日 shēngrì วันเกิด HSK2)",
+          "distractor_idea_th": "ข้อฟัง 热 rè มีตัวลวง '乐 lè'; ข้อฟัง 人 rén มีตัวลวง 'lén'; ข้อสะกดพินอิน 认识 มีตัวเลือกลวงขึ้นต้นด้วย l",
+          "teaching_th": "ฝึกหูแยก r/l ด้วยคู่ 热/乐, 人/... ; สอนออก r แบบไม่รัวลิ้น — ค้างปลายลิ้นม้วนใกล้เพดานแข็ง(ตำแหน่งเดียวกับ sh แต่ก้อง/เสียงลากยาว); ห้ามแตะเป็น ล",
+          "evidence": "Cai & Lee (2015) — contrastive analysis ชี้ว่าไทยไม่มี Mandarin retroflex r; Ma Yue (2017) — ผู้เรียนไทยออก r เป็นเสียงระหว่าง r จีนกับ l ไทย; Suphasa & Chi (2017) — r อยู่ในชุดพยัญชนะที่เป็นปัญหา"
+        },
+        {
+          "kc_code": "TL-RETRO-FLAT-MERGE",
+          "error_th": "แยก 'เสียงม้วนลิ้น' (翘舌 zh/ch/sh) กับ 'เสียงไม่ม้วนลิ้น' (平舌 z/c/s) ไม่ออก ทั้งการฟังและการสะกดพินอิน — สลับ/ยุบเป็นเสียงเดียว เช่น 四 sì ↔ 十 shí, 早 zǎo ↔ 找 zhǎo",
+          "thai_cause_th": "เพราะไทยไม่มี retroflex เลย ผู้เรียนจึงไม่มี 'หมวดเสียง' (phonemic category) สำหรับแยก 翘舌/平舌 — เป็นปัญหาระดับการรับรู้ (perception) ที่อยู่เบื้องหลังจุดผิด SH/ZH/CH ทั้งหมด และเป็นสาเหตุของ fossilization",
+          "example": "คู่ทดสอบการฟัง/สะกด: 四 sì (สี่) vs 十 shí (สิบ); 早 zǎo (เช้า) vs 找 zhǎo (หา); 三 sān vs 山 shān",
+          "distractor_idea_th": "ข้อ dictation พินอิน: เปิดเสียงคำหนึ่ง (เช่น 十 shí) ให้พิมพ์/เลือกพินอิน โดยจับคู่ตัวลวง平舌↔翘舌 (sì↔shí, zǎo↔zhǎo); เก็บสถิติทิศทางความผิด (ยุบ翘舌→平舌 หรือ overcorrect平舌→翘舌) เพื่อป้อน BKT",
+          "teaching_th": "ฝึกงาน AX/AB discrimination ด้วยชุด minimal pair 平舌–翘舌 ก่อนฝึกออกเสียง; ไล่ระดับจาก 'ต่างกันชัด' ไปหา 'คู่ยาก'; เมื่อหูแยกได้แล้วค่อยโยงไปการสะกดพินอินและการออกเสียง",
+          "evidence": "Kitikanan & Al-Tamimi (2012) — retroflex ʂ/ɕ แปรปรวน (ไม่มีหมวดเสียงใน L1); Ma Yue (2017) — ผู้เรียนไทยมัก 'ยุบ zh/ch/sh เป็นเสียงเดียว' และไม่แยก平/翘舌; Suphasa & Chi (2017) — fossilization ของจุดผิดชุดนี้"
+        }
+      ],
+      "sources": [
+        {
+          "citation": "Suphasa, T. (ตุลยนุสรญ์ สุภาษา) & Chi, X. (ฉี เสวียหง). (2017). การศึกษาปัญหาการออกเสียงภาษาจีนของนักศึกษาสาขาวิชาภาษาจีนธุรกิจ วิทยาลัยนานาชาติ มหาวิทยาลัยราชภัฏเชียงใหม่ [Error Analysis in Chinese Pronunciation of Business Chinese Students, International College, Chiang Mai Rajabhat University].",
+          "year": 2017,
+          "venue": "วารสารบัณฑิตวิจัย (Journal of Graduate Research), มหาวิทยาลัยราชภัฏเชียงใหม่, ปีที่ 8 ฉบับที่ 1, หน้า 115–124 (TCI)",
+          "url": "https://so02.tci-thaijo.org/index.php/banditvijai/article/view/95811",
+          "access": "free",
+          "supports_th": "แหล่งหลัก ตรงจุดที่สุด (subjects = นักศึกษาไทย, CMRU). ยืนยันจาก abstract ที่เปิดได้: ch และ sh เป็นพยัญชนะที่ยากที่สุด (ชุดปัญหา = x, zh, ch, sh, r, z, c, s) และพบ fossilization — ผู้เรียนระดับสูงยังผิดจุดเดิมเท่าผู้เริ่มต้น. thai_relevant: ใช่. คำเตือน: ไม่พบตัวเลขเปอร์เซ็นต์ (เช่น 48%) ใน abstract ที่เปิดได้ — ยืนยันได้เฉพาะอันดับเชิงคุณภาพ; ตัวสะกดชื่อผู้แต่งคนที่สอง (ฉี เสวียหง / Chi Xiewang) โรมันไนซ์ไม่แน่นอน ควรตรวจกับ PDF ตัวเต็ม",
+          "verify": {
+            "exists": true,
+            "supports_claim": true,
+            "verdict": "verified",
+            "best_url": "https://so02.tci-thaijo.org/index.php/banditvijai/article/view/95811",
+            "citation": "ตุลยนุสรญ์ สุภาษา และ ฉี เสวียหง (Qi Xuehong). (2560). การศึกษาปัญหาการออกเสียงภาษาจีนของนักศึกษาสาขาวิชาภาษาจีนธุรกิจ วิทยาลัยนานาชาติ มหาวิทยาลัยราชภัฏเชียงใหม่. วารสารบัณฑิตวิจัย (Journal of Graduate Research), 8(1), 115–124. [Suphasa, T., & Qi, X. (2017)]. https://so02.tci-thaijo.org/index.php/banditvijai/article/view/95811",
+            "note_th": "ยืนยันครบ 3 ข้อจากตัวเต็ม (PDF) — ผ่านการพยายามหักล้างแล้ว\n\n(ก) ตีพิมพ์จริง: ใช่ — วารสารบัณฑิตวิจัย (Journal of Graduate Research) ม.ราชภัฏเชียงใหม่ ปีที่ 8 ฉบับที่ 1 (ม.ค.-มิ.ย. 2560) หน้า 115–124 บน TCI ThaiJo (ระบบ so02) ตรงกับที่อ้างทุกจุด\n(ข) เข้าถึงได้: ใช่ — ลิงก์ที่อ้างเปิดได้ และดาวน์โหลด PDF ตัวเต็ม 10 หน้าได้ (galley: .../article/view/95811/74825) อ่านเนื้อหาทั้งฉบับแล้ว ไม่ใช่แค่ abstract\n(ค) เนื้อหาสนับสนุน: ใช่ ครบ — ผู้ทดสอบ = นักศึกษาไทย สาขาภาษาจีนธุรกิจ วิทยาลัยนานาชาติ CMRU แบ่ง 3 ระดับ (ต้น/กลาง/สูง); พยัญชนะชุดปัญหา = x, zh, ch, sh, r, z, c, s ตรงเป๊ะ; ยืนยันปรากฏการณ์ฟอสซิล (Selinker 1972) — ระดับสูงยังผิดพยัญชนะ/สระตัวเดียวกับระดับต้น\n\n** ประเด็นตัวเลข (คลายข้อกังวลเดิม แต่มีจุดต้องระวัง) **\n- ตัวเต็มมีเปอร์เซ็นต์จริง (abstract ไม่มี): ch และ sh = ร้อยละ 70 ในระดับต้น+กลาง (สูงสุด). สระ üe/üɑn = ร้อยละ 83 (ระดับต้น สูงสุด)\n- **ไม่มีเลข 48% ในงานนี้เลย** — ถ้าคลังไหนเคยเคลม \"ch/sh ~48%\" ถือว่าผิด ตัวเลขที่ถูกคือ ~70% ห้ามใช้ 48%\n- ข้อควรระวัง (nuance): \"ch/sh ยากสุดทุกระดับ\" จริงเฉพาะระดับต้น+กลาง (70%). ในระดับสูง เสียงที่ผิดมากสุดกลับเป็น c (ร้อยละ 60) ส่วน ch/sh ลดเหลือ ~50% — คำว่า \"สูงสุดในทุกระดับ\" เป็นการสรุปรวมของ abstract ถ้าเขียนละเอียดควรระบุแยกระดับ\n\n** ต้องแก้ในการอ้างอิง **\n- ผู้แต่งคนที่ 2: ตัวเต็มโรมันไนซ์เป็น \"Qi Xuehong\" (ฉี เสวียหง) → ควรใช้ **Qi, X.** ไม่ใช่ \"Chi, X.\" (แซ่พินอินคือ Qi ไม่ใช่ Chi) — แก้ในคลัง\n- ผู้แต่งคนที่ 1: ตัวเต็มสะกด \"Tunyanusorn Suphasa\" (อ้างเป็น Tulyanusorn — ต่างเล็กน้อยที่ชื่อตัว, นามสกุล Suphasa ตรง)\n\n** โบนัสสนับสนุน Thai-L1 โดยตรง ** งานระบุสาเหตุชัดว่าเกิดจาก (1) การถ่ายโอนจากเสียงภาษาไทยที่ใกล้เคียงภาษาจีน (Language transfer) และ (2) Transfer of training — เข้าเป้า Thai-L1 เต็ม ๆ ใช้อ้างได้แข็งแรง\n\nสรุป: ใช้เป็นแหล่งหลัก Thai-L1 ได้ (verified) แต่ในคลังให้ (1) แก้ชื่อผู้แต่ง 2 เป็น Qi, X. (2) ถ้าจะใส่ตัวเลข ใช้ 70% (ch/sh, ระดับต้น-กลาง) อย่าใช้ 48% (3) เลี่ยงเคลมเหมารวม \"ทุกระดับ\" หากจะพูดถึงระดับสูง"
+          }
+        },
+        {
+          "citation": "Kitikanan, P. & Al-Tamimi, J. (2012). The Earliest Stage of Voiceless Fricative Acquisition among Thai Learners of Mandarin Chinese.",
+          "year": 2012,
+          "venue": "ARECLS (Annual Review of Education, Communication and Language Sciences), Newcastle University, Vol. 9, pp. 91–114 (peer-reviewed)",
+          "url": "https://research.ncl.ac.uk/media/sites/researchwebsites/arecls/kitikanan_and_altamimi_vol9.pdf",
+          "access": "free",
+          "supports_th": "หลักฐานเชิงเสียง (auditory + acoustic). Mandarin voiceless fricatives = /f, s, ʂ, ɕ, x/ แต่ไทยมีแค่ /f, s, h/. ผู้เรียนไทยออก f และ s ถูก 100% แต่ retroflex ʂ (sh) และ alveolo-palatal ɕ (x) 'แปรปรวน' และ velar /x/ (พินอิน h) กลายเป็น glottal [h]. สนับสนุน KC SH→S และ FLAT-MERGE โดยตรง (ไทยหล่นไปใช้เสียงที่มีใน L1). thai_relevant: ใช่. ข้อจำกัด: กลุ่มตัวอย่างเล็กมาก (ผู้เรียนไทย 3 คน + เจ้าของภาษา 2 คน). คำเตือน: ชื่อต้นผู้แต่ง (Phornrat Kitikanan / Jalal Al-Tamimi) อ้างจากดัชนี — ควรตรวจสะกดกับตัวเต็ม",
+          "verify": {
+            "citation": "Kitikanan, P., & Al-Tamimi, J. (2012). The earliest stage of voiceless fricative acquisition among Thai learners of Mandarin Chinese. ARECLS (Annual Review of Education, Communication and Language Sciences), 9, 91–114. (ชื่อเต็ม: Patchanok Kitikanan & Jalal Al-Tamimi) https://research.ncl.ac.uk/media/sites/researchwebsites/arecls/kitikanan_and_altamimi_vol9.pdf",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://research.ncl.ac.uk/media/sites/researchwebsites/arecls/kitikanan_and_altamimi_vol9.pdf",
+            "note_th": "ยืนยันครบ 3 ข้อ จากตัวเต็ม PDF (ดึงข้อความด้วย pdftotext) + หน้าคลัง ARECLS ของ Newcastle\n\n(ก) งานจริง: มีในดัชนี ARECLS Vol.9 (2012) ของ Newcastle University หัวข้อ/ผู้แต่งตรง หน้าปกในไฟล์เขียน \"ARECLS, 2012, Vol.9, 91-114.\" → ปี/เล่ม/เลขหน้าตรงเป๊ะ\n(ข) เข้าถึงได้: ลิงก์ที่อ้างเปิดได้จริง ดาวน์โหลด PDF (546 KB) เต็มฉบับ\n(ค) เนื้อหาสนับสนุนข้ออ้าง — ตรงทุกตัวเลข อ้างจาก Abstract คำต่อคำ: \"Mandarin voiceless fricatives are /f, s, ʂ, ɕ, x/ whereas Thai fricatives are /f, s, h/. Three Thai learners and two natives of Mandarin participated... produced labiodental and alveolar Mandarin fricatives with a 100% accuracy; the production of retroflex and alveolo-palatal fricatives... was variable; and all velar fricatives were realised as glottal fricatives.\" ในส่วนผล (Table 3) retroflex+alveolo-palatal = 40% accuracy; velar (พินอิน h): \"All three Thai speakers produced this sound as a voiceless glottal fricative... a direct transfer from L1\" → สนับสนุน FLAT-MERGE (พินอิน h → [h]) ตรงมาก\n- KC SH→S: สนับสนุนแบบ \"หนึ่งในตัวแปร\" ไม่ใช่ตายตัว — Table 4 ระบุการออกผิดของ retroflex/alveolo-palatal \"ranging between an alveolar fricative, an aspirated retroflex affricate...\" คือ ʂ→s เป็นหนึ่งในหลายแบบ (2 ใน 3 คนออก retroflex ได้ค่อนข้างถูก) จึงควรเคลมว่า sh \"แปรปรวน\" ไม่ใช่ \"หล่นเป็น s เสมอ\"\n\n⚠️ ต้องแก้ citation: ชื่อต้นคือ \"Patchanok\" Kitikanan ไม่ใช่ \"Phornrat\" (ที่คำเตือนเดาไว้) — แต่รูปย่อ \"Kitikanan, P.\" ที่เขียนถูกอยู่แล้ว ส่วน Jalal Al-Tamimi ยืนยันถูก\nข้อควรระวังคุณภาพ: n เล็กมาก (ไทย 3 + เจ้าของภาษา 2, case study, picture-naming 30 รูป) และ ARECLS เป็นวารสารบัณฑิตศึกษาของ Newcastle — ใช้เป็นหลักฐานเชิงชี้นำ (auditory+acoustic) ได้ แต่อย่าเคลมเป็น generalizable ผลเสียงยังพบว่า retroflex ไม่ต่างจากเจ้าของภาษาอย่างมีนัยสำคัญ (ตัวที่ยากชัดที่สุดคือ alveolo-palatal ɕ/x)"
+          }
+        },
+        {
+          "citation": "Cai, Y.-W. & Lee, H. Y.-H. (2015). A Contrastive Analysis of Mandarin Chinese and Thai: Suggestions for Second Language Pronunciation.",
+          "year": 2015,
+          "venue": "Theory and Practice in Language Studies (TPLS), Vol. 5, No. 4, pp. 719–728 (peer-reviewed), DOI: 10.17507/tpls.0504.07",
+          "url": "https://www.academypublication.com/issues2/tpls/vol05/04/07.pdf",
+          "access": "free",
+          "supports_th": "Contrastive analysis เปรียบเทียบระบบเสียงพยัญชนะ/สระ Mandarin กับ Thai และตรวจกับผู้พูดไทย (L1 Thai → Mandarin). สนับสนุนหลักการว่า ไทยไม่มีชุด retroflex zh/ch/sh/r จึงทำนายจุดยากด้วย L1 transfer; ใช้เป็นฐาน 'วิธี/ทฤษฎี' ของกลุ่มนี้ (โดยเฉพาะ KC R→L). thai_relevant: ใช่. หมายเหตุ: เป็นงานเชิงทำนาย (contrastive) มากกว่า error-corpus ขนาดใหญ่ — ใช้คู่กับ Suphasa & Chi ที่เป็นข้อมูลจริง. DOI ตรวจแล้วเปิดได้",
+          "verify": {
+            "citation": "Cai, Y.-W., & Lee, H. Y.-H. (2015). A Contrastive Analysis of Mandarin Chinese and Thai: Suggestions for Second Language Pronunciation. Theory and Practice in Language Studies, 5(4), 719–728. https://doi.org/10.17507/tpls.0504.07",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://www.academypublication.com/issues2/tpls/vol05/04/07.pdf",
+            "note_th": "ยืนยันครบ 3 ข้อ (adversarial แล้วยังผ่าน):\n\n(ก) ตีพิมพ์จริง — TPLS Vol.5 No.4, pp.719–728, เม.ย. 2015, ISSN 1799-2591, DOI 10.17507/tpls.0504.07 ตรงเป๊ะทุกฟิลด์. ผู้เขียน Yi-Wen Cai และ Hugo Yu-Hsiu Lee (PhD Indiana, ผศ. Applied Linguistics ที่ NIDA กรุงเทพฯ) — ทั้งคู่อยู่ NIDA ไทย.\n\n(ข) เข้าถึงได้ — DOI (dx.doi.org) 302 redirect ไปที่ PDF เต็มที่ทีมอ้าง (academypublication.com/.../07.pdf) เปิดได้จริง; มีใน Semantic Scholar / ResearchGate / Academia.edu ด้วย.\n\n(ค) เนื้อหาสนับสนุนข้ออ้างหลัก — ยืนยันจากตัว PDF (ดึงข้อความแล้วอ่านทั้งฉบับ): เป็น contrastive analysis เทียบระบบเสียงพยัญชนะ+สระ Mandarin↔Thai ด้วย IPA แล้วตรวจกับผู้พูดไทย L1 จริง n=5 คน (ผู้พูดไทยภาคกลาง เรียนจีน 8–25 ปี). ผลสรุป \"เสียงที่ไทยไม่มี = 8 พยัญชนะ\": [tʂ]=zh, [tʂh]=ch, [ʂ]=sh, [ʐ]=r (ชุด retroflex ครบ) + [tɕ][tɕh][ɕ] (alveolo-palatal) + [x]. และมีหลักฐานการถ่ายโอน L1 จริง: ผู้เรียนออก retroflex เป็นเสียงฟัน [ts][tsh][s] และออก r [ʐ]→[l] (รองรับ note \"KC R→L\" ของทีมโดยตรง). ตัวเลข n=5 ตรงกับที่ทีมจดว่าเป็นงานเชิงทำนาย/สเกลเล็ก — ถูกต้อง.\n\n⚠️ ข้อควรระวังสำคัญ (adversarial finding — อย่าเคลมเกินจริง): \"ธีสิสรวม\" ของเปเปอร์นี้จริง ๆ คือ *วิจารณ์* ว่าพลังทำนายของ Contrastive Analysis \"ไม่สูงอย่างที่อ้างกัน\" — บางความต่างไม่ทำให้ยาก (เช่นสระ [y],[ɥ] ที่ไทยไม่มีแต่ออกถูก) และบางความเหมือนกลับทำให้ยาก + ความต่างรายบุคคลสูง. ดังนั้นให้ cite เปเปอร์นี้แบบเจาะจงว่า \"หลักฐานว่าไทยไม่มีชุด retroflex + ผู้เรียนไทยแทนด้วยเสียงฟัน/ล\" เท่านั้น อย่าใช้เป็นหลักฐานเหมารวมว่า \"ทุกความต่าง L1-L2 ทำนายความยากได้\" เพราะเปเปอร์เถียงตรงข้าม. อีกจุด: กลุ่มตัวอย่างเป็นผู้เรียนขั้นสูง (8–25 ปี) ไม่ใช่มือใหม่ 0 พื้นฐานแบบกลุ่มเป้าหมายเรา — pattern การแทนเสียงอาจต่างในผู้เริ่มต้น. คำแนะนำเดิมของทีม (ใช้คู่กับ Suphasa & Chi ที่เป็น error-corpus จริง) ถูกทางแล้ว.\n\nหมายเหตุเทคนิค: ตอนดึง PDF ด้วย pdftotext -layout มีข้อความแปลกปน (พูดถึง acoustic/t-test/\"three participants\") แต่ตรวจแล้ว = artifact จากการอ่านตารางหลายคอลัมน์ผิด ไม่มีในลำดับอ่านจริง (raw) — ไฟล์เป็น Cai & Lee ล้วนตั้งแต่ต้นจนจบ references+ประวัติผู้เขียน ไม่มีปัญหาไฟล์สลับ."
+          }
+        },
+        {
+          "citation": "Ma, Y. (马越). (2017). 泰国初级汉语学习者声母发音偏误采样与分析 [Sampling and Analysis of Initial-Consonant Pronunciation Errors among Thai Beginner Learners of Chinese].",
+          "year": 2017,
+          "venue": "北方文学·上旬 (Northern Literature), 2017 年第 9 期 (นิตยสาร/ไม่ใช่วารสารวิชาการที่ peer-review เข้ม)",
+          "url": "https://m.fx361.com/news/2017/0804/2865004.html",
+          "access": "free",
+          "supports_th": "แหล่งภาษาจีนที่เสริมภาพจุดผิด retroflex ของผู้เริ่มต้นไทย: ยืนยันว่าผู้เรียนไทยมัก 'ยุบ zh/ch/sh ให้เป็นเสียงเดียว' และออก r เป็นเสียงกึ่ง r-จีน/l-ไทย (สนับสนุน KC MERGE และ R→L). thai_relevant: ใช่. คำเตือนสำคัญ: เป็นบทความในนิตยสาร 北方文学 (ไม่ใช่วารสารภาษาศาสตร์ที่ peer-review เข้มงวด) และตัวเต็มอยู่หลัง app ของ fx361 — ใช้เป็นหลักฐานประกอบ/ภาพประกอบเท่านั้น อย่าอ้างเป็นหลักฐานหลักหรืออ้างตัวเลข",
+          "verify": {
+            "citation": "Ma, Y. (马越). (2017). 泰国初级汉语学习者声母发音偏误采样与分析 [Sampling and Analysis of Initial-Consonant Pronunciation Errors among Thai Beginner Learners of Chinese]. 北方文学·上旬 (Northern Literature), 2017 年第 9 期. https://m.fx361.com/news/2017/0804/2865004.html",
+            "verdict": "partial",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://m.fx361.com/news/2017/0804/2865004.html",
+            "note_th": "ยืนยันว่า \"บทความมีจริง\": fx361/参考网 (ผู้รวบรวมนิตยสาร) แสดง metadata ตรงเป๊ะทุกจุด — ชื่อเรื่อง 泰国初级汉语学习者声母发音偏误采样与分析, ผู้แต่ง 马越, แหล่ง 北方文学·上旬 2017 年第 9 期, ลงวันที่ 4 ส.ค. 2017. พรีวิวที่เปิดดูได้ยืนยันว่าเป็นการศึกษาจุดผิดพยัญชนะต้นของผู้เรียนไทยเริ่มต้นจริง: กลุ่มตัวอย่าง 20 คน (นักเรียนอาชีวะไทย อายุเฉลี่ย 17), b/p/m/f/d/t/n/l/g/k/h ออกถูกหลังแก้เสียง, j/q/x มีเพียง 11/20 ที่แยกได้.\n\nจุดที่ยืนยัน \"เป๊ะ\" ไม่ได้ (จึงให้ partial ไม่ใช่ verified): (1) ตัวเต็มอยู่หลัง login แอป fx361 — อ่านทั้งบทตรง ๆ ด้วยตาไม่ได้. (2) ส่วนที่อ้างว่า \"ยุบ zh/ch/sh เป็นเสียงเดียว\" และเรื่อง r อยู่นอกพรีวิว. ค้นเจอ snippet ที่ให้ตัวเลข (เช่น 5/20 ออก z/c/s+zh/ch/sh ถูก, 12/20 ออก zh/ch/sh ใกล้กัน) แต่เป็นข้อความสังเคราะห์จาก search — ยืนยันตรงจากตัวบทไม่ได้ และอาจปนกับบทความพี่น้องปี 2016 (泰国中学生…j,q,x,zh,ch,sh,r,z,c,s 的偏误分析) ที่หัวข้อคล้ายมาก. (3) ข้ออ้าง \"r→L\" โดยเฉพาะ ไม่พบหลักฐานยืนยันจากข้อความที่เข้าถึงได้ของบทนี้เลย.\n\nสรุปเชิงหักล้าง: งานมีจริง + ตรงหัวข้อ, ทิศทาง KC MERGE (zh/ch/sh รวมเป็นเสียงเดียว) สอดคล้องทั้งพรีวิวและวรรณกรรมสาขา จึงใช้ประกอบภาพได้ — แต่ (ก) แหล่งเป็นนิตยสารวรรณกรรม 北方文学 ไม่ใช่วารสารภาษาศาสตร์ peer-review, (ข) ตัวเลขทั้งหมดและข้ออ้าง r→L ยืนยันเป๊ะจากแหล่งนี้ไม่ได้เพราะตัวเต็ม paywall. คำเตือนในการ์ด citation ถูกต้องแล้ว: ใช้เป็น \"หลักฐานประกอบ/ภาพประกอบเท่านั้น อย่าอ้างเป็นหลักฐานหลักและอย่าอ้างตัวเลข\". แนะนำ: ถ้าต้องการหลักฐานหลักของ KC MERGE/R→L ให้ใช้แหล่ง peer-review (เช่น 李红印 หรือวิทยานิพนธ์ที่มี CNKI) แทน แล้วเก็บ Ma (2017) ไว้เป็นแหล่งเสริมเท่านั้น."
+          }
+        }
+      ]
+    },
+    {
+      "group_id": "TL-GRAM",
+      "group_name_th": "ไวยากรณ์ถ่ายโอน (ลำดับคำ / บทเสริม) — Thai-L1 grammar transfer",
+      "summary_th": "กลุ่มนี้จับ \"ข้อผิดไวยากรณ์ที่ถ่ายโอนจากภาษาไทย\" ของผู้เรียนคนไทย เจาะที่ลำดับคำและบทเสริม แตกเป็น 5 KC ที่ดักได้ในข้อสอบ HSK 1–2: (1) ลำดับส่วนขยาย+的 (ไทยวางขยายหลังคำนาม จีนวางหน้า) (2) ลักษณนาม 数+量+名 + การเลือก/ละ 个 (3) บทเสริม 补语 (V+得/บทเสริมผล) (4) คำช่วยกาล 了 (แล้ว≠了) (5) ตำแหน่งคำวิเศษณ์/状语 (也/都/在+สถานที่ มาก่อนกริยา). หลักฐานหลักมาจากวารสาร TCI ของไทยที่มีผู้เรียนไทยเป็น subject จริง (Pichaichanlert 2022 บทเสริม; Kongkamnerd 2024 个 บนคลัง HSK Dynamic Composition; Li & Imsamran 2021 ลักษณนามสัตว์; Huang & Funoi 2024 การละ; Zhang Shuaishuai et al. 2026 คำวิเศษณ์ 就是) เสริมด้วยงานคุณภาพสูง Brain Sciences (Hao et al. 2022) เรื่อง 了 กับผู้เรียน L1 ไทย และกรอบทฤษฎีถ่ายโอน Cai & Lee 2015 (แต่เป็นด้านออกเสียง) + Zhang Chujuan 2023 (定语语序, สำนักพิมพ์ Hans คุณภาพต่ำ ใช้เป็นตัวอย่างเท่านั้น). คำเตือนสำคัญต่อทีม: **ยืนยัน citation เดิมของทีมไม่ได้** — ค้นหลายทางแล้วไม่พบงานชื่อ \"Chankrajang\" หรือบทความบทเสริมใน \"วารสารมนุษยศาสตร์ฯ สวนสุนันทา 13(1)\" และ **ไม่พบตัวเลข \"ผิด 48%\"** ในงานจริงใดๆ. งานบทเสริมจริงที่ใกล้ที่สุดคือ Pichaichanlert (2022) Journal of Sinology 16(1) ซึ่งผู้แต่ง/วารสาร/ฉบับ **ไม่ตรง** กับที่ทีมจด และรายงานเป็น \"ประเภทข้อผิด\" ไม่ใช่ %. แนะนำแก้ citation เป็น Pichaichanlert (2022) และ **ตัดตัวเลข 48% ทิ้ง** จนกว่าจะเจอแหล่งยืนยัน. (หมายเหตุ: พบบทความ Hans อีกชิ้น \"泰国学生结构助词的地得偏误分析\" ตรงเรื่อง 的/地/得 ของผู้เรียนไทยด้วย แต่เข้าถึง URL ไม่นิ่งและเป็น Hans คุณภาพต่ำ จึงยังไม่ยกเป็นแหล่งอ้างอิงหลัก)",
+      "sub_errors": [
+        {
+          "kc_code": "TL-GRAM-DE-ORDER",
+          "error_th": "วางส่วนขยาย (คุณศัพท์/แสดงความเป็นเจ้าของ) + 的 ผิดตำแหน่ง คือเอาไปไว้ 'หลัง' คำนามแบบไทย แทนที่จะไว้ 'หน้า' คำนาม เช่น พูด 书我的 / 衣服红色的 แทน 我的书 / 红色的衣服",
+          "thai_cause_th": "ภาษาไทยวางส่วนขยายไว้ 'หลัง' คำนาม (หนังสือของฉัน, เสื้อสีแดง, ครูที่ดี) แต่ภาษาจีนวางไว้ 'หน้า' คำนามและต้องมีตัวเชื่อม 的 → ผู้เรียนถ่ายโอนลำดับ 'คำนาม + ขยาย' ของไทยมาตรงๆ",
+          "example": "ถูก: 我的书 wǒ de shū (หนังสือของฉัน) · 红色的衣服 hóngsè de yīfu (เสื้อสีแดง) · 老师的车 lǎoshī de chē. ผิดแบบไทย: 书我的 / 衣服红色 / 车老师的",
+          "distractor_idea_th": "ข้อสอบเรียงประโยคหรือเลือกตอบ ใส่ตัวลวงที่วางส่วนขยายไว้หลังคำนามแบบไทย (书我的, 衣服红色的) แข่งกับคำตอบถูก (我的书, 红色的衣服); หรือข้อ 'ลากบล็อกเรียงคำ' ที่บล็อก 的 ต้องอยู่ระหว่างขยายกับคำนาม",
+          "teaching_th": "สอนสูตร 'ส่วนขยาย + 的 + คำหลัก (ของใคร/สีอะไร/แบบไหน ต้องมาก่อนเสมอ)'; ท่องคู่เทียบไทย↔จีน (ของฉัน→我的…, สีแดง→红色的…); ฝึกลากบล็อกเรียงคำและเน้นว่า 的 เชื่อมส่วนขยายเข้ากับคำนาม",
+          "evidence": "Zhang Chujuan (2023) 定语语序 ผู้เรียนไทย; ฐานทฤษฎีถ่ายโอน Cai & Lee (2015)"
+        },
+        {
+          "kc_code": "TL-GRAM-MW",
+          "error_th": "ข้อผิดวลีลักษณนาม 3 แบบ: (ก) เรียงลำดับผิด — จีนใช้ จำนวน+ลักษณนาม+นาม (三本书) แต่ผู้เรียนเรียงตามไทย นาม+จำนวน+ลักษณนาม; (ข) เลือกลักษณนามผิด/ใช้ 个 พร่ำเพรื่อแทนตัวที่ถูก; (ค) ละลักษณนาม",
+          "thai_cause_th": "ไทยเรียง 'คำนาม + จำนวน + ลักษณนาม' (หนังสือสามเล่ม, คนหนึ่งคน) ต่างจากจีนที่เรียง 'จำนวน + ลักษณนาม + คำนาม'; และระบบลักษณนามไทย↔จีนไม่จับคู่ตรงตัว → ผู้เรียนเดาผิดหรือใช้ 个 คลุมทุกคำ",
+          "example": "ถูก: 一个人 yí ge rén · 三本书 sān běn shū · 两只猫 liǎng zhī māo. ผิด: 三个书 (个 แทน 本) / 书三本 (เรียงแบบไทย) / 三书 (ละลักษณนาม)",
+          "distractor_idea_th": "ตัวลวง = ใช้ 个 กับคำที่ต้องใช้ 本/只/位 (三个书); สลับลำดับแบบไทย (书三本); ละลักษณนาม (三书). ออกเป็นข้อเลือกตอบ 4 ตัวเลือกที่ต่างกันแค่ลักษณนาม/ลำดับ",
+          "teaching_th": "จับคู่คำนามยอดฮิต HSK1-2 กับลักษณนามเฉพาะ (书→本, 人→个/位, 猫狗→只, 水→杯/瓶); ฝึกสูตร 数+量+名; เตือน 'กับดัก 个' ว่าไม่ใช้ได้ทุกคำ",
+          "evidence": "Kongkamnerd (2024) ข้อผิด 个; Li & Imsamran (2021) ลักษณนามสัตว์; Huang & Funoi (2024) การละลักษณนาม"
+        },
+        {
+          "kc_code": "TL-GRAM-COMPL",
+          "error_th": "บทเสริม (补语) — วางผิดตำแหน่ง / ละ / เลือกผิด โดยเฉพาะบทเสริมระดับ V+得+adj (说得很好) และบทเสริมผล V+result (听懂, 吃完)",
+          "thai_cause_th": "ไทยไม่มีโครงสร้าง 'บทเสริม' แบบจีนตรงๆ (ใช้กริยาเรียงหรือคำวิเศษณ์ธรรมดา 'พูดเก่ง/พูดได้ดี') → ผู้เรียนละ 得 หรือเอาคำวิเศษณ์ไปไว้หน้ากริยาแบบไทย (很好说) แทน 说得很好",
+          "example": "ถูก: 说得很好 shuō de hěn hǎo (พูดได้ดี) · 听懂了 tīng dǒng le (ฟังเข้าใจ) · 吃完了 chī wán le (กินเสร็จ). ผิด: 说很好 / 很好说 / 听了懂",
+          "distractor_idea_th": "ตัวลวง = ละ 得 (说很好); เอาคำวิเศษณ์ไว้หน้ากริยาแบบไทย (很好说); เรียงบทเสริมผลผิด (吃了完). เหมาะทำข้อ 'เติม 得' หรือ 'เรียงประโยค'",
+          "teaching_th": "สอนแม่แบบ 'กริยา + 得 + ระดับ (说得好/说得很快)' และ 'กริยา + ผล (懂/完/到)'; เทียบไทย 'พูดได้ดี → 说得好'; ฝึกเติม 得; ใช้ชุดคู่ขั้นต่ำ 说好 vs 说得好 ให้เห็นความต่าง",
+          "evidence": "Pichaichanlert (2022) ข้อผิดบทเสริมผลของผู้เรียนไทย ม.ปลาย (พบผิดหลายแบบ: ใช้ผิดตัว/วางผิด/เลี่ยง/ผิดบริบท — หมายเหตุ: ไม่ยืนยันตัวเลข 48%)"
+        },
+        {
+          "kc_code": "TL-GRAM-LE",
+          "error_th": "ใช้คำช่วย 了 (le) ผิด — ใส่พร่ำเพรื่อ / ละ / วางผิดตำแหน่ง เพราะจับคู่ 了 = 'แล้ว' แบบตรงตัวทุกครั้ง",
+          "thai_cause_th": "ไทยมี 'แล้ว' ที่คล้าย 了 แต่ความหมาย/หน้าที่ไม่ตรงกัน (แล้ว ครอบคลุมกว้างกว่าและเงื่อนไขต่าง) → ผู้เรียนแมป แล้ว→了 ทุกครั้งที่เหตุการณ์จบ ทำให้ใส่ 了 เกินหรือวางผิดที่",
+          "example": "ถูก: 我吃了饭 wǒ chī le fàn · 他来了 tā lái le · 太贵了 tài guì le. ผิด (ใส่เกินตามบริบท): 我是学生了 / 我很累了 (เมื่อบริบทไม่ได้บ่งการเปลี่ยนสถานะ)",
+          "distractor_idea_th": "ตัวลวง = ใส่ 了 ในประโยคบอกสภาพ/นิสัยที่ไม่ต้องใส่ (我是老师了); ละ 了 ในประโยคที่ต้องมี; วาง 了 ผิดตำแหน่ง (了 ท้ายกริยา vs ท้ายประโยค). ให้ผู้เรียนตัดสิน 'ใส่/ไม่ใส่ 了' ตามบริบท",
+          "teaching_th": "เน้นว่า 了 ≠ แล้ว เสมอ; สอน 了 เฉพาะเหตุการณ์ที่เกิดขึ้น/เปลี่ยนสถานะ; ให้ประโยคคู่ 'มี 了 / ไม่มี 了' พร้อมบริบทให้ตัดสิน",
+          "evidence": "Hao, Duan & Yan (2022) Brain Sciences — ผู้เรียน L1 ไทยประมวลผล 了 ต่างจากเจ้าของภาษา และชี้ว่า 'แล้ว'≠'了' (หมายเหตุ: เป็นงาน ERP/processing ไม่ใช่ error corpus)"
+        },
+        {
+          "kc_code": "TL-GRAM-ADV",
+          "error_th": "วางคำวิเศษณ์/ส่วนขยายกริยา (状语) ผิดตำแหน่ง — จีนวางไว้ 'หน้ากริยา' (也/都/常常/在+สถานที่) แต่ผู้เรียนวางตามลำดับไทย",
+          "thai_cause_th": "การเรียงส่วนขยายกริยาไทย↔จีนไม่ตรงกัน (เช่น สถานที่/ความถี่มักตามหลังกริยาในไทย) → ถ่ายโอนลำดับไทย ทำให้วางผิด (misordering เป็นหมวดข้อผิดที่พบและโยงกับ L1 negative transfer)",
+          "example": "ถูก: 我也是学生 wǒ yě shì xuésheng · 我们都很好 dōu · 我在家吃饭 zài jiā chī fàn. ผิด: 我是也学生 / 我吃饭在家",
+          "distractor_idea_th": "ตัวลวง = วาง 也/都 หลังกริยา (我是也学生); วางบุพบทวลีสถานที่ 在+สถานที่ ไว้หลังกริยาแบบไทย (吃饭在家 แทน 在家吃饭). ออกเป็นข้อเรียงประโยค",
+          "teaching_th": "สอนกฎ '状语 (也/都/在…) มาก่อนกริยาเสมอ'; ฝึกเรียงประโยคที่มี 也/都/在+สถานที่; เทียบไทย 'กินข้าวที่บ้าน → 在家吃饭'",
+          "evidence": "Zhang Shuaishuai, Thaveewatanaseth & Numtong (2026) — พบข้อผิด 'misordering' จาก L1 negative transfer ในผู้เรียนไทย (กรณี 就是); ฐานถ่ายโอน Cai & Lee (2015)"
+        }
+      ],
+      "sources": [
+        {
+          "citation": "Pichaichanlert, S. (2022). Error Analysis and Teaching Complements of Result of Thai Middle School Students' Learning Results. Journal of Sinology (วารสารจีนวิทยา), 16(1), 14–45.",
+          "year": 2022,
+          "venue": "Journal of Sinology (วารสารจีนวิทยา) — TCI (ThaiJO / Mae Fah Luang Univ.)",
+          "url": "https://so16.tci-thaijo.org/index.php/JSINO/article/view/2985",
+          "access": "free",
+          "supports_th": "รองรับ KC บทเสริม (TL-GRAM-COMPL): ผู้เรียนไทย ม.ปลาย (สายศิลป์-จีน) ผิดบทเสริมผลหลายแบบ — ใช้ผิดตัว / วางผิดตำแหน่ง / เลี่ยงไม่ใช้ / ใช้ผิดบริบท เพราะไทยไม่มีโครงสร้างบทเสริมตรงๆ. **สำคัญ — แก้ citation ทีม:** นี่คืองาน 'จริง' ที่ใกล้ที่สุดกับที่ทีมจดว่า 'Chankrajang (2022) Suan Sunandha วารสารมนุษยศาสตร์ฯ 13(1) ผิด 48%' แต่ผู้แต่งคือ Satcha Pichaichanlert (ไม่ใช่ Chankrajang), วารสาร Journal of Sinology 16(1) (ไม่ใช่สวนสุนันทา 13(1)), และ **ไม่พบตัวเลข 48%** (รายงานเป็นประเภทข้อผิด ไม่ใช่ %). แนะนำใช้งานนี้แทน และตัด 48% ทิ้งจนกว่าจะเจอแหล่งยืนยัน.",
+          "verify": {
+            "citation": "Pichaichanlert, S. (2022). Error Analysis and Teaching Complements of Result of Thai Middle School Students' Learning Results. Journal of Sinology (วารสารจีนวิทยา), 16(1), 14–45. Mae Fah Luang University. https://so16.tci-thaijo.org/index.php/JSINO/article/view/2985 (สำเนา: https://journals.mfu.ac.th/jsino/article/view/32)",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://so16.tci-thaijo.org/index.php/JSINO/article/view/2985",
+            "note_th": "ยืนยันครบ 3 ข้อสำหรับงาน Pichaichanlert (สำหรับข้ออ้าง TL-GRAM-COMPL เชิงคุณภาพ):\n(ก) ตีพิมพ์จริง — Satcha Pichaichanlert, Dept. of Linguistics & Applied Linguistics, Wuhan University. Journal of Sinology (ม.แม่ฟ้าหลวง) Vol.16 No.1 (ม.ค.–มี.ค. 2022), หน้า 14–45.\n(ข) เข้าถึงได้ — ลิงก์ที่ทีมอ้าง (so16.tci-thaijo.org/.../2985) ใช้งานได้จริง + มีสำเนาที่ journals.mfu.ac.th/jsino/article/view/32 และดาวน์โหลด PDF ฉบับเต็มได้ (อ่านเนื้อในแล้ว)\n(ค) เนื้อหาสนับสนุนข้ออ้าง — ตรงเป๊ะ: กลุ่มตัวอย่าง ม.4–ม.5 (grade 10–11) สายศิลป์-จีน (Assumption College) เรื่อง \"บทเสริมผล\" (结果补语/complement of result) เพราะไทยไม่มีโครงสร้างเทียบตรง; ประเภทข้อผิดเรียงจากมาก→น้อย = ใช้ผิดตัว > วางผิดตำแหน่ง > เลี่ยงไม่ใช้ > ใช้ผิดบริบท → ตรงกับที่จดไว้ทุกข้อ\n\n*** คำเตือนสำคัญ — ข้อเสนอ 'แก้ citation' ในโจทย์นี้ผิดเอง ต้องกลับด้าน ***\nการตรวจแบบหักล้างพบว่าตรงกันข้ามกับสมมติฐานในโจทย์ จริง ๆ มี \"งานคนละชิ้น 2 ชิ้น\" ปี 2022 หัวข้อใกล้กันมาก อย่าเอามารวม/แทนกัน:\n1) Pichaichanlert (Journal of Sinology 16(1), 14–45) — งานที่กำลังตรวจนี้ เชิงคุณภาพ + มี % รายข้อ (เช่น 49.48% ต่อข้อ) แต่ **ไม่มี**เลข 48% รวม (\"48\" ในไฟล์เป็นแค่จำนวนนับข้อที่ตอบผิดในตาราง ไม่ใช่เปอร์เซ็นต์)\n2) **งานเดิมที่ทีมจดไว้เป็นของจริง!** — นพพล จันทร์กระจ่างแจ้ง (Chankrajang, ม.ราชภัฏวไลยอลงกรณ์) \"การวิเคราะห์ข้อผิดพลาด...คำเสริมกริยา ม.6 ศิลป์-ภาษาจีน\" ตีพิมพ์จริงใน Suan Sunandha Asian Social Science 13(1), หน้า 64–77, ปี 2022 (169 คน, 6 โรงเรียน) และ **มีตัวเลข 48.07% จริง** (อัตราตอบผิดในแบบทดสอบไวยากรณ์) — ยืนยันจาก so05.tci-thaijo.org/index.php/ssajournal/article/view/256643\n\nสรุปคำแนะนำต่อทีม:\n- ใช้ Pichaichanlert รองรับ TL-GRAM-COMPL เชิงพรรณนา (ประเภทข้อผิดบทเสริม) ได้เลย = verified\n- **อย่าลบ 48% และอย่าเปลี่ยนผู้แต่งเป็น Pichaichanlert** — 48.07% เป็นของ Chankrajang (Suan Sunandha 13(1)) ซึ่งเป็นแหล่งจริง ควรเก็บไว้เป็น citation แยกอีกชิ้น\n- แก้เล็กในโน้ตเดิม: ชื่อวารสารคือ \"Suan Sunandha Asian Social Science\" (สังคมศาสตร์) ไม่ใช่ \"วารสารมนุษยศาสตร์ฯ\"; ส่วน 13(1) และ 48.07% และนามสกุลผู้แต่ง Chankrajang ถูกต้องแล้ว\n- ข้อควรระวัง: 48.07% เป็น \"อัตราตอบผิดรวมในชุดข้อสอบคำเสริมกริยา ม.6 (n=169)\" — ใช้อ้างต้องระบุบริบทนี้ อย่าเหมารวมเป็น \"คนไทยผิดบทเสริม 48%\" ลอย ๆ"
+          }
+        },
+        {
+          "citation": "Kongkamnerd, K. (2024). Error Analysis of the Chinese Noun Quantifier \"个 ge\" by Thai Learners of Chinese in China. Journal of Sinology (วารสารจีนวิทยา), 18(1).",
+          "year": 2024,
+          "venue": "Journal of Sinology (วารสารจีนวิทยา) — TCI",
+          "url": "https://journals.mfu.ac.th/jsino/article/view/130",
+          "access": "free",
+          "supports_th": "รองรับ KC ลักษณนาม (TL-GRAM-MW): วิเคราะห์เรียงความผู้เรียนไทย 374 ชิ้น (75,241 อักษร) จากคลัง HSK Dynamic Composition Corpus v2.0 — ข้อผิด 个 มี 4 แบบ: อ้าง/เลือกผิด, ละ, เติมเกิน, พิมพ์ผิด (สองแบบแรกเด่นสุด). ตรงกับ HSK 1 (个) และโยงกับคลัง HSK ที่โปรเจกต์สนใจ. คำเตือนสะกดชื่อ: 'Khosawan Kongkamnerd' ควรตรวจซ้ำจากหน้าบทความ.",
+          "verify": {
+            "citation": "Kongkamnerd, K. (2024). Error Analysis of the Chinese Noun Quantifier \"ge\" by Thai Learners of Chinese in China. Journal of Sinology (วารสารจีนวิทยา), 18(1), 92–109.",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://journals.mfu.ac.th/jsino/article/view/130",
+            "note_th": "ยืนยันครบ 3 ข้อ (verified) — ตรวจแบบ adversarial แล้วหาจุดหักล้างไม่ได้\n\n(ก) เป็นงานตีพิมพ์จริง: Khosawan Kongkamnerd (2024). \"Error Analysis of the Chinese Noun Quantifier 'ge' by Thai Learners of Chinese in China.\" วารสาร Journal of Sinology (วารสารจีนวิทยา) ของ ม.แม่ฟ้าหลวง อยู่ใน TCI · ปีที่ 18 ฉบับที่ 1 (ม.ค.–มิ.ย. 2024) · หน้า 92–109\n\n(ข) เข้าถึงได้: ลิงก์ที่อ้าง https://journals.mfu.ac.th/jsino/article/view/130 ใช้ได้จริง เปิดหน้าบทความได้ และมี PDF ให้โหลดเต็ม (https://journals.mfu.ac.th/jsino/article/download/130/71/1678) — ยืนยันจาก 2 แหล่งอิสระ (หน้าบทความ + ผลค้นหา) ตรงกันทุกจุด\n\n(ค) เนื้อหาสนับสนุนข้ออ้าง รวมถึงตัวเลข: ตรงหมด — วิเคราะห์เรียงความ 374 ชิ้น, 75,241 อักษร, จากคลัง HSK Dynamic Composition Corpus ver2.0, ข้อผิด 个 มี 4 แบบ (เลือก/อ้างผิด, ละ, เติมเกิน, พิมพ์ผิด) โดยสองแบบแรกเด่นสุด\n\nชื่อผู้แต่ง: สะกด 'Khosawan Kongkamnerd' ถูกต้อง (ตามคำเตือน ตรวจซ้ำแล้ว) — ใช้ 'Kongkamnerd, K.' ได้\n\nข้อควรระวังเล็กน้อย (ไม่ทำให้ citation เสีย): ชื่อเรื่องระบุ 'Thai Learners of Chinese in China' = ผู้เรียนไทยที่ไปเรียนในจีน ไม่ใช่คนไทยทั่วไป ตอนอ้างในคลัง TL-GRAM-MW ควรเขียนสโคปให้ตรง อย่ากล่าวเกินว่าเป็นคนไทยทุกกลุ่ม"
+          }
+        },
+        {
+          "citation": "Li, L., & Imsamran, T. (2021). Error analysis of animal Classifier words for Thai students—A Case Study of The Prompt Understanding of Measure Words. Chinese Language and Culture Journal, 8(1), 237–248.",
+          "year": 2021,
+          "venue": "Chinese Language and Culture Journal (วารสารภาษาและวัฒนธรรมจีน) — TCI",
+          "url": "https://so02.tci-thaijo.org/index.php/clcjn/article/view/248475",
+          "access": "free",
+          "supports_th": "รองรับ KC ลักษณนาม (TL-GRAM-MW): ระบุชัดว่า 'ลักษณนามคือหมวดที่ผู้เรียนไทยผิดมากที่สุด'; ศึกษาลักษณนามสัตว์ (只/条/头 ฯลฯ) พร้อมกลยุทธ์การสอน. คำเตือนสะกดชื่อ: 'Lingyu Li' และ 'Tanes Imsamran' ควรตรวจซ้ำ.",
+          "verify": {
+            "citation": "Li, L. (Lingyu Li), & Imsamran, T. (Tanes Imsamran). (2021). Error analysis of animal Classifier words for Thai students—A Case Study of The Prompt Understanding of Measure Words. Chinese Language and Culture Journal, 8(1), 237–248. https://so02.tci-thaijo.org/index.php/clcjn/article/view/248475",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://so02.tci-thaijo.org/index.php/clcjn/article/view/248475",
+            "note_th": "ยืนยันครบ 3 ข้อ (verified):\n\n(ก) ตีพิมพ์จริง — เจอในระบบ TCI/ThaiJo วารสาร Chinese Language and Culture Journal (วารสารภาษาและวัฒนธรรมจีน) Vol. 8 No. 1 (2021), หน้า 237–248, เผยแพร่ 30 มิ.ย. 2021. ยืนยันซ้ำด้วยสารบัญของฉบับ (issue/view/16952) ที่ลิสต์บทความนี้ตรงชื่อ ตรงหน้า ตรงผู้แต่ง.\n\n(ข) เข้าถึงได้ — ลิงก์ที่อ้าง (article/view/248475) ใช้งานได้จริง และมีไฟล์ PDF galley (…/248475/168966).\n\n(ค) เนื้อหาสนับสนุนข้ออ้างจริง — Abstract ระบุตรงตัวว่า: \"Classifier words are the type of words that Thai students make the most errors in learning Chinese.\" ตรงกับข้ออ้าง \"ลักษณนามคือหมวดที่ผู้เรียนไทยผิดมากที่สุด\" แบบเกือบ verbatim. ชื่อบทความยืนยันว่าศึกษาลักษณนามสัตว์ (animal Classifier words) และมุ่งให้ข้อเสนอแนะการสอน → รองรับ KC ลักษณนาม (TL-GRAM-MW) ได้.\n\nตรวจการสะกดชื่อ: ถูกต้อง — ผู้แต่งคือ LINGYU LI และ TANES IMSAMRAN (ยืนยัน 'Lingyu Li' + 'Tanes Imsamran' ตามที่เตือนไว้).\n\nข้อจำกัด/สิ่งที่ยังไม่ได้ยืนยัน (ไม่กระทบข้ออ้างหลัก): ไม่เห็นตัวเลข/เปอร์เซ็นต์/ขนาดกลุ่มตัวอย่าง/error rate ใน abstract (ตัวข้ออ้างเองก็ไม่ได้เคลมตัวเลข จึงไม่มีอะไรให้ขัดแย้ง) และตัวลักษณนามเฉพาะ 只/条/头 ที่ยกมาเป็นตัวอย่าง (ฯลฯ) อ่านยืนยันจากตัวเต็มไม่ได้ในหน้าที่เข้าถึง — ถ้าจะอ้างลักษณนามเฉพาะตัวหรือสถิติใด ๆ ควรเปิด PDF ตัวเต็มยืนยันก่อน. โดยรวมข้ออ้างหลักผ่านการหักล้างไม่ได้ = ใช้อ้างอิงได้."
+          }
+        },
+        {
+          "citation": "Huang, M., & Funoi, P. (2024). Analysis of Omission Errors in Chinese Conversational Sentences Among Thai College Students. Chinese Language and Culture Journal, 11(1), 311–328.",
+          "year": 2024,
+          "venue": "Chinese Language and Culture Journal — TCI",
+          "url": "https://so02.tci-thaijo.org/index.php/clcjn/article/view/266518",
+          "access": "free",
+          "supports_th": "รองรับมุม 'การละ' ในหลาย KC (การละลักษณนาม TL-GRAM-MW และการละคำช่วย 的/了): วิเคราะห์ 1,500 ประโยคจากนักศึกษาไทยปี 2 จำนวน 79 คน จัดหมวดการละ 12 แบบ (รวมการละคำนาม/สรรพนาม/กริยา/คำช่วย/ลักษณนาม/บุพบท). ใช้ยืนยันว่าการละองค์ประกอบเหล่านี้เป็นข้อผิดจริงของผู้เรียนไทย.",
+          "verify": {
+            "citation": "Huang, M., & Funoi, P. (2024). Analysis of Omission Errors in Chinese Conversational Sentences Among Thai College Students. Chinese Language and Culture Journal, 11(1), 311–328. https://so02.tci-thaijo.org/index.php/clcjn/article/view/266518",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://so02.tci-thaijo.org/index.php/clcjn/article/view/266518",
+            "note_th": "ยืนยันครบ 3 ข้อ (พยายามหักล้างแล้วยังยืน):\n\n(ก) เป็นงานจริง: Mingwei Huang & Pawares Funoi (มหาวิทยาลัยวลัยลักษณ์), Chinese Language and Culture Journal ปีที่ 11 ฉบับที่ 1 (ม.ค.–มิ.ย. 2024), หน้า 311–328 — ตรงกับที่อ้างทุกฟิลด์ (ผู้แต่ง/ชื่อเรื่อง/วารสาร/vol/issue/หน้า)\n(ข) เข้าถึงได้: ลิงก์ TCI ThaiJo ถูกต้อง เปิดได้จริง มีในสารบัญเล่ม (issue 17789) หน้า 311–328 ตรงกัน มี PDF ให้ดาวน์โหลด (ลิขสิทธิ์ CC BY-NC-ND) บทคัดย่อมี 3 ภาษา (อังกฤษ/ไทย/จีน)\n(ค) ตัวเลขตรงเป๊ะ: วิเคราะห์ 1,500 ประโยคพูดภาษาจีน จากนักศึกษาไทย sophomore (ปี 2) 79 คน แบ่งเป็น 7 หมวดใหญ่ / 12 สถานการณ์การละ — ตรงกับที่อ้าง (1,500 / 79 / 12) และองค์ประกอบที่ถูกละที่ระบุในบทคัดย่อ ได้แก่ คำนาม/สรรพนาม/กริยา/คำวิเศษณ์/คำช่วย(助词)/คำสันธาน/บุพบท/คำจำนวน/ลักษณนาม(量词)/หน่วยเติม ครอบคลุมทุก KC ที่ทีมอ้าง\n\n⚠️ ข้อควรระวังเดียว (adversarial): บทคัดย่อ **ไม่ได้ระบุอนุภาค 的/了 โดยตรง** และ **ไม่ได้แยกการละลักษณนามออกมาเป็นหัวข้อเฉพาะ** — 的/了 อยู่ใต้หมวดรวม \"คำช่วย/助词\" และลักษณนามอยู่ใต้ \"量词/quantifiers\" การแมปไป KC 'TL-GRAM-MW' และ 'การละคำช่วย 的/了' จึงเป็นการอนุมานระดับหมวด ไม่ใช่ข้อความตรงตัวจากบทคัดย่อ ถ้าจะเคลม 的/了 แบบเจาะจง แนะนำเปิด full-text PDF ยืนยันตัวอย่างในเนื้อหาก่อน หรือปรับถ้อยคำเป็น \"การละคำช่วย (助词 รวม 的/了)\" และ \"การละลักษณนาม (量词)\" เพื่อไม่ over-claim ตัวงานตีพิมพ์และตัวเลขไม่มีปัญหา ใช้อ้างอิงได้"
+          }
+        },
+        {
+          "citation": "Zhang, S., Thaveewatanaseth, N., & Numtong, K. (2026). Error Analysis and Teaching Strategies of Adverb \"就是 (Jiushi)\" by Students at Prince of Songkla University. Lawarath Social E-Journal, 8(1), 1–26.",
+          "year": 2026,
+          "venue": "Lawarath Social E-Journal — TCI",
+          "url": "https://so04.tci-thaijo.org/index.php/lawarathjo/article/view/278088",
+          "access": "free",
+          "supports_th": "รองรับ KC ตำแหน่งคำวิเศษณ์ (TL-GRAM-ADV): วิเคราะห์ข้อผิดการใช้ 就是 ของนักศึกษาเอกจีน ม.สงขลานครินทร์ แบ่ง 6 หมวด รวม 'misordering (วางผิดตำแหน่ง)' และชี้สาเหตุขั้นต้น = L1 negative transfer. เป็นหลักฐานว่ากลไก 'วางคำวิเศษณ์ผิดตำแหน่ง' ของผู้เรียนไทยมาจากถ่ายโอน. คำเตือน: 就是 เป็นคำระดับสูงกว่า HSK 1-2 — ใช้เป็นหลักฐาน 'กลไก misordering' ไม่ใช่คำเป้าหมายโดยตรง.",
+          "verify": {
+            "citation": "Zhang, S., Thaveewatanaseth, N., & Numtong, K. (2026). Error Analysis and Teaching Strategies of Adverb \"就是 (Jiushi)\" by Students at Prince of Songkla University. Lawarath Social E-Journal, 8(1), 1–26.",
+            "verdict": "verified",
+            "exists": true,
+            "best_url": "https://so04.tci-thaijo.org/index.php/lawarathjo/article/view/278088",
+            "supports_claim": true,
+            "note_th": "ยืนยันครบทั้ง 3 ข้อ (adversarial แล้วยังยืนยันได้):\n\n(ก) เป็นงานจริง: หน้า TCI ThaiJO (so04) ยืนยันเมทาดาทาตรงเป๊ะทุกจุด — ชื่อเรื่องตรง, ผู้แต่ง 3 คน (Zhang Shuaishuai / Nathakarn Thaveewatanaseth / Kanokporn Numtong ตรงกับ S./N./K.), Lawarath Social E-Journal Vol.8 No.1, หน้า 1–26, เผยแพร่ 24 เม.ย. 2026. ผลค้นเว็บก็ชี้ไปที่ลิงก์เดียวกัน ไม่มีเวอร์ชันปลอม.\n\n(ข) เข้าถึงได้: ลิงก์ที่อ้างเปิดได้จริง (best_url ตรงกับที่ทีมอ้าง).\n\n(ค) เนื้อหาสนับสนุนข้ออ้าง: บทคัดย่อระบุ 6 หมวดข้อผิดชัดเจน = omission, redundant addition, inappropriate substitution, \"misordering (วางผิดตำแหน่ง)\", structural blending, overgeneralization → ตรงกับที่ทีมอ้าง. และระบุสาเหตุ \"L1 negative transfer and insufficient language input\" (ผูกกับ Stage I = ปี 1–2) → มีคำว่าถ่ายโอนเชิงลบจาก L1 จริง.\n\nข้อควรระวัง (adversarial caveat — ควรปรับถ้อยคำในคลังให้แม่นขึ้น):\n1) บทคัดย่อไม่ได้ระบุ \"จำนวน/เปอร์เซ็นต์\" ของแต่ละหมวด (ไม่ได้บอกว่า misordering กี่ข้อ/กี่ %) — ตรวจได้แค่ระดับ \"มี 6 หมวด\" เท่านั้น ตัวเลขละเอียดอยู่ในตัวเต็ม PDF ที่ยังไม่ได้เปิดอ่าน. โชคดีที่ข้ออ้างของทีมไม่ได้เคลมตัวเลขเจาะจง จึงไม่ขัดกัน.\n2) บทคัดย่อโยง L1 negative transfer เป็นสาเหตุ \"ภาพรวมของผู้เรียน Stage I\" ไม่ได้พูดเจาะจงว่า \"misordering เกิดจาก transfer\" โดยตรง. การใช้เป็นหลักฐาน 'กลไก misordering มาจากถ่ายโอน' จึงเป็นการตีความเชื่อมโยง (reasonable inference) ไม่ใช่ประโยคตรงตัวในบทคัดย่อ — แนะนำให้เขียนในคลังว่า \"งานนี้จัด misordering เป็น 1 ใน 6 หมวด และระบุ L1 negative transfer เป็นสาเหตุหลักของผู้เรียนระดับต้น\" แทนการเคลมว่า article บอกตรง ๆ ว่า misordering = transfer.\n\nสรุป: citation ถูกต้อง ใช้ได้ (verified). คำเตือนเรื่อง 就是 สูงกว่า HSK 1-2 ที่ทีมใส่ไว้ ถูกต้องและเหมาะสม — ใช้เป็นหลักฐาน 'กลไก' ไม่ใช่คำเป้าหมาย."
+          }
+        },
+        {
+          "citation": "Cai, Y.-W., & Lee, H. Y.-H. (2015). A Contrastive Analysis of Mandarin Chinese and Thai: Suggestions for Second Language Pronunciation. Theory and Practice in Language Studies, 5(4), 719–728. https://doi.org/10.17507/tpls.0504.07",
+          "year": 2015,
+          "venue": "Theory and Practice in Language Studies (TPLS) — Academy Publication",
+          "url": "https://www.academypublication.com/issues2/tpls/vol05/04/07.pdf",
+          "access": "free",
+          "supports_th": "ฐานทฤษฎี contrastive analysis / language transfer ไทย–จีน (ยืนยันมีจริง เปิดได้, DOI ถูกต้อง). **คำเตือน:** งานนี้เน้น 'การออกเสียง (พยัญชนะ/สระ)' เป็นหลัก ไม่ได้วิเคราะห์ไวยากรณ์/ลำดับคำ — ใช้เป็น 'กรอบทฤษฎีถ่ายโอน' เท่านั้น อย่าอ้างเป็นหลักฐานข้อผิดไวยากรณ์โดยตรง.",
+          "verify": {
+            "citation": "Cai, Y.-W., & Lee, H. Y.-H. (2015). A Contrastive Analysis of Mandarin Chinese and Thai: Suggestions for Second Language Pronunciation. Theory and Practice in Language Studies, 5(4), 719–728. https://doi.org/10.17507/tpls.0504.07",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://doi.org/10.17507/tpls.0504.07",
+            "note_th": "ยืนยันครบ 3 ข้อ (verified) โดยดาวน์โหลด PDF ฉบับเต็ม 10 หน้ามาอ่านเองแล้ว\n\n(ก) มีจริง: หัวกระดาษในตัว PDF ระบุตรงเป๊ะ — Theory and Practice in Language Studies, Vol. 5, No. 4, pp. 719–728, April 2015, ISSN 1799-2591, DOI 10.17507/tpls.0504.07 · ผู้เขียน Yi-Wen Cai และ Hugo Yu-Hsiu Lee (ทั้งคู่จาก NIDA ประเทศไทย) · Semantic Scholar ยืนยัน DOI/ผู้เขียน/ปี ตรงกัน\n\n(ข) เข้าถึงได้: DOI redirect (302) ไปยัง PDF เปิดฟรีที่ academypublication.com/issues2/tpls/vol05/04/07.pdf โหลด/อ่านได้จริง\n\n(ค) เนื้อหาสนับสนุนการใช้ตามที่อ้าง (เป็น 'กรอบทฤษฎี contrastive analysis / การถ่ายโอน L1'): ถูกต้อง และคำเตือนของทีมถูกต้อง—ยังเข้มได้อีก นับคำในเนื้อเต็ม: consonant ×37, vowel ×49 แต่ grammar ×1 (อยู่ในรายการอ้างอิง Ritchie 1967 ไม่ใช่การวิเคราะห์ของผู้เขียนเอง), syntax/word order/morphology ×0 → ยืนยันว่า 'ไม่วิเคราะห์ไวยากรณ์/ลำดับคำ' อย่าอ้างเป็นหลักฐานข้อผิดไวยากรณ์\n\nข้อควรระวังเชิงหักล้าง 2 ข้อสำหรับคลัง Thai-L1:\n1) งานนี้ 'ไม่พูดถึงวรรณยุกต์เลย' — คำว่า tone/tonal/pitch = 0 ครั้ง ขอบเขตจำกัดเฉพาะพยัญชนะ+สระ (segmental) เท่านั้น → ใช้อ้างจุดผิด zh/ch/sh (พยัญชนะ/สระ) ได้ แต่ 'ห้าม' ใช้อ้างจุดผิดวรรณยุกต์ 2/3 ควรแก้คำอธิบายจาก 'การออกเสียง' เป็น 'การออกเสียงระดับพยัญชนะ/สระ (ไม่รวมวรรณยุกต์)'\n2) กลุ่มตัวอย่างเล็กมาก (คนไทย 5 คน) เป็นงาน CA เชิงทฤษฎี ใช้เป็นกรอบถ่ายโอนได้ แต่ 'อย่า' อ้างเป็นสถิติเชิงประจักษ์ที่หนักแน่น ยิ่งกว่านั้นบทสรุปของงานเองระบุว่าอำนาจทำนายของ CA ต่ำกว่าที่เคยเคลมกัน\n\nสรุป: citation ถูกต้องทุกจุด ไม่มีการแต่ง ไม่มีตัวเลขขัดกัน · best_url ใช้ DOI (นำไปสู่ full text ฟรี)"
+          }
+        },
+        {
+          "citation": "Hao, Y., Duan, X., & Yan, Q. (2022). Processing Aspectual Agreement in a Language with Limited Morphological Inflection by Second Language Learners: An ERP Study of Mandarin Chinese. Brain Sciences, 12(5), 649.",
+          "year": 2022,
+          "venue": "Brain Sciences (MDPI) — peer-reviewed, open access",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9138451/",
+          "access": "free",
+          "supports_th": "รองรับ KC 了 (TL-GRAM-LE): ผู้เรียน L1 ไทยประมวลผลการละเมิด aspect 了 ต่างจากเจ้าของภาษา และระบุชัดว่า 'แล้ว' (ไทย) ≠ '了' (จีน) หน้าที่ไม่ตรงกัน → ยืนยันว่า L1 ไทยมีผลต่อการเรียน 了. หมายเหตุ: เป็นงาน ERP/processing ไม่ใช่คลังข้อผิด (error corpus) แต่วารสารคุณภาพสูงกว่ากลุ่ม TCI/OA อื่น.",
+          "verify": {
+            "citation": "Hao, Y., Duan, X., & Yan, Q. (2022). Processing Aspectual Agreement in a Language with Limited Morphological Inflection by Second Language Learners: An ERP Study of Mandarin Chinese. Brain Sciences, 12(5), 524. https://doi.org/10.3390/brainsci12050524 (แก้เลขบทความจาก 649 → 524)",
+            "verdict": "partial",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9138451/",
+            "note_th": "งานตีพิมพ์จริงและเข้าถึงได้ (ยืนยันครบ 2 ข้อแรก) แต่ verdict = partial เพราะพบปัญหา 2 จุดที่ทีมต้องแก้ก่อนเข้าคลัง:\n\n1) เลข citation ผิด: ที่อ้าง \"Brain Sciences, 12(5), 649\" — เลขบทความจริงคือ 524 (ยืนยันจาก DOI 10.3390/brainsci12050524, ลิงก์ MDPI = mdpi.com/2076-3425/12/5/524 และ PMC9138451). ต้องแก้ 649 → 524. ลิงก์ PMC ที่อ้างถูกต้องและ open access. (มี Correction ปี 2023 เรื่อง affiliation ผู้เขียน = PMC10428096 เป็นเรื่องเล็ก ไม่กระทบเนื้อหา)\n\n2) ข้ออ้างสนับสนุนได้บางส่วน ต้องระวังการเคลมเกินจริง:\n- ✅ จริง: งานนี้ใช้ผู้เรียน L2 สองกลุ่ม คือ L1 ไทย และ L1 อินโดนีเซีย เรียนภาษาจีน → มีผู้เรียนไทยจริง\n- ✅ จริง: paper พูดถึง 'แล้ว' vs '了' ตรง ๆ (Table 1 + เนื้อความ) ว่า 'แล้ว' corresponds กับ 了 แค่บางส่วน และ \"การใช้ 了 ในจีนซับซ้อนกว่า 'แล้ว' มาก\" → รองรับประเด็น function mismatch\n- ✅ จริง: ผู้เรียน (รวมกลุ่มไทย) ประมวลผลการละเมิด aspect 了 ต่างจากเจ้าของภาษา — native ได้ ELAN-LAN-P600 แบบ triphasic ส่วน L2 ได้แค่ RN(300–500ms) + P600-like ไม่มี ELAN/LAN\n- ⚠️ ข้อควรระวัง (จุดที่หักล้างได้): paper ระบุชัดว่า \"แม้ behavioral data ต่างกัน แต่ ERP ของสองกลุ่ม L2 (ไทย vs อินโดฯ) ไม่ต่างกัน\" → เชิงคลื่นสมอง งานนี้แสดง 'L2 vs native' ไม่ได้แยกออกมาเป็น 'ผล transfer จาก L1 ไทยโดยเฉพาะ' ชัด ๆ (ถ้าเป็นผล L1 ไทยล้วน กลุ่มไทยที่มี 'แล้ว' ควรต่างจากอินโดฯที่ไม่มี — แต่ ERP ไม่ต่าง) ผู้เขียนสรุปว่าความยากมาจากหลายปัจจัย (ความซับซ้อนของ 了, proficiency, age of acquisition) ไม่ใช่ transfer L1 ไทยล้วน ๆ\n\nสรุปวิธีใช้: อ้างได้เป็นหลักฐานว่า \"ผู้เรียนไทยประมวลผล 了 ต่างจากเจ้าของภาษา และ 'แล้ว'≠'了' หน้าที่ไม่ตรงกัน\" (มี evidence ตรง) แต่อย่าเคลมแรงว่า \"งานนี้ยืนยัน L1 ไทยมีผลต่อการเรียน 了 (แยกจาก L2 ทั่วไป)\" เพราะ ERP ของกลุ่มไทยกับอินโดฯไม่ต่างกัน มีเพียง behavioral ที่ต่าง. แนะนำแก้เลขบทความเป็น 524 และปรับถ้อยคำเคลมให้ระวังตามข้างต้น."
+          }
+        },
+        {
+          "citation": "Zhang, C. (张楚涓) (2023). Error Analysis of Attributive Word Order in Thai Students' Chinese Learning (泰国学生汉语学习中定语语序的偏误分析). Modern Linguistics (现代语言学), 11(4), 1825–1831. https://doi.org/10.12677/ML.2023.114247",
+          "year": 2023,
+          "venue": "Modern Linguistics (现代语言学) — Hans Publishers (OA)",
+          "url": "https://www.hanspub.org/journal/paperinformation?paperid=64691",
+          "access": "free",
+          "supports_th": "รองรับ KC ลำดับส่วนขยาย+的 (TL-GRAM-DE-ORDER) โดยตรง: เทียบลำดับคำจีน–ไทย และวิเคราะห์ข้อผิด 定语语序 ของผู้เรียนไทย (ไทยวางขยายหลังคำนาม จีนวางหน้า). **คำเตือนคุณภาพ:** ตีพิมพ์โดย Hans Publishers (汉斯出版社) ซึ่งเป็นสำนักพิมพ์ open-access ที่ถูกตั้งข้อสงสัยเรื่องคุณภาพ/ไม่อยู่ในฐานข้อมูลหลัก — ใช้เป็น 'ตัวอย่างสนับสนุน' ได้ แต่ไม่ควรอ้างเป็นหลักฐานน้ำหนักสูง. (มีบทความ Hans อีกชิ้นตรงเรื่อง 的/地/得 ของผู้เรียนไทย 'Analysis of Bias of Structural Particle De in Thai Students' แต่เข้าถึง URL ไม่นิ่ง จึงยังไม่ยกเป็นแหล่งหลัก)",
+          "verify": {
+            "citation": "张楚涓 (Zhang, C.). (2023). 泰国学生汉语学习中定语语序的偏误分析 [Error Analysis of Attributive Word Order in Thai Students' Chinese Learning]. 现代语言学 (Modern Linguistics), 11(4), 1825–1831. https://doi.org/10.12677/ml.2023.114247",
+            "verdict": "verified",
+            "exists": true,
+            "supports_claim": true,
+            "best_url": "https://pdf.hanspub.org/ml20230400000_60400420.pdf",
+            "note_th": "ยืนยันครบ 3 ข้อ (ดึง PDF ฉบับเต็มมาอ่านได้จริง จึงตรวจได้ถึงเนื้อใน):\n\n(ก) เป็นงานจริง — bibliographic ตรงเป๊ะทุกตัว: ผู้เขียน 张楚涓 (Chujuan Zhang) สังกัด International College, Macau University of Science and Technology; วารสาร Modern Linguistics 现代语言学, 2023, 11(4): 1825–1831; DOI 10.12677/ml.2023.114247. (ข) เข้าถึงได้ — DOI resolve ถูกต้องไปที่ paperid=64691 และมี PDF เต็มที่ https://pdf.hanspub.org/ml20230400000_60400420.pdf (หน้า hanspub เป็น JS ดึงเปล่า แต่ PDF โหลดได้). (ค) เนื้อหาสนับสนุนข้ออ้างโดยตรง: หมวด 2 เทียบลำดับคำจีน–ไทยชัดเจน และสรุปว่า จีนวางส่วนขยาย/定语 'ก่อน' คำหลัก (偏正结构) ส่วนไทยวาง 'หลัง' (正偏结构) — ตรงกับ KC เป๊ะ มีตัวอย่างข้อผิดผู้เรียนไทย A–G เช่น 错「他喜欢头发红红的」→ 改「他喜欢红红的头发」.\n\nแต่คำเตือนแบบหักล้าง (สำคัญก่อนใช้อ้างอิง):\n1) ไม่มีตัวเลข/สถิติเลย — ไม่มี sample size, จำนวนข้อผิด, % ใด ๆ เป็นงานเชิงเปรียบเทียบ (contrastive) + ตัวอย่างประกอบ (บอกว่าเก็บจากช่วงฝึกสอนแต่ไม่รายงานจำนวน). ตัวเลขในเปเปอร์มีแค่ \"เรียนสัปดาห์ละ ~1 คาบ\" ซึ่งเป็นบริบทการสอน ไม่ใช่ข้อมูลข้อผิด → ห้ามใช้เปเปอร์นี้อ้าง \"อัตราข้อผิด/ตัวเลข\" เด็ดขาด.\n2) เปเปอร์โฟกัส 'ตำแหน่ง/ลำดับ 定语' ไม่ได้วิเคราะห์ตัว 的 โดยตรง (的 โผล่แค่ในประโยคตัวอย่างที่แก้แล้ว ไม่มีการวิเคราะห์การใส่/ละ 的 หรือ 的/地/得) → ส่วน \"+的\" ของ KC TL-GRAM-DE-ORDER ได้แค่โดยอ้อม; ถ้าจะเจาะ 的 ควรใช้เปเปอร์ Hans อีกชิ้น (泰国学生结构助词\"的、地、得\"偏误分析, paperid 74396).\n3) คุณภาพ: Hans Publishers (汉斯出版社) เป็น OA ที่ถูกตั้งข้อสงสัย ผู้เขียนเป็นงานระดับนักศึกษา/ฝึกสอน peer-review ไม่เข้ม — คำเตือนของทีมถูกต้อง ใช้เป็น 'ตัวอย่างสนับสนุนเชิงคุณภาพ' ได้ ไม่ควรเป็นหลักฐานน้ำหนักสูง."
+          }
+        }
+      ]
+    }
+  ]
+}

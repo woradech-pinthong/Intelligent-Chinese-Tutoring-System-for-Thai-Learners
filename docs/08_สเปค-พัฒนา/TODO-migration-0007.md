@@ -1,6 +1,6 @@
 ---
 tags: [ฐานข้อมูล, migration, ความปลอดภัย, รีวิว, TODO]
-updated: 2026-10-08
+updated: 2026-10-12
 ---
 
 # TODO migration 0007 — ผลรีวิว schema v1 หลังรันจริง (8 ต.ค. 2569)
@@ -352,6 +352,23 @@ Web: select explicit sessions columns (select('*') will be refused, same pattern
 - เกิดอะไร: หฤทัยพบคำแปลผิดของคำที่เคย approved แล้วตั้ง review_status='suspended' ผ่านหน้า Admin ใหม่ (หรือใช้ API เก่าตั้ง th_reviewed=false) → อีกช่องไม่เปลี่ยนตาม → บัตรคำ/ควิซของมิ้นยังเสิร์ฟคำนั้นพร้อมคำแปลผิด (policy เปิดหมด, web ไม่กรอง) และหน้าเลือกหมวดยังโชว์ "หมวด 1 มี 70 คำ" ทั้งที่ใช้ได้ 69 · วันนี้ยังไม่เห็นเพราะ 300 คำ approved ครบ แต่คำ HSK2 ที่ seed เข้ามาใหม่จะมี review_status=null ตลอด → ถ้…
 - ทางแก้: -- 0007: th_reviewed เป็นเงาของ review_status · เสิร์ฟ/นับเฉพาะ approved alter table public.words alter column review_status set default 'pending'; update public.words set review_status = case when th_reviewed then 'approved' else 'pending' end where review_status is null; alter table public.words alter column review_status set not null; create or replace function public.words_sync_review() returns trigger language plpgsql as $$ begin if tg_op = 'UPDATE' and new.th_reviewed is distinct from old.…
 
+## §2b จากการสร้างกิจกรรมฝึกครบชุด (11 ต.ค.)
+
+> ที่มา: branch `feat/practice-complete` — ทุกกิจกรรมฝึกจดคำตอบรายข้อลง outbox ในเครื่อง (`apps/web/src/lib/attempts-outbox.ts` · localStorage `xh_attempts_outbox_v1`) รูปแถวเดียวกับ `attempts` · ยังไม่มี sync → ต้องปิดข้อเหล่านี้ใน 0007 **ก่อน**เปิด `POST /attempts/batch` ไม่งั้นทั้ง batch ล้มที่ CHECK
+
+- **ขยาย CHECK `attempts.generator`** (0005 รับแค่ `flashcard, listen_mc4, read_mc4, match, order, ear_game, speak_along`) → เพิ่ม `fill_blank` · `true_false` · `listen_sentence` · `read_sentence` (+ 3 ค่าจากหน้าเดโม `listen_dialogue` · `pick_image` · `qa_match`)
+- **`sessions.mode` ขยาย CHECK ให้รับทุก QuizMode ที่ sync** — CHECK วันนี้รับแค่ `listen, read, order, match` แต่ `saveRound()` ส่งได้ทุก QuizMode → ถ้าจะ sync รอบฝึกเป็น sessions ต้องเพิ่ม `ear, speak, fill, truefalse, listen_sentence, read_sentence` ด้วย (+ `dialogue, picture, picture_read, qa` ถ้าจะเก็บรอบเดโม — เลือกรูปแยก ฟัง `picture` / อ่าน `picture_read` ตั้งแต่ 12 ต.ค.) · รอบ `speak` ไม่นับคะแนน (`UNSCORED_MODES`) · รอบเดโม/ประโยคร่างไม่นับเข้าความแม่นยำรวม/จุดอ่อน (`DEMO_MODES` ใน `lib/progress.ts`)
+- **แถวที่ห้าม sync = มี `mock_ref`** — นอกจากเนื้อหาสมมุติ (`dialogue-3` / `qa-7`) ตอนนี้คำตอบของ**ประโยคร่าง** `sentences.ts` ทุกกิจกรรม (เรียงประโยค / เติมคำ / อ่านประโยค / ฟังประโยค) ติด `mock_ref = 'draft-sentence-<id>'` ด้วย จนกว่าหฤทัยตรวจครบแล้วตั้ง `SENTENCES_REVIEWED = true` (CG-02 — คำตอบต่อข้อที่ยังไม่อนุมัติห้ามเข้าข้อมูลเทรน BKT) · แถวเก่าที่ติดไว้แล้วยังข้ามตลอด (ข้ออาจถูกแก้ระหว่างตรวจ)
+- **กฎ `skill_code` ของ `fill_blank` (Q-matrix)** — ประโยคผูก kc → ใช้ kc นั้น · ไม่ผูก: ช่องเป็นคำไวยากรณ์ (`GRAMMAR_WORDS` ใน `fill/page.tsx` เช่น 的 个 也 都 吗 是) = `SKILL-ORDER` · ช่องเป็นคำเนื้อหา (你 爱 喜欢 猫 …) = `SKILL-READ` — ไม่ปนข้อศัพท์เข้าทักษะเรียงประโยค (ถ้าประโยคมีหมวดในอนาคต ใช้ `VOCAB-C<หมวด>` แทน `SKILL-READ` ได้)
+- **`ear_game` / `speak_along` เลิกผูก `TL-TONE-T4OVER`** — T4OVER ในคลังคือคุณภาพการออกเสียง 4 (ตกช้า/ลากยาว) ไม่ใช่การสับสนวรรณยุกต์ → คู่วรรณยุกต์ที่มีเสียง 4 log เป็น `SKILL-LISTEN` · ข้อฟังม้วนลิ้น zh/ch/sh↔z/c/s = `TL-RETRO-FLAT-MERGE` ทั้งสองทิศ (SH-S/ZH-JZ/CH-CQ เหลือเฉพาะพูดตาม) · ตอบผิดใช้ KC ของ "ตัวที่เลือก" (BK-03) — แถวเก่าใน outbox ก่อน 12 ต.ค. ยังมี T4OVER/SH-S จากข้อฟัง ถ้าจะเทรนให้กรองทิ้งหรือแมปใหม่
+- **พิจารณา seed `SKILL-SPEAK`** ในตาราง skills (type `skill`, level 1) — วันนี้ `speak_along` ใช้ `skill_code` = KC Thai-L1 ที่ตรวจเจอ หรือ `SKILL-LISTEN` → ปนกับสถิติฟัง (BKT ไม่อ่าน `asr_hint` อยู่แล้ว แต่ dashboard จะแยกทักษะพูดไม่ได้)
+- **แผนที่ช่อง outbox → คอลัมน์ `attempts`** — ชื่อตรงกัน 1:1: `client_attempt_id` · `generator` · `event_type` · `word_id` · `sentence_id` · `answer` · `is_correct` · `answered_at` · `time_spent_ms` · `context` · `app_version` · ที่ต่าง:
+  - `skill_code` → `skill_id` (server แปลจาก `skills.code` · รหัสที่ไม่รู้จัก = ปฏิเสธแถว)
+  - `variant` → **ไม่มีคอลัมน์** — เพิ่ม `variant text` ใน 0007 หรือให้ server พับเข้า `answer.variant`
+  - `mock_ref` → ไม่มีคอลัมน์ และ**ห้าม sync** (เนื้อหาสมมุติของฟังบทสนทนา / จับคู่ถาม-ตอบ ไม่มีคำ/ประโยคใน DB ให้อ้าง)
+  - server เติมเอง: `id` · `user_id` (จาก JWT) · `session_id` · `item_id` (null — ข้อปั้นสดจากคำ)
+  - `sentence_id` = id ใน `sentences.ts` → ต้อง seed ตาราง sentences ให้ id ตรงกันก่อน (#22) ไม่งั้นติด FK
+
 ## §3 ของที่ผู้ตรวจบอกว่า "ถูกแล้ว ไม่ต้องแก้ซ้ำ"
 - pre/post: client สร้าง/แก้ sessions kind pretest/posttest ไม่ได้ · attempts context pretest/posttest จดจาก client ไม่ได้ (PL-10 §2.7) ✓
 - answer_key ไม่เปิดให้ anon/authenticated ที่ตาราง items (MK-04) ✓ · view `items_public` เป็น security_invoker ✓
@@ -363,4 +380,4 @@ Web: select explicit sessions columns (select('*') will be refused, same pattern
 2. เขียน `20261010000007_hardening.sql` ตาม §1 (+ ข้อง่ายใน §2: approver guard ตอน insert · schema_migrations เปิด RLS · roadmap_state ตัด anon write เมื่อมีล็อกอิน) → dry-run → รีวิว → apply
 3. ตามด้วยโค้ดฝั่ง API/เว็บที่ §2 ชี้ (review_status แทน th_reviewed · client_attempt_id ในบันทึกออฟไลน์ · FSRS state ให้ตรง review_states)
 
-เกี่ยวข้อง: [[กฎการทำงานระบบ-BUSINESS-RULES]] · [[DATABASE-ER]] · [[นโยบาย-post-test-PL10]] · บันทึก [[2026-10-08]]
+เกี่ยวข้อง: [[กฎการทำงานระบบ-BUSINESS-RULES]] · [[DATABASE-ER]] · [[นโยบาย-post-test-PL10]] · บันทึก [[2026-10-08]] · [[2026-10-12]]

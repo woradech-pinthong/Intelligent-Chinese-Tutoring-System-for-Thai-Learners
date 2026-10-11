@@ -17,6 +17,7 @@ import { getLevel } from "@/data/levels";
 import { QUIZ_TOTAL } from "@/lib/quiz";
 import { loadPretest } from "@/data/mockData";
 import { WORDS_PER_DAY, learnedTodayCount } from "@/lib/daily";
+import { MODE_ICON, practiceHref } from "@/lib/progress";
 
 export default function Home() {
   const j = useJourney();
@@ -319,10 +320,10 @@ function pickToday(j: ReturnType<typeof useJourney>): Star | null {
   }
   if (j.weakest) {
     return {
-      href: j.weakest.mode === "order" ? "/practice?mode=order" : `/practice?mode=${j.weakest.mode}`,
+      href: practiceHref(j.weakest.mode), // แผนที่โหมด → หน้า ชุดเดียวกับหน้าผล (lib/progress)
       title: j.weakest.label,
       why: `ผ่านครบทุกหมวดแล้ว — ${j.weakest.label}ยังแม่น ${j.weakest.pct}% ฝึกเพิ่มอีกนิด`,
-      icon: j.weakest.mode === "listen" ? "headphone" : j.weakest.mode === "read" ? "book" : "puzzle",
+      icon: MODE_ICON[j.weakest.mode] ?? "pencil",
     };
   }
   return { href: "/practice", title: "ฝึกทำข้อสอบ", why: "ผ่านครบทุกหมวดแล้ว — ฝึกให้คล่องมือ", icon: "pencil" };

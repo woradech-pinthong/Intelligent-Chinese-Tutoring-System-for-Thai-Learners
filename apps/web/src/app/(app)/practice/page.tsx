@@ -9,19 +9,43 @@ import { Center, ErrorState } from "@/components/Feedback";
 import { shuffle } from "@/lib/random";
 import { saveRound, type QuizMode } from "@/lib/progress";
 import { loadCards } from "@/lib/fsrs";
-import { SENTENCES } from "@/data/sentences";
+import { logAttempt } from "@/lib/attempts-outbox";
 import SentenceOrder from "./SentenceOrder";
-import { Icon, type IconName } from "@/components/Icon";
+import PracticeHub from "./PracticeHub";
+import { Icon } from "@/components/Icon";
 import { Pinyin } from "@/components/Pinyin";
 import { Mascot, MascotSays } from "@/components/Mascot";
 import { audioRate, toggleAudioRate, playAtUserRate } from "@/lib/daily";
 import { ProgressBar } from "@/components/ProgressBar";
-import { FeedbackCard } from "@/components/FeedbackCard";
+import { FeedbackCard, type AnswerFace } from "@/components/FeedbackCard";
 
 const N_QUESTIONS = 10;
+// เวลาที่ใช้ตอบ (ms) — อยู่นอก component เพราะ lint react-hooks/purity เข้าใจผิดว่า Date.now() ใน handler ถูกเรียกตอน render
+const msSince = (t: number) => Date.now() - t;
 
-type Choice = { id: number; label: string };
-type Question = { word: Word; choices: Choice[] };
+// ตัวเลือกเก็บเป็นคำ (Word) แล้วค่อยเลือกป้ายตอนแสดง — โหมดฟังสลับ "คำแปล ↔ ตัวจีน" กลางข้อได้
+type Question = { word: Word; choices: Word[] };
+
+// โหมดฟัง: ตัวเลือกเป็น "คำแปล" (ค่าเริ่มต้น — ฟังแล้วเข้าใจความหมาย) หรือ "ตัวจีน" (แบบเดิม) · จำค่าในเครื่อง
+type ListenChoice = "meaning" | "hanzi";
+const LISTEN_CHOICE_KEY = "xh_listen_choice";
+
+function loadListenChoice(): ListenChoice {
+  if (typeof window === "undefined") return "meaning";
+  try {
+    return window.localStorage.getItem(LISTEN_CHOICE_KEY) === "hanzi" ? "hanzi" : "meaning";
+  } catch {
+    return "meaning";
+  }
+}
+
+function saveListenChoice(c: ListenChoice): void {
+  try {
+    window.localStorage.setItem(LISTEN_CHOICE_KEY, c);
+  } catch {
+    /* เต็ม/ปิด storage ก็ข้ามไป */
+  }
+}
 
 function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: QuizMode | null }) {
   const [words, setWords] = useState<Word[]>([]);
@@ -39,27 +63,36 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
   const [correctCount, setCorrectCount] = useState(0);
   const [done, setDone] = useState(false);
   const savedRef = useRef(false);
+  const [choiceType, setChoiceType] = useState<ListenChoice>(loadListenChoice); // เมนูโชว์ค่าที่จำไว้ด้วย
+  const qStartRef = useRef(0); // เวลาเริ่มข้อปัจจุบัน → time_spent_ms ตอน logAttempt
+  const nextRef = useRef<HTMLButtonElement>(null);
 
+  // ตอบแล้วปุ่มตัวเลือกถูกปิด → โฟกัสหลุดไป <body> · ย้ายไปปุ่ม "ข้อถัดไป" (คีย์บอร์ด/สวิตช์) ไม่เลื่อนจอ
+  useEffect(() => {
+    if (picked !== null) nextRef.current?.focus({ preventScroll: true });
+  }, [picked]);
+
+  // ดึงคลังคำ HSK 1 ทั้งหมดครั้งเดียว — เมนูใช้นับคลังของทุกกิจกรรม · ?cat= ไปกรองตอนสร้าง pool ด้านล่าง (ได้คำชุดเดิม)
   useEffect(() => {
     (async () => {
-      let q = supabase
+      const { data, error } = await supabase
         .from("words")
         .select("id, hanzi, pinyin, meaning_th, meaning_en, th_reviewed, audio_path, hsk_level, category")
-        .eq("hsk_level", 1);
-      if (cat) q = q.eq("category", cat);
-      const { data, error } = await q.order("id");
+        .eq("hsk_level", 1)
+        .order("id");
       if (error) setError(error.message);
       else setWords(data as Word[]);
       setLoading(false);
     })();
-  }, [cat]);
+  }, []);
 
   // คำที่ใช้ได้ในแต่ละโหมด (อ่าน = ต้องมีคำแปล · ฟัง = ต้องมีเสียง)
   // PA-14: ฝึก = ดึงความจำของคำที่เรียนแล้ว — เรียนแล้ว ≥4 คำ สุ่มเฉพาะคำที่เรียนแล้ว
   // ยังไม่ถึง 4 ใช้ทั้งหมวดไปก่อนกันทางตัน (ควิซท้ายหมวดไม่ใช้กฎนี้ — มันคือตัววัดทั้งหมวด)
   const [learnedIds] = useState(() => new Set(Object.keys(loadCards()).map(Number)));
   const pools = useMemo(() => {
-    const withMeaning = words.filter((w) => w.meaning_th && w.meaning_th.trim());
+    const scoped = cat ? words.filter((w) => w.category === cat) : words; // มาจากเมนูหมวด → เฉพาะคำในหมวดนั้น
+    const withMeaning = scoped.filter((w) => w.meaning_th && w.meaning_th.trim());
     const preferLearned = (arr: Word[]) => {
       const learned = arr.filter((w) => learnedIds.has(w.id));
       return learned.length >= 4 ? learned : arr;
@@ -68,18 +101,28 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
       read: preferLearned(withMeaning),
       listen: preferLearned(withMeaning.filter((w) => w.audio_path)),
     };
-  }, [words, learnedIds]);
+  }, [words, learnedIds, cat]);
 
   const start = useCallback(
     (m: "read" | "listen") => {
       const pool = pools[m];
+      // การ์ดในเมนูกดได้เสมอ → คลังไม่ถึง 4 คำ (ตัวเลือกไม่ครบ) บอกด้วยข้อความแทนการเริ่มรอบที่พัง
+      // ข้อความอยู่หัวเมนู แต่การ์ดที่แตะอาจอยู่ล่างจอ (มือถือ) → เลื่อนขึ้นไปให้เห็นข้อความ
+      if (pool.length < 4) {
+        setNotice("คลังคำตอนนี้ยังไม่พอสำหรับโหมดนี้ — ลองกิจกรรมอื่นก่อน หรือฝึกแบบรวมทุกหมวดนะ");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        return;
+      }
+      setNotice(null); // เริ่มได้แล้ว → ล้างคำเตือนเก่า (กลับเมนูทีหลังจะได้ไม่ค้าง)
       setMode(m);
       setQuestions(buildQuiz(pool, m, N_QUESTIONS));
       setQi(0);
       setPicked(null);
       setCorrectCount(0);
       setDone(false);
+      setChoiceType(loadListenChoice());
       savedRef.current = false;
+      qStartRef.current = Date.now();
     },
     [pools]
   );
@@ -100,6 +143,23 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
     if (picked !== null) return; // ตอบแล้ว ล็อกไว้
     setPicked(id);
     if (id === q.word.id) setCorrectCount((c) => c + 1);
+    // บันทึกรายข้อลง outbox (นอกจาก saveRound ท้ายรอบ)
+    logAttempt({
+      generator: mode === "listen" ? "listen_mc4" : "read_mc4",
+      ...(mode === "listen" ? { variant: choiceType } : {}),
+      event_type: "graded",
+      word_id: q.word.id,
+      skill_code: mode === "listen" ? "SKILL-LISTEN" : "SKILL-READ",
+      answer: { picked_id: id },
+      is_correct: id === q.word.id,
+      time_spent_ms: msSince(qStartRef.current),
+      context: "practice",
+    });
+  }
+
+  function pickChoiceType(t: ListenChoice) {
+    setChoiceType(t);
+    saveListenChoice(t);
   }
 
   function next() {
@@ -112,6 +172,7 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
     } else {
       setQi((i) => i + 1);
       setPicked(null);
+      qStartRef.current = Date.now();
     }
   }
 
@@ -130,75 +191,19 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
   // ---------- โหมดเรียงประโยค (ใช้คนละ engine กับ MCQ) ----------
   if (mode === "order") return <SentenceOrder onExit={() => setMode(null)} />;
 
-  // ---------- หน้าเลือกโหมด ----------
+  // ---------- หน้าเลือกโหมด (เมนูจัดกลุ่มตามทักษะ — ดู PracticeHub.tsx) ----------
   if (!mode) {
     return (
-      <div className="flex flex-col gap-5 p-5">
-        <header>
-          {cat && (
-            <Link href={`/learn/category?cat=${cat}`} className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
-              <Icon name="arrowLeft" className="h-3.5 w-3.5" /> กลับเมนูหมวด
-            </Link>
-          )}
-          <h1 className="text-xl font-semibold text-slate-700">
-            ฝึกทำข้อสอบ{cat ? ` · ${catName(cat) ?? `หมวด ${cat}`}` : ""}
-          </h1>
-          <p className="mt-1 text-sm text-slate-400">
-            รูปแบบข้อสอบ HSK · เลือกคำตอบที่ถูก · ตรวจให้ทันที {N_QUESTIONS} ข้อ/รอบ
-            {cat ? " · เฉพาะคำในหมวดนี้" : ""}
-          </p>
-          {notice && (
-            <p className="mt-2 rounded-xl bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-700">{notice}</p>
-          )}
-        </header>
-
-        <ModeCard
-          icon="book"
-          title="ฝึกการอ่าน"
-          desc="เห็นตัวอักษรจีน + พินอิน → เลือกคำแปลไทยที่ถูก"
-          count={pools.read.length}
-          onStart={() => start("read")}
-        />
-        <ModeCard
-          icon="headphone"
-          title="ฝึกการฟัง"
-          desc="ฟังเสียงอ่าน → เลือกตัวอักษรจีนที่ถูก"
-          count={pools.listen.length}
-          onStart={() => start("listen")}
-        />
-        <ModeCard
-          icon="puzzle"
-          title="เรียงประโยค"
-          desc="แตะคำมาเรียงให้เป็นประโยคที่ถูก (ดักจุดผิดลำดับคำแบบคนไทย)"
-          count={SENTENCES.length}
-          unit="ประโยค"
-          onStart={() => setMode("order")}
-        />
-        <Link
-          href={cat ? `/match?cat=${cat}` : "/match"}
-          className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 transition hover:border-ocean-300 hover:shadow-sm active:scale-[0.99]"
-        >
-          <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-ocean-50 text-ocean-700">
-            <Icon name="sparkles" className="h-5 w-5" />
-          </div>
-          <div className="min-w-0 flex-1">
-            <div className="font-medium text-slate-700">เกมจับคู่</div>
-            <div className="text-xs text-slate-400">เปิดการ์ดจับคู่คำ↔คำแปล หรือเสียง↔ตัวจีน — ทวนแบบสนุก ๆ</div>
-          </div>
-          <Icon name="arrowRight" className="h-4 w-4 shrink-0 text-slate-300" />
-        </Link>
-
-        <div className="flex gap-2 rounded-2xl bg-slate-50 p-4 text-xs leading-relaxed text-slate-500">
-          <Icon name="bulb" className="mt-0.5 h-4 w-4 shrink-0 text-xp" />
-          <p>
-            ข้อสอบสุ่มจากคลังคำ HSK 1 ตรวจตามเฉลยแบบเดียวกับข้อสอบจริง ไม่ใช้ AI เดา —
-            ตรงกับรูปแบบการวัดผลจริงของ HSK · ผลการฝึกจะไปแสดงในหน้า{" "}
-            <Link href="/progress" className="text-ocean-500 underline">
-              ผล
-            </Link>
-          </p>
-        </div>
-      </div>
+      <PracticeHub
+        cat={cat}
+        notice={notice}
+        words={words}
+        learnedIds={learnedIds}
+        listenCount={pools.listen.length}
+        readCount={pools.read.length}
+        listenChoice={choiceType}
+        onStart={(m) => (m === "order" ? setMode("order") : start(m))}
+      />
     );
   }
 
@@ -260,6 +265,15 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
   const answered = picked !== null;
   const isRight = picked === q.word.id;
   const pickedWord = answered ? words.find((w) => w.id === picked) : undefined;
+  const listenHanzi = mode === "listen" && choiceType === "hanzi";
+  const labelOf = (w: Word) => (listenHanzi ? w.hanzi : w.meaning_th);
+  // หน้าตาคำตอบในการ์ดเฉลย = รูปเดียวกับตัวเลือกที่ผู้เรียนเห็น
+  const faceOf = (w: Word): AnswerFace =>
+    listenHanzi
+      ? { main: w.hanzi, sub: w.meaning_th, chinese: true }
+      : mode === "listen"
+        ? { main: w.meaning_th, sub: `${w.hanzi} · ${w.pinyin}` }
+        : { main: w.meaning_th, sub: w.hanzi };
   return (
     <div className="flex flex-col gap-5 p-5">
       {/* แถบความคืบหน้า */}
@@ -313,10 +327,31 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
                 {slow ? "ช้าอยู่" : "ฟังช้า"}
               </button>
             </div>
-            {!answered && <div className="mt-1 text-xs text-slate-400">คุณได้ยินคำว่าอะไร</div>}
+            {!answered && (
+              <div className="mt-1 text-xs text-slate-400">{listenHanzi ? "คุณได้ยินคำว่าอะไร" : "คำที่ได้ยินแปลว่าอะไร"}</div>
+            )}
           </>
         )}
       </div>
+
+      {/* สลับรูปตัวเลือก (โหมดฟัง · ก่อนตอบ): คำแปล = ฟังแล้วเข้าใจความหมาย · ตัวจีน = จับคู่เสียงกับตัวอักษร */}
+      {mode === "listen" && !answered && (
+        <div role="group" aria-label="รูปแบบตัวเลือก" className="flex items-center justify-end gap-1.5 text-xs text-slate-400">
+          ตัวเลือก:
+          {(["meaning", "hanzi"] as const).map((t) => (
+            <button
+              key={t}
+              onClick={() => pickChoiceType(t)}
+              aria-pressed={choiceType === t}
+              className={`rounded-full px-3 py-1 font-medium transition ${
+                choiceType === t ? "bg-ocean-700 text-white" : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+              }`}
+            >
+              {t === "meaning" ? "คำแปล" : "ตัวจีน"}
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* ตัวเลือก */}
       <div className="grid grid-cols-1 gap-3">
@@ -336,8 +371,8 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
               disabled={answered}
               className={`flex items-center justify-between rounded-2xl border px-4 py-4 text-left transition ${cls}`}
             >
-              <span className={mode === "listen" ? "font-[family-name:var(--font-sc)] text-2xl font-semibold" : "text-base"}>
-                {c.label}
+              <span className={listenHanzi ? "font-[family-name:var(--font-sc)] text-2xl font-semibold" : "text-base"}>
+                {labelOf(c)}
               </span>
               {answered && isCorrect && <Icon name="check" className="h-5 w-5 text-correct" strokeWidth={2.4} />}
               {answered && isPicked && !isCorrect && <Icon name="x" className="h-5 w-5 text-coral" strokeWidth={2.4} />}
@@ -350,18 +385,8 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
       {answered && (
         <FeedbackCard
           correct={isRight}
-          yourAnswer={
-            pickedWord && !isRight
-              ? mode === "listen"
-                ? { main: pickedWord.hanzi, sub: pickedWord.meaning_th, chinese: true }
-                : { main: pickedWord.meaning_th, sub: pickedWord.hanzi }
-              : undefined
-          }
-          rightAnswer={
-            mode === "listen"
-              ? { main: q.word.hanzi, sub: q.word.meaning_th, chinese: true }
-              : { main: q.word.meaning_th, sub: q.word.hanzi }
-          }
+          yourAnswer={pickedWord && !isRight ? faceOf(pickedWord) : undefined}
+          rightAnswer={faceOf(q.word)}
           hint={
             isRight
               ? undefined
@@ -375,6 +400,7 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
       {/* ปุ่มถัดไป */}
       {answered && (
         <button
+          ref={nextRef}
           onClick={next}
           className="rounded-xl bg-ocean-900 px-4 py-3 font-semibold text-white shadow transition hover:bg-ocean-800 active:scale-[0.98]"
         >
@@ -386,67 +412,28 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
 }
 
 // ---------- สร้างชุดข้อสอบจากคลังคำ ----------
+// อ่าน: ตัวลวงห้ามซ้ำคำแปล · ฟัง: ห้ามซ้ำทั้งคำแปลและตัวจีน (สลับรูปตัวเลือกกลางข้อได้) และห้ามออกเสียงเหมือนคำที่เปิด
+// (คำพ้องเสียง เช่น 他/她 tā — ฟังอย่างเดียวแยกไม่ได้ = ข้อที่ตอบไม่ได้)
 function buildQuiz(pool: Word[], mode: QuizMode, n: number): Question[] {
   if (pool.length < 4) return [];
   const targets = shuffle(pool).slice(0, Math.min(n, pool.length));
-  const labelOf = (w: Word) => (mode === "read" ? w.meaning_th : w.hanzi);
+  const keysOf = (w: Word) => (mode === "listen" ? [`m:${w.meaning_th}`, `h:${w.hanzi}`] : [`m:${w.meaning_th}`]);
+  const sound = (w: Word) => w.pinyin.toLowerCase().replace(/\s+/g, " ").trim();
 
   return targets.map((word) => {
-    const correctLabel = labelOf(word);
     const distractors: Word[] = [];
-    const usedLabels = new Set([correctLabel]);
+    const used = new Set(keysOf(word));
     for (const w of shuffle(pool)) {
       if (distractors.length >= 3) break;
       if (w.id === word.id) continue;
-      const lb = labelOf(w);
-      if (usedLabels.has(lb)) continue; // กันตัวเลือกซ้ำความหมาย
-      usedLabels.add(lb);
+      const keys = keysOf(w);
+      if (keys.some((k) => used.has(k))) continue; // กันตัวเลือกซ้ำความหมาย/ตัวจีน
+      if (mode === "listen" && sound(w) === sound(word)) continue; // กันคำพ้องเสียง
+      keys.forEach((k) => used.add(k));
       distractors.push(w);
     }
-    const choices: Choice[] = shuffle([
-      { id: word.id, label: correctLabel },
-      ...distractors.map((w) => ({ id: w.id, label: labelOf(w) })),
-    ]);
-    return { word, choices };
+    return { word, choices: shuffle([word, ...distractors]) };
   });
-}
-
-
-function ModeCard({
-  icon,
-  title,
-  desc,
-  count,
-  onStart,
-  unit = "คำ",
-}: {
-  icon: IconName;
-  title: string;
-  desc: string;
-  count: number;
-  onStart: () => void;
-  unit?: string;
-}) {
-  const enough = count >= 4;
-  return (
-    <button
-      onClick={onStart}
-      disabled={!enough}
-      className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-white p-4 text-left shadow-sm transition hover:border-ocean-300 hover:shadow disabled:opacity-50"
-    >
-      <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-ocean-50">
-        <Icon name={icon} className="h-6 w-6 text-ocean-700" />
-      </div>
-      <div className="flex-1">
-        <div className="font-medium text-slate-700">{title}</div>
-        <div className="text-xs text-slate-400">{desc}</div>
-        <div className="mt-1 text-[11px] text-slate-400">
-          {enough ? `คลังพร้อม ${count} ${unit}` : `${unit}ในคลังยังไม่พอ`}
-        </div>
-      </div>
-      <Icon name="play" className="h-4 w-4 text-ocean-300" />
-    </button>
-  );
 }
 
 // อ่าน ?cat=&mode= ผ่าน useSearchParams — key ตาม query ทำให้เปลี่ยน URL แล้วรีเซ็ต state เสมอ

@@ -50,19 +50,26 @@ export function recordLearnedToday(id: number): void {
 // ---------- ความเร็วเสียง (m2-7) — เฉพาะโหมดเรียน/ฝึก · โหมดสอบห้ามปรับ (QZ-03) ----------
 
 const RATE_KEY = "jrj_audio_rate";
+let unsavedRate: number | null = null; // เขียน storage ไม่ได้ → ค่าที่กดล่าสุดยังมีผลจนปิดแท็บ
 
-/** 1 = ปกติ · 0.75 = ช้า */
+/** 1 = ปกติ · 0.75 = ช้า · อ่าน storage ไม่ได้ (ปิด site data → SecurityError) = 1 — ถูกเรียกตอน render ด้วย ห้าม throw */
 export function audioRate(): number {
   if (typeof window === "undefined") return 1;
-  return window.localStorage.getItem(RATE_KEY) === "0.75" ? 0.75 : 1;
+  if (unsavedRate !== null) return unsavedRate;
+  try {
+    return window.localStorage.getItem(RATE_KEY) === "0.75" ? 0.75 : 1;
+  } catch {
+    return 1;
+  }
 }
 
 export function toggleAudioRate(): number {
   const next = audioRate() === 1 ? 0.75 : 1;
   try {
     window.localStorage.setItem(RATE_KEY, String(next));
+    unsavedRate = null;
   } catch {
-    /* ข้าม */
+    unsavedRate = next;
   }
   return next;
 }

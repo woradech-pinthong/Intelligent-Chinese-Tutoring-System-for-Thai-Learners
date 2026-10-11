@@ -13,6 +13,18 @@ export type SentenceItem = {
   kc?: string; // Thai-L1 KC ที่ผูก (ถ้ามี) — ดู data/thai-l1/catalog-v1.json
 };
 
+/**
+ * ชุดประโยคนี้ผ่านหฤทัยตรวจแล้วหรือยัง (CG-03) — เปลี่ยนเป็น true ที่นี่ที่เดียวเมื่อตรวจครบ
+ * false = ร่าง: เมนูติดป้าย "ร่าง" · หน้ากิจกรรมโชว์ป้ายฉบับร่าง · รอบไม่นับเข้าความแม่นยำรวม/จุดอ่อน (DEMO_MODES)
+ *         · คำตอบติด mock_ref → ตอน sync ข้าม ไม่เข้าข้อมูลเทรน BKT (CG-02)
+ */
+export const SENTENCES_REVIEWED = false;
+
+/** mock_ref ของคำตอบที่ตอบประโยคร่าง (เช่น 'draft-sentence-4') · undefined เมื่อชุดประโยคผ่านการตรวจแล้ว */
+export function draftSentenceRef(id: number): string | undefined {
+  return SENTENCES_REVIEWED ? undefined : `draft-sentence-${id}`;
+}
+
 export const SENTENCES: SentenceItem[] = [
   { id: 1, tokens: ["我", "爱", "你"], pinyin: "wǒ ài nǐ", meaning_th: "ฉันรักเธอ", focus_th: "ประโยคพื้นฐาน: ประธาน-กริยา-กรรม" },
   { id: 2, tokens: ["我", "喜欢", "猫"], pinyin: "wǒ xǐ huan māo", meaning_th: "ฉันชอบแมว", focus_th: "ประธาน-กริยา-กรรม" },

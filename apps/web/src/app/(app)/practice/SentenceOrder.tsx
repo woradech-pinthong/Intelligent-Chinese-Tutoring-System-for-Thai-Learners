@@ -1,13 +1,17 @@
 "use client";
 
-import { Fragment, useMemo, useRef, useState } from "react";
-import { SENTENCES, type SentenceItem } from "@/data/sentences";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { SENTENCES, SENTENCES_REVIEWED, draftSentenceRef, type SentenceItem } from "@/data/sentences";
+// คำอธิบายสำหรับผู้เรียน (ไฟล์เล็ก) — ไม่ import คลัง Thai-L1 JSON (~140 KB) เข้า bundle แรกของ /practice
+import { DRAFT_NOTE_TH, kcTip } from "@/data/kc-tips";
 import { saveRound } from "@/lib/progress";
+import { logAttempt } from "@/lib/attempts-outbox";
 import { shuffle } from "@/lib/random";
 import { Icon } from "@/components/Icon";
 import { Pinyin } from "@/components/Pinyin";
 import { Mascot } from "@/components/Mascot";
 import { ProgressBar } from "@/components/ProgressBar";
+import { DraftSentenceBadge } from "@/components/MockBadge";
 
 const N_PER_ROUND = 5;
 
@@ -48,6 +52,7 @@ export default function SentenceOrder({ onExit }: { onExit: () => void }) {
   const [correctCount, setCorrectCount] = useState(0);
   const [done, setDone] = useState(false);
   const savedRef = useRef(false);
+  const shownAtRef = useRef(0); // เวลาที่ข้อนี้โผล่ — ใช้คิด time_spent_ms ตอนกดตรวจ
 
   // ---- drag state ----
   const [drag, setDrag] = useState<Drag | null>(null);
@@ -55,10 +60,21 @@ export default function SentenceOrder({ onExit }: { onExit: () => void }) {
   const dragRef = useRef<Drag | null>(null);
   const dragEndAt = useRef(0); // กัน click ที่ยิงตามหลัง drag
   const answerRef = useRef<HTMLDivElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    shownAtRef.current = performance.now();
+  }, [qi]);
+
+  // กด "ตรวจ" แล้วปุ่มนั้นหายไป → ย้ายโฟกัสไปปุ่ม "ข้อถัดไป" (คีย์บอร์ด/สวิตช์) ไม่เลื่อนจอ
+  useEffect(() => {
+    if (checked) nextRef.current?.focus({ preventScroll: true });
+  }, [checked]);
 
   const s = round[qi];
   const isCorrect = checked && answer.map((t) => t.text).join("") === s.tokens.join("");
   const allPlaced = answer.length === s.tokens.length;
+  const tip = kcTip(s.kc); // คำอธิบายจุดผิดคนไทยที่ประโยคนี้ผูกไว้ (ฉบับร่าง · ถ้ามี)
 
   function pick(tile: Tile) {
     if (checked) return;
@@ -170,10 +186,23 @@ export default function SentenceOrder({ onExit }: { onExit: () => void }) {
   }
 
   function check() {
+    if (checked) return;
+    const order = answer.map((t) => t.text);
+    const ok = order.join("") === s.tokens.join("");
     setChecked(true);
-    if (answer.map((t) => t.text).join("") === s.tokens.join("")) {
-      setCorrectCount((c) => c + 1);
-    }
+    if (ok) setCorrectCount((c) => c + 1);
+    // บันทึกคำตอบรายข้อลง outbox (นอกเหนือจาก saveRound ท้ายรอบ)
+    logAttempt({
+      generator: "order",
+      event_type: "graded",
+      sentence_id: s.id,
+      mock_ref: draftSentenceRef(s.id), // ประโยคร่าง → sync ข้าม (ไม่เข้าข้อมูลเทรน BKT)
+      skill_code: s.kc ?? "SKILL-ORDER",
+      answer: { order },
+      is_correct: ok,
+      time_spent_ms: Math.round(performance.now() - shownAtRef.current),
+      context: "practice",
+    });
   }
 
   function next() {
@@ -228,6 +257,7 @@ export default function SentenceOrder({ onExit }: { onExit: () => void }) {
   // ---------- ทำข้อ ----------
   return (
     <div className="flex flex-col gap-5 p-5">
+      {!SENTENCES_REVIEWED && <DraftSentenceBadge />}
       {/* หัว + progress */}
       <div>
         <div className="flex items-center justify-between text-sm text-slate-500">
@@ -327,9 +357,29 @@ export default function SentenceOrder({ onExit }: { onExit: () => void }) {
           </div>
           <div className="mt-2 text-2xl font-[family-name:var(--font-sc)] text-slate-800">{s.tokens.join(" ")}</div>
           <Pinyin text={s.pinyin} className="text-sm" />
-          <div className="mt-2 flex items-start gap-1.5 rounded-lg bg-white/70 p-2 text-xs text-slate-500">
-            <Icon name="bulb" className="mt-0.5 h-4 w-4 shrink-0 text-xp" /> {s.focus_th}
+          {isCorrect && (
+            <div className="mt-2 flex items-start gap-1.5 rounded-lg bg-white/70 p-2 text-xs text-slate-500">
+              <Icon name="bulb" className="mt-0.5 h-4 w-4 shrink-0 text-xp" /> {s.focus_th}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* เรียงผิด → อธิบายว่าจีนต่างจากไทยตรงไหน: focus ของประโยค + เคล็ดลับสำหรับผู้เรียน (kc-tips) ถ้าผูก kc
+          ไม่โชว์ error_th / teaching_th ของคลังแล้ว — เขียนให้ครูอ่าน (สอนสูตร… / 数+量+名 / 状语) */}
+      {checked && !isCorrect && (
+        <div className="rounded-2xl border border-star/30 bg-star-soft p-4">
+          <div className="flex items-center gap-1.5 text-sm font-semibold text-star-ink">
+            <Icon name="bulb" className="h-4 w-4 shrink-0 text-star-dark" /> ต่างจากไทยตรงไหน
           </div>
+          <p className="mt-1.5 text-sm leading-relaxed text-slate-700">{s.focus_th}</p>
+          {tip && (
+            <div className="mt-3 border-t border-star/30 pt-3 text-xs leading-relaxed text-slate-600">
+              <span className="font-semibold text-star-ink">เคล็ดลับ: </span>
+              {tip}
+              <span className="ml-1 text-[10px] text-slate-400">({DRAFT_NOTE_TH})</span>
+            </div>
+          )}
         </div>
       )}
 
@@ -344,6 +394,7 @@ export default function SentenceOrder({ onExit }: { onExit: () => void }) {
         </button>
       ) : (
         <button
+          ref={nextRef}
           onClick={next}
           className="rounded-xl bg-ocean-700 px-4 py-3 font-semibold text-white shadow transition hover:bg-ocean-900 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ocean-300 focus-visible:ring-offset-2"
         >
