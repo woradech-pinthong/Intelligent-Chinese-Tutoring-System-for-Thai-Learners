@@ -6,6 +6,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { QA_PAIRS, type QAPair } from "@/data/mock-activities";
 import { Center } from "@/components/Feedback";
 import { shuffle } from "@/lib/random";
@@ -120,9 +121,9 @@ function QARound({ onAgain }: { onAgain: () => void }) {
     <>
       <div>
         <div className="flex items-center justify-between text-sm text-slate-500">
-          <Link href="/practice" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
+          <MenuLink group="read" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> ออก
-          </Link>
+          </MenuLink>
           <span>
             ข้อ {qi + 1}/{items.length} · ถูก {correct}
           </span>
@@ -233,12 +234,12 @@ function Summary({ correct, total, onAgain }: { correct: number; total: number; 
         >
           <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
         </button>
-        <Link
-          href="/practice"
+        <MenuLink
+          group="read"
           className="flex-1 rounded-xl bg-slate-100 px-4 py-3 text-center font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
         >
           กลับเมนูฝึก
-        </Link>
+        </MenuLink>
       </div>
       <Link href="/progress" className="text-sm text-ocean-500 underline">
         ดูสรุปผลการฝึกทั้งหมด

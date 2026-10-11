@@ -9,6 +9,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { SENTENCES, SENTENCES_REVIEWED, draftSentenceRef, type SentenceItem } from "@/data/sentences";
 import { FeedbackCard } from "@/components/FeedbackCard";
 import { Icon } from "@/components/Icon";
@@ -127,9 +128,9 @@ export default function ListenSentence() {
     return (
       <div className="flex flex-col gap-5 p-5">
         <header>
-          <Link href="/practice" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
+          <MenuLink group="listen" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> กลับเมนูฝึก
-          </Link>
+          </MenuLink>
           <h1 className="text-xl font-semibold text-slate-700">ฟังประโยค จริง/เท็จ</h1>
           <p className="mt-1 text-sm text-slate-400">
             ฟังประโยคจีน → ตัดสินว่าข้อความภาษาไทยตรงกับที่ได้ยินไหม · {N_QUESTIONS} ข้อ/รอบ · ฟังซ้ำได้ไม่จำกัด
@@ -198,12 +199,12 @@ export default function ListenSentence() {
           >
             <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
           </button>
-          <Link
-            href="/practice"
+          <MenuLink
+            group="listen"
             className="flex flex-1 items-center justify-center rounded-xl bg-slate-100 px-4 py-3 font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
           >
             กลับเมนูฝึก
-          </Link>
+          </MenuLink>
         </div>
         <Link href="/progress" className="text-sm text-ocean-500 underline">
           ดูสรุปผลการฝึกทั้งหมด
@@ -220,9 +221,9 @@ export default function ListenSentence() {
       {/* แถบความคืบหน้า */}
       <div>
         <div className="flex items-center justify-between text-sm text-slate-500">
-          <Link href="/practice" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
+          <MenuLink group="listen" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> ออก
-          </Link>
+          </MenuLink>
           <span>
             ข้อ {qi + 1}/{questions.length} · ถูก {correctCount}
           </span>

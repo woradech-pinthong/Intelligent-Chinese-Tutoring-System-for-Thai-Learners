@@ -257,7 +257,7 @@ export default function Home() {
               <Icon name="pencil" className="h-5 w-5" />
             </div>
             <div className="text-sm font-medium text-slate-700">ฝึกทำข้อสอบ</div>
-            <div className="text-[11px] leading-snug text-slate-400">ฟัง-อ่าน-เรียงประโยค ตรวจทันที</div>
+            <div className="text-[11px] leading-snug text-slate-400">ฟัง · อ่าน · เขียน · พูด ตรวจทันที</div>
           </Link>
           <Link
             href="/mock-test"

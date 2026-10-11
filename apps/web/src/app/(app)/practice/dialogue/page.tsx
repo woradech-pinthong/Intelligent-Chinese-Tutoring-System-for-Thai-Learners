@@ -9,6 +9,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { DIALOGUES, type Dialogue } from "@/data/mock-activities";
 import { shuffle } from "@/lib/random";
 import { saveRound } from "@/lib/progress";
@@ -162,9 +163,9 @@ export default function DialoguePractice() {
       <div className="flex flex-col gap-5 p-5">
         {badge}
         <header>
-          <Link href="/practice" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
+          <MenuLink group="listen" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> กลับเมนูฝึก
-          </Link>
+          </MenuLink>
           <h1 className="text-xl font-semibold text-slate-700">ฟังบทสนทนา</h1>
           <p className="mt-1 text-sm text-slate-400">
             รูปแบบข้อสอบ HSK พาร์ตฟัง · ฟัง A คุยกับ B แล้วตอบคำถาม · {DIALOGUES.length} ข้อ/รอบ
@@ -460,12 +461,12 @@ function Summary({
         >
           <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
         </button>
-        <Link
-          href="/practice"
+        <MenuLink
+          group="listen"
           className="flex-1 rounded-xl bg-slate-100 px-4 py-3 text-center font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
         >
           กลับเมนูฝึก
-        </Link>
+        </MenuLink>
       </div>
       <Link href="/progress" className="text-sm text-ocean-500 underline">
         ดูสรุปผลการฝึกทั้งหมด

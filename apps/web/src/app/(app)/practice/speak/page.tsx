@@ -10,6 +10,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { supabase, audioUrl, type Word } from "@/lib/supabase";
 import { Center, ErrorState } from "@/components/Feedback";
 import { shuffle } from "@/lib/random";
@@ -154,9 +155,9 @@ function Intro({
   return (
     <div className="flex flex-col gap-5 p-5">
       <header>
-        <Link href="/practice" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
+        <MenuLink group="speak" className="mb-1 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-slate-600">
           <Icon name="arrowLeft" className="h-3.5 w-3.5" /> กลับเมนูฝึก
-        </Link>
+        </MenuLink>
         <div className="flex flex-wrap items-center gap-2">
           <h1 className="text-xl font-semibold text-slate-700">ฟังแล้วพูดตาม</h1>
           <TrialBadge />
@@ -637,12 +638,12 @@ function Summary({ outcomes, onAgain }: { outcomes: Outcome[]; onAgain: () => vo
         >
           <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
         </button>
-        <Link
-          href="/practice"
+        <MenuLink
+          group="speak"
           className="flex-1 rounded-xl bg-slate-100 px-4 py-3 text-center font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
         >
           กลับเมนูฝึก
-        </Link>
+        </MenuLink>
       </div>
       <Link href="/progress" className="text-sm text-ocean-500 underline">
         ดูสรุปผลการฝึกทั้งหมด

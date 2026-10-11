@@ -10,6 +10,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { SENTENCES, SENTENCES_REVIEWED, draftSentenceRef, type SentenceItem } from "@/data/sentences";
 import type { KcCode } from "@/data/thaiL1"; // type อย่างเดียว — ไม่ลาก catalog JSON เข้า bundle หน้านี้
 import { saveRound } from "@/lib/progress";
@@ -179,12 +180,12 @@ function FillRound({ onRestart }: { onRestart: () => void }) {
           >
             <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
           </button>
-          <Link
-            href="/practice"
+          <MenuLink
+            group="read"
             className="flex flex-1 items-center justify-center rounded-xl bg-slate-100 px-4 py-3 font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
           >
             กลับเมนูฝึก
-          </Link>
+          </MenuLink>
         </div>
         <Link href="/progress" className="text-sm text-ocean-500 underline">
           ดูสรุปผลการฝึกทั้งหมด
@@ -200,9 +201,9 @@ function FillRound({ onRestart }: { onRestart: () => void }) {
       {/* หัว + ความคืบหน้า */}
       <div>
         <div className="flex items-center justify-between text-sm text-slate-500">
-          <Link href="/practice" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
+          <MenuLink group="read" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> ออก
-          </Link>
+          </MenuLink>
           <span>
             ข้อ {qi + 1}/{questions.length} · ถูก {correctCount}
           </span>

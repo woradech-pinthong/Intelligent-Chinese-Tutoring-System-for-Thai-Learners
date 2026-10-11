@@ -11,7 +11,8 @@ import { saveRound, type QuizMode } from "@/lib/progress";
 import { loadCards } from "@/lib/fsrs";
 import { logAttempt } from "@/lib/attempts-outbox";
 import SentenceOrder from "./SentenceOrder";
-import PracticeHub, { HUB_GROUPS, type HubGroup } from "./PracticeHub";
+import PracticeHub from "./PracticeHub";
+import { HUB_GROUPS, groupOfStart, type HubGroup } from "@/lib/practice-menu";
 import { Icon } from "@/components/Icon";
 import { Pinyin } from "@/components/Pinyin";
 import { Mascot, MascotSays } from "@/components/Mascot";
@@ -196,7 +197,7 @@ function PracticeInner({ cat, modeParam, group }: { cat: number | null; modePara
     return (
       <PracticeHub
         cat={cat}
-        group={group}
+        group={group ?? groupOfStart(modeParam)} // เข้าแบบฝึกตรงด้วย ?mode= → กด "ออก" แล้วกลับเมนูทักษะนั้น
         notice={notice}
         words={words}
         learnedIds={learnedIds}

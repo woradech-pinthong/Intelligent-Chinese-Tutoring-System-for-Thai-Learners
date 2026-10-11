@@ -7,6 +7,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { supabase, type Word } from "@/lib/supabase";
 import { Center, ErrorState } from "@/components/Feedback";
 import { shuffle } from "@/lib/random";
@@ -125,9 +126,9 @@ export default function TrueFalsePractice() {
       <Center>
         <div className="flex flex-col items-center gap-3 px-6 text-center">
           <p>คลังคำยังไม่พอทำข้อจริง/เท็จ</p>
-          <Link href="/practice" className="text-sm text-ocean-500 underline">
+          <MenuLink group="read" className="text-sm text-ocean-500 underline">
             กลับเมนูฝึก
-          </Link>
+          </MenuLink>
         </div>
       </Center>
     );
@@ -162,12 +163,12 @@ export default function TrueFalsePractice() {
           >
             <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
           </button>
-          <Link
-            href="/practice"
+          <MenuLink
+            group="read"
             className="flex-1 rounded-xl bg-slate-100 px-4 py-3 text-center font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
           >
             กลับเมนูฝึก
-          </Link>
+          </MenuLink>
         </div>
         <Link href="/progress" className="text-sm text-ocean-500 underline">
           ดูสรุปผลการฝึกทั้งหมด
@@ -185,9 +186,9 @@ export default function TrueFalsePractice() {
     <div className="flex flex-col gap-5 p-5">
       <div>
         <div className="flex items-center justify-between text-sm text-slate-500">
-          <Link href="/practice" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
+          <MenuLink group="read" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> ออก
-          </Link>
+          </MenuLink>
           <span>
             ข้อ {qi + 1}/{questions.length} · ถูก {correctCount}
           </span>

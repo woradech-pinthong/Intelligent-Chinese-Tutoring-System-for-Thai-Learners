@@ -9,6 +9,7 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
+import { MenuLink } from "@/components/MenuLink";
 import { supabase, audioUrl, type Word } from "@/lib/supabase";
 import { PICTURE_WORDS } from "@/data/mock-activities";
 import { Center, ErrorState } from "@/components/Feedback";
@@ -199,9 +200,9 @@ function PictureRound({ mode, words, onAgain }: { mode: PicMode; words: PicWord[
     <>
       <div>
         <div className="flex items-center justify-between text-sm text-slate-500">
-          <Link href="/practice" className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
+          <MenuLink group={mode === "read" ? "read" : "listen"} className="inline-flex items-center gap-1 text-slate-400 hover:text-slate-600">
             <Icon name="arrowLeft" className="h-3.5 w-3.5" /> ออก
-          </Link>
+          </MenuLink>
           <span>
             ข้อ {qi + 1}/{questions.length} · ถูก {correct}
           </span>
@@ -377,12 +378,11 @@ function Summary({ correct, total, onAgain }: { correct: number; total: number; 
         >
           <Icon name="refresh" className="h-5 w-5" /> ฝึกอีกรอบ
         </button>
-        <Link
-          href="/practice"
+        <MenuLink
           className="flex-1 rounded-xl bg-slate-100 px-4 py-3 text-center font-medium text-slate-600 transition hover:bg-slate-200 active:scale-95"
         >
           กลับเมนูฝึก
-        </Link>
+        </MenuLink>
       </div>
       <Link href="/progress" className="text-sm text-ocean-500 underline">
         ดูสรุปผลการฝึกทั้งหมด

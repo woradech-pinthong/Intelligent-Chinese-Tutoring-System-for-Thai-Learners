@@ -15,6 +15,7 @@ import { Center } from "@/components/Feedback";
 import { ProgressBar } from "@/components/ProgressBar";
 import { SkillBars } from "@/components/SkillPanel";
 import { overall } from "@/data/mockData";
+import { practiceMenu, groupMenuHref } from "@/lib/practice-menu";
 
 function CategoryMenuInner({ cat }: { cat: number | null }) {
   const [ids, setIds] = useState<number[]>([]);
@@ -109,36 +110,22 @@ function CategoryMenuInner({ cat }: { cat: number | null }) {
         badge={learned === 0 ? "เริ่มที่นี่" : undefined}
         primary
       />
-      {/* ฝึก 4 ทักษะ → เมนูเฉพาะทักษะ (/practice?group=) รวมทุกแบบฝึกของทักษะนั้น */}
-      <ActivityCard
-        href={`/practice?cat=${cat}&group=listen`}
-        icon="headphone"
-        title="ฝึกฟัง"
-        desc="ฟังคำ · แยกเสียง · ฟังแล้วเลือกรูป · ฟังประโยค · ฟังบทสนทนา"
-      />
-      <ActivityCard
-        href={`/practice?cat=${cat}&group=read`}
-        icon="book"
-        title="ฝึกอ่าน"
-        desc="อ่านคำ · จริง/เท็จ · อ่านแล้วเลือกรูป · อ่านประโยค · จับคู่ถาม-ตอบ · เติมคำ"
-      />
-      <ActivityCard
-        href={`/practice?cat=${cat}&group=write`}
-        icon="pencil"
-        title="ฝึกเขียน"
-        desc="เรียงคำเป็นประโยค · เติมคำ (ประกอบภาษา — HSK 1 ไม่สอบเขียน)"
-      />
-      <ActivityCard
-        href={`/practice?cat=${cat}&group=speak`}
-        icon="mic"
-        title="ฝึกพูด"
-        desc="ฟังเสียงต้นแบบแล้วพูดตาม (ทดลอง · ไม่นับคะแนน)"
-      />
+      {/* ฝึก 4 ทักษะ → เมนูทักษะ (/practice?group=) · รายการแบบฝึกมาจาก lib/practice-menu.ts ชุดเดียวกับเมนูฝึก */}
+      {practiceMenu().map((g) => (
+        <ActivityCard
+          key={g.id}
+          href={groupMenuHref(g.id, cat)}
+          icon={g.icon}
+          title={g.pageTitle}
+          desc={`${g.items.map((i) => i.title).join(" · ")}${g.note ? ` (${g.note})` : ""}`}
+        />
+      ))}
+      {/* เกมทวนคำ — อยู่ที่นี่ที่เดียว (ไม่ใช่รูปแบบข้อสอบ จึงไม่อยู่ในเมนูทักษะ) */}
       <ActivityCard
         href={`/match?cat=${cat}`}
         icon="sparkles"
         title="เกมจับคู่"
-        desc="เปิดการ์ดจับคู่คำกับคำแปล/เสียง — ทวนคำที่เรียนแล้วแบบสนุก ๆ"
+        desc="ทวนคำที่เรียนแล้วแบบสนุก ๆ — จับคู่คำกับคำแปล หรือเสียงกับตัวจีน"
       />
       </>)}
 
