@@ -115,27 +115,7 @@ export default function PracticeHub(p: PracticeHubProps) {
         {notice}
       </header>
 
-      {/* สลับทักษะ */}
-      <nav aria-label="สลับทักษะ" className="-mt-1 flex gap-2 overflow-x-auto pb-0.5">
-        {menu.map((g) => {
-          const active = g.id === focus.id;
-          return (
-            <Link
-              key={g.id}
-              href={groupMenuHref(g.id, p.cat)}
-              aria-current={active ? "page" : undefined}
-              className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition ${
-                active ? "border-ocean-700 bg-ocean-700 text-white" : "border-slate-200 bg-white text-slate-600 hover:border-ocean-300 hover:text-ocean-700"
-              }`}
-            >
-              <Icon name={g.icon} className="h-3.5 w-3.5" />
-              {g.title}
-              <span className={`tabular-nums ${active ? "text-ocean-100" : "text-slate-400"}`}>{g.items.length}</span>
-            </Link>
-          );
-        })}
-      </nav>
-
+      {/* ไม่มีแถบสลับทักษะ — เลือกทักษะมาแล้วจากหน้าหมวด/หน้าเลือกทักษะ (บอล 12 ต.ค.: "กดฝึกฟังก็มีให้เลือกทักษะทั้งหมดอีก") · เปลี่ยนทักษะ = ปุ่มกลับด้านบน */}
       <section aria-labelledby="hub-group-title">
         <div className="mb-2 flex items-center gap-2.5">
           <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-ocean-900 text-white">
