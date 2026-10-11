@@ -109,23 +109,30 @@ function CategoryMenuInner({ cat }: { cat: number | null }) {
         badge={learned === 0 ? "เริ่มที่นี่" : undefined}
         primary
       />
+      {/* ฝึก 4 ทักษะ → เมนูเฉพาะทักษะ (/practice?group=) รวมทุกแบบฝึกของทักษะนั้น */}
       <ActivityCard
-        href={`/practice?cat=${cat}&mode=listen`}
+        href={`/practice?cat=${cat}&group=listen`}
         icon="headphone"
         title="ฝึกฟัง"
-        desc="ฟังเสียงแล้วเลือกคำที่ได้ยิน"
+        desc="ฟังคำ · แยกเสียง · ฟังแล้วเลือกรูป · ฟังประโยค · ฟังบทสนทนา"
       />
       <ActivityCard
-        href={`/practice?cat=${cat}&mode=read`}
+        href={`/practice?cat=${cat}&group=read`}
         icon="book"
         title="ฝึกอ่าน"
-        desc="อ่านคำจีนแล้วเลือกคำแปลที่ถูก"
+        desc="อ่านคำ · จริง/เท็จ · อ่านแล้วเลือกรูป · อ่านประโยค · จับคู่ถาม-ตอบ · เติมคำ"
       />
       <ActivityCard
-        href="/practice?mode=order"
-        icon="puzzle"
-        title="ฝึกเรียงประโยค"
-        desc="ลากคำมาเรียงเป็นประโยค (ชุดประโยครวม — ยังไม่แยกหมวด)"
+        href={`/practice?cat=${cat}&group=write`}
+        icon="pencil"
+        title="ฝึกเขียน"
+        desc="เรียงคำเป็นประโยค · เติมคำ (ประกอบภาษา — HSK 1 ไม่สอบเขียน)"
+      />
+      <ActivityCard
+        href={`/practice?cat=${cat}&group=speak`}
+        icon="mic"
+        title="ฝึกพูด"
+        desc="ฟังเสียงต้นแบบแล้วพูดตาม (ทดลอง · ไม่นับคะแนน)"
       />
       <ActivityCard
         href={`/match?cat=${cat}`}

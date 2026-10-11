@@ -11,7 +11,7 @@ import { saveRound, type QuizMode } from "@/lib/progress";
 import { loadCards } from "@/lib/fsrs";
 import { logAttempt } from "@/lib/attempts-outbox";
 import SentenceOrder from "./SentenceOrder";
-import PracticeHub from "./PracticeHub";
+import PracticeHub, { HUB_GROUPS, type HubGroup } from "./PracticeHub";
 import { Icon } from "@/components/Icon";
 import { Pinyin } from "@/components/Pinyin";
 import { Mascot, MascotSays } from "@/components/Mascot";
@@ -47,7 +47,7 @@ function saveListenChoice(c: ListenChoice): void {
   }
 }
 
-function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: QuizMode | null }) {
+function PracticeInner({ cat, modeParam, group }: { cat: number | null; modeParam: QuizMode | null; group: HubGroup | null }) {
   const [words, setWords] = useState<Word[]>([]);
   const [loading, setLoading] = useState(true);
   const autoStartedRef = useRef(false);
@@ -196,6 +196,7 @@ function PracticeInner({ cat, modeParam }: { cat: number | null; modeParam: Quiz
     return (
       <PracticeHub
         cat={cat}
+        group={group}
         notice={notice}
         words={words}
         learnedIds={learnedIds}
@@ -450,5 +451,7 @@ function PracticeFromQuery() {
   const cat = Number(sp.get("cat")) || null;
   const mp = sp.get("mode");
   const modeParam = mp === "read" || mp === "listen" || mp === "order" ? (mp as QuizMode) : null;
-  return <PracticeInner key={sp.toString()} cat={cat} modeParam={modeParam} />;
+  const gp = sp.get("group");
+  const group = HUB_GROUPS.includes(gp as HubGroup) ? (gp as HubGroup) : null; // ?group= = เมนูเฉพาะทักษะ (จากหน้าหมวด)
+  return <PracticeInner key={sp.toString()} cat={cat} modeParam={modeParam} group={group} />;
 }

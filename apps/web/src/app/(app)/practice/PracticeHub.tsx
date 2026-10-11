@@ -48,10 +48,16 @@ type Card = {
   onStart?: () => void;
 };
 
-type Group = { id: string; icon: IconName; title: string; sub?: string; hsk: string; cards: Card[] };
+type Group = { id: HubGroup; icon: IconName; title: string; sub?: string; hsk: string; cards: Card[] };
+
+// ?group= — เข้าจากการ์ด "ฝึกฟัง / ฝึกอ่าน / ฝึกเขียน / ฝึกพูด" ในหน้าหมวด → โชว์เฉพาะกิจกรรมของทักษะนั้น (บอลกดฝึกฟังแล้วหาบทสนทนา/เลือกรูปไม่เจอ 12 ต.ค.)
+export type HubGroup = "listen" | "read" | "write" | "speak";
+export const HUB_GROUPS: readonly HubGroup[] = ["listen", "read", "write", "speak"];
+const GROUP_PAGE_TITLE: Record<HubGroup, string> = { listen: "ฝึกฟัง", read: "ฝึกอ่าน", write: "ฝึกเขียน", speak: "ฝึกพูด" };
 
 export type PracticeHubProps = {
   cat: number | null;
+  group?: HubGroup | null; // null = ทุกทักษะ
   notice: string | null;
   words: Word[]; // คลังคำ HSK 1 ทั้งหมด (ไม่กรองหมวด) — กิจกรรมหน้าอื่นใช้ทั้งคลัง
   learnedIds: ReadonlySet<number>;
@@ -63,10 +69,14 @@ export type PracticeHubProps = {
 
 export default function PracticeHub(p: PracticeHubProps) {
   const n = useMemo(() => countPools(p.words, p.learnedIds, p.cat), [p.words, p.learnedIds, p.cat]);
-  const groups = buildGroups(p, n)
+  const allGroups = buildGroups(p, n)
     .map((g) => ({ ...g, cards: g.cards.filter((c) => SHOW_DEMO || !UNREVIEWED.has(c.status)) }))
     .filter((g) => g.cards.length > 0);
+  const focus = p.group && allGroups.some((g) => g.id === p.group) ? p.group : null;
+  const groups = focus ? allGroups.filter((g) => g.id === focus) : allGroups;
   const usedStatus = new Set(groups.flatMap((g) => g.cards.map((c) => c.status)));
+  const catQ = p.cat ? `&cat=${p.cat}` : "";
+  const catLabel = p.cat ? ` · ${catName(p.cat) ?? `หมวด ${p.cat}`}` : "";
 
   return (
     <div className="flex flex-col gap-5 p-5">
@@ -77,9 +87,12 @@ export default function PracticeHub(p: PracticeHubProps) {
           </Link>
         )}
         <h1 className="text-xl font-semibold text-slate-700">
-          ฝึกทำข้อสอบ{p.cat ? ` · ${catName(p.cat) ?? `หมวด ${p.cat}`}` : ""}
+          {focus ? GROUP_PAGE_TITLE[focus] : "ฝึกทำข้อสอบ"}
+          {catLabel}
         </h1>
-        <p className="mt-1 text-sm text-slate-400">รูปแบบข้อสอบ HSK · ตรวจให้ทันที · ฟังซ้ำได้ไม่จำกัด</p>
+        <p className="mt-1 text-sm text-slate-400">
+          {focus ? `เลือกแบบฝึกได้ ${groups[0]?.cards.length ?? 0} แบบ · ` : ""}รูปแบบข้อสอบ HSK · ตรวจให้ทันที · ฟังซ้ำได้ไม่จำกัด
+        </p>
         {p.cat && (
           <p className="mt-2 rounded-xl bg-ocean-50 px-3 py-2 text-xs leading-relaxed text-ocean-700">
             ฝึกฟัง · ฝึกอ่าน · เกมจับคู่ ใช้เฉพาะคำในหมวดนี้ — กิจกรรมอื่นใช้คำทุกหมวด
@@ -90,19 +103,37 @@ export default function PracticeHub(p: PracticeHubProps) {
         )}
       </header>
 
-      {/* ทางลัดไปแต่ละกลุ่ม — เมนูยาวบนมือถือ */}
-      <nav aria-label="ไปที่กลุ่มทักษะ" className="-mt-1 flex gap-2 overflow-x-auto pb-0.5">
-        {groups.map((g) => (
-          <a
-            key={g.id}
-            href={`#hub-${g.id}`}
+      {/* แถบทักษะ: หน้ารวม = ทางลัดเลื่อนไปแต่ละกลุ่ม · หน้าทักษะเดียว = สลับไปทักษะอื่น */}
+      <nav aria-label={focus ? "สลับทักษะ" : "ไปที่กลุ่มทักษะ"} className="-mt-1 flex gap-2 overflow-x-auto pb-0.5">
+        {focus && (
+          <Link
+            href={`/practice${p.cat ? `?cat=${p.cat}` : ""}`}
             className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-ocean-300 hover:text-ocean-700"
           >
-            <Icon name={g.icon} className="h-3.5 w-3.5" />
-            {g.title}
-            <span className="tabular-nums text-slate-400">{g.cards.length}</span>
-          </a>
-        ))}
+            ทุกทักษะ
+          </Link>
+        )}
+        {allGroups.map((g) => {
+          const chip = (
+            <>
+              <Icon name={g.icon} className="h-3.5 w-3.5" />
+              {g.title}
+              <span className={`tabular-nums ${g.id === focus ? "text-ocean-100" : "text-slate-400"}`}>{g.cards.length}</span>
+            </>
+          );
+          const cls = `inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition ${
+            g.id === focus ? "border-ocean-700 bg-ocean-700 text-white" : "border-slate-200 bg-white text-slate-600 hover:border-ocean-300 hover:text-ocean-700"
+          }`;
+          return focus ? (
+            <Link key={g.id} href={`/practice?group=${g.id}${catQ}`} className={cls} aria-current={g.id === focus ? "page" : undefined}>
+              {chip}
+            </Link>
+          ) : (
+            <a key={g.id} href={`#hub-${g.id}`} className={cls}>
+              {chip}
+            </a>
+          );
+        })}
       </nav>
 
       {groups.map((g) => (
