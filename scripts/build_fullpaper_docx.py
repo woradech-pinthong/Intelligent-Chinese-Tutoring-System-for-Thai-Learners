@@ -134,13 +134,17 @@ def caption(label, rest, keep):
     return P(runs(label) + runs(rest), jc="center", keep=keep, before=120 if keep else 0, after=0 if keep else 120)
 FIGS = []   # รูปที่ฝังลงเอกสาร: (rId, ไฟล์ PNG ต้นทาง, ชื่อใน word/media)
 def figure(alt, rel_path):
-    """บรรทัด ![alt](path.png) ในร่าง → รูปกว้างเต็มคอลัมน์ กึ่งกลาง (ถ้าไม่พบไฟล์ จะกลับเป็นแถบเหลืองรอใส่รูป)"""
+    """บรรทัด ![alt](path.png) ในร่าง → รูปกว้างเต็มคอลัมน์ กึ่งกลาง · ![alt|82%](path.png) = ย่อเหลือ 82% ของความกว้าง
+    (ถ้าไม่พบไฟล์ จะกลับเป็นแถบเหลืองรอใส่รูป)"""
+    m_w = re.match(r'^(.*?)\|(\d+)%$', alt)
+    pct = int(m_w.group(2)) if m_w else 100
+    if m_w: alt = m_w.group(1)
     src = os.path.join(DOCS, *rel_path.split("/"))
     if not os.path.exists(src): return placeholder(f"{alt} — ไม่พบไฟล์ {rel_path}")
     n = len(FIGS) + 1; rid = f"rIdPaperFig{n}"; media = f"paperfig{n}.png"
     FIGS.append((rid, src, media))
     with open(src, "rb") as f: pw, ph = struct.unpack(">II", f.read(24)[16:24])
-    cx = W * 635; cy = round(cx * ph / pw)          # 1 dxa = 635 EMU
+    cx = round(W * 635 * pct / 100); cy = round(cx * ph / pw)          # 1 dxa = 635 EMU
     pic = (f'<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="{cx}" cy="{cy}"/>'
            f'<wp:effectExtent l="0" t="0" r="0" b="0"/><wp:docPr id="{9000 + n}" name="Figure {n}" descr="{esc(alt)}"/>'
            '<wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr>'
@@ -187,14 +191,15 @@ def table(rows, widths, sz=TABLE_SZ):
          '<w:tblCellMar><w:left w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar>'
          '<w:tblLook w:val="04A0" w:firstRow="1" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="1"/></w:tblPr>')
     x += "<w:tblGrid>" + "".join(f'<w:gridCol w:w="{w}"/>' for w in widths) + "</w:tblGrid>"
-    keep_all = len(rows) <= 12      # keep a short table together (keepNext on every row but the last); longer ones split with a repeated header
+    keep_all = len(rows) <= 8       # keep a short table together (keepNext on every row but the last); longer ones split with a repeated header
+                                    # (15 ต.ค.: 12 → 8 — ตารางที่ 4 มี 11 แถว ถ้าบังคับไม่แยกจะตกไปทั้งตารางเหลือที่ว่างครึ่งหน้า)
     for ri, row in enumerate(rows):
         assert len(row) == len(widths), row
         hdr = ri == 0
         x += "<w:tr><w:trPr><w:cantSplit/>" + ("<w:tblHeader/>" if hdr else "") + "</w:trPr>"
         for ci, cell in enumerate(row):
             x += f'<w:tc><w:tcPr><w:tcW w:w="{widths[ci]}" w:type="dxa"/>' + ('<w:shd w:val="clear" w:color="auto" w:fill="F2F2F2"/>' if hdr else '') + '</w:tcPr>'
-            x += P(inline(cell, bold=hdr, sz=sz), jc="center" if hdr else "left", sz=sz, keep=keep_all and ri < len(rows) - 1)
+            x += P(inline(cell, bold=hdr, sz=sz), jc="center" if hdr else "left", sz=sz, keep=(keep_all and ri < len(rows) - 1) or hdr)   # หัวตารางติดกับแถวแรกเสมอ
             x += "</w:tc>"
         x += "</w:tr>"
     x += "</w:tbl>"
@@ -381,6 +386,7 @@ def parse_body():
     return "".join(xml), plain_texts
 
 def main():
+    sys.stdout.reconfigure(encoding="utf-8")   # ชื่อไฟล์รูปเป็นภาษาไทย
     if os.path.exists(OUT_DIR): shutil.rmtree(OUT_DIR)
     shutil.copytree(TPL, OUT_DIR)
     doc = io.open(os.path.join(OUT_DIR, "word", "document.xml"), encoding="utf-8").read()

@@ -21,9 +21,9 @@ FS = 1.15   # ขยายตัวอักษร: รูปกว้าง 100
 BLUE = ("#eaf1fb", "#4a6fa5"); GREEN = ("#e9f5ea", "#4f8a4f"); ORANGE = ("#fff4e3", "#c27c1a")
 PURPLE = ("#f2edf9", "#7a5ca8"); PLAIN = ("#ffffff", "#555555"); DESIGN = ("#ffffff", "#8a8a8a")
 
-def node(id, x, y, w, h, lines, color=PLAIN, dashed=False, shape="box", valign="middle"):
-    """lines = [(ข้อความ, ขนาด, ตัวหนา)]"""
-    return dict(id=id, x=x, y=y, w=w, h=h, lines=lines, color=color, dashed=dashed, shape=shape, valign=valign)
+def node(id, x, y, w, h, lines, color=PLAIN, dashed=False, shape="box", valign="middle", font=None):
+    """lines = [(ข้อความ, ขนาด, ตัวหนา)] · font = ฟอนต์เฉพาะกล่อง (เช่น Consolas สำหรับชื่อตาราง)"""
+    return dict(id=id, x=x, y=y, w=w, h=h, lines=lines, color=color, dashed=dashed, shape=shape, valign=valign, font=font)
 def edge(id, pts, label=None, dashed=False, both=False, label_at=None):
     """label = [บรรทัด…] วางบนเส้นตรงจุด label_at (พื้นขาว)"""
     return dict(id=id, pts=pts, label=label, dashed=dashed, both=both, label_at=label_at)
@@ -47,6 +47,39 @@ FIG1 = dict(name="รูป1-สถาปัตยกรรม", w=1000, h=590, 
     edge("e_sql", [(810, 368), (810, 440)], ["psycopg"], label_at=(810, 404)),
     edge("e_bkt", [(640, 516), (330, 516)], ["ข้อมูลการตอบ ⇄ พารามิเตอร์"], dashed=True, both=True, label_at=(485, 516)),
 ], legend=(20, 572))
+
+# ---------------- รูปที่ 2 ผังความสัมพันธ์ของข้อมูลแบบย่อ ----------------
+# 24 ตาราง จัด 7 ส่วนตามข้อความหัวข้อ 2.2 (ลำดับเดียวกับ ER-เดินตามผู้ใช้) · ลูกศร = คีย์นอกจาก docs/08_สเปค-พัฒนา/er-drawio.sql
+RED = ("#fdeeec", "#b85450"); TEAL = ("#e7f4f6", "#2b7a8c"); GREY = ("#f3f3f3", "#777777")
+def panel(id, x, y, w, title, tables, color, note=None):
+    """กล่องส่วน: หัวข้อไทยด้านบน + ชื่อตารางเรียงลง (กล่องละ 32 px ห่าง 8) + หมายเหตุท้ายกล่อง"""
+    h = 44 + 40 * len(tables) + 6 + (40 if note else 0)
+    out = [node(id, x, y, w, h, [T(title, 14, True)], color, valign="top")]
+    for i, t in enumerate(tables):
+        out.append(node(f"{id}_{t}", x + 15, y + 44 + 40 * i, w - 30, 32, [T(t, 13)], ("#ffffff", color[1]), font="Consolas"))
+    if note:
+        out.append(node(f"{id}_note", x + 8, y + 44 + 40 * len(tables), w - 16, 40, [T(l, 11) for l in note], ("none", "none")))
+    return out
+FIG2 = dict(name="รูป2-ฐานข้อมูล", w=1000, h=735, nodes=[
+    *panel("g2", 20, 30, 280, "(2) การทำแบบทดสอบก่อนเรียน", ["exam_forms", "form_items", "items", "sessions", "item_skills"], ORANGE),
+    *panel("g1", 400, 50, 200, "(1) การสมัครใช้งาน", ["users"], BLUE, note=["ทุกส่วนมีตารางที่อ้างถึง", "users เช่น ผ่าน user_id"]),
+    *panel("g4", 700, 30, 280, "(4) การเรียนตามหมวด", ["categories", "category_progress", "review_states", "words", "sentences",
+                                                       "sentence_words", "sentence_states"], GREEN),
+    *panel("g3", 390, 310, 220, "(3) การบันทึกคำตอบทีละข้อ", ["attempts"], RED),
+    *panel("g7", 20, 470, 230, "(7) งานของผู้ดูแลระบบ", ["approval_transfers", "roadmap_state"], GREY),
+    *panel("g6", 370, 470, 260, "(6) แบบจำลอง BKT และคลังข้อผิด", ["bkt_training_runs", "skills", "thai_l1_catalog", "mastery_snapshots"], TEAL),
+    *panel("g5", 750, 470, 230, "(5) การปูพื้นฐานเสียง", ["foundation_stages", "foundation_lessons", "minimal_pairs", "foundation_progress"], PURPLE),
+], edges=[
+    edge("fk_user", [(500, 310), (500, 180)], ["user_id"], label_at=(500, 247)),
+    edge("fk_g2", [(390, 366), (350, 366), (350, 190), (300, 190)], ["session_id", "item_id"], label_at=(350, 283)),
+    edge("fk_g4", [(610, 366), (650, 366), (650, 230), (700, 230)], ["word_id", "sentence_id"], label_at=(650, 283)),
+    edge("fk_skill", [(500, 400), (500, 470)], ["skill_id"], label_at=(500, 435)),
+    edge("fk_cat", [(160, 30), (160, 12), (840, 12), (840, 30)], ["category"], label_at=(500, 12)),
+    edge("fk_itemskill", [(290, 280), (290, 570), (370, 570)], ["skill_id"], label_at=(290, 420)),
+    edge("fk_sentskill", [(710, 360), (710, 570), (630, 570)], ["skill_id"], label_at=(710, 420)),
+    edge("fk_pairword", [(865, 470), (865, 360)], ["word_a_id · word_b_id"], label_at=(865, 415)),
+    edge("fk_pairskill", [(750, 610), (630, 610)], ["skill_id"], label_at=(690, 610)),
+], legend=None, note=(20, 712, "ลูกศร = คีย์นอกระหว่างส่วน ชี้ไปยังส่วนที่ถูกอ้างถึง · ข้อความบนลูกศร = ชื่อคีย์นอก · ลูกศรไปยัง users แสดงเฉพาะของส่วนที่ (3)"))
 
 # ---------------- รูปที่ 3 ขั้นตอนตรวจคำตอบ ----------------
 FIG3 = dict(name="รูป3-ตรวจคำตอบ", w=1000, h=520, nodes=[
@@ -100,6 +133,7 @@ def to_html(fig):
                               f'fill="{fill}" stroke="{stroke}" stroke-width="2"/>')
             parts.append(f'<div class="n" style="left:{x}px;top:{y}px;width:{w}px;height:{h}px;justify-content:center;z-index:2">{txt}</div>')
             continue
+        if n.get("font"): txt = f'<div style="font-family:{n["font"]},monospace;width:100%">{txt}</div>'
         radius = n["h"] / 2 if n["shape"] == "round" else 8
         border = f'2px {"dashed" if n["dashed"] else "solid"} {stroke}'
         pad = "padding-top:10px;" if n["valign"] == "top" else ""
@@ -121,6 +155,9 @@ def to_html(fig):
             arrows.append(f'<line x1="{x0}" y1="{ly}" x2="{x0 + 44}" y2="{ly}" stroke="#333" stroke-width="2"'
                           f'{" stroke-dasharray=\"7 5\"" if dashed else ""}/>')
             parts.append(f'<div style="position:absolute;left:{x0 + 54}px;top:{ly - 10}px;font-size:15px;line-height:20px;color:#333">{esc(name)}</div>')
+    if fig.get("note"):
+        nx, ny, ntext = fig["note"]
+        parts.append(f'<div style="position:absolute;left:{nx}px;top:{ny - 10}px;font-size:14px;line-height:20px;color:#333">{esc(ntext)}</div>')
     defs = ('<defs><marker id="a1" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto">'
             '<path d="M0,0 L10,5 L0,10 z" fill="#333"/></marker>'
             '<marker id="a0" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto">'
@@ -137,7 +174,7 @@ def to_drawio(fig):
         fill, stroke = n["color"]
         val = "<br>".join(f'<font style="font-size:{round(s * FS)}px">{"<b>" + esc(t) + "</b>" if b else esc(t)}</font>' for t, s, b in n["lines"])
         shape = {"diamond": "rhombus;", "round": "rounded=1;arcSize=50;", "box": "rounded=1;arcSize=8;"}[n["shape"]]
-        style = (f'{shape}whiteSpace=wrap;html=1;fillColor={fill};strokeColor={stroke};strokeWidth=2;fontFamily={FONT};fontSize=14;'
+        style = (f'{shape}whiteSpace=wrap;html=1;fillColor={fill};strokeColor={stroke};strokeWidth=2;fontFamily={n.get("font") or FONT};fontSize=14;'
                  f'verticalAlign={"top" if n["valign"] == "top" else "middle"};{"dashed=1;" if n["dashed"] else ""}')
         cells.append(f'<mxCell id="{n["id"]}" value="{esc(val)}" style="{style}" vertex="1" parent="1">'
                      f'<mxGeometry x="{n["x"]}" y="{n["y"]}" width="{n["w"]}" height="{n["h"]}" as="geometry"/></mxCell>')
@@ -163,6 +200,10 @@ def to_drawio(fig):
                          f'<mxPoint x="{x0 + 44}" y="{ly}" as="targetPoint"/></mxGeometry></mxCell>')
             cells.append(f'<mxCell id="lg{i}_t" value="{esc(name)}" style="text;html=1;align=left;verticalAlign=middle;fontSize=15;fontFamily={FONT};" '
                          f'vertex="1" parent="1"><mxGeometry x="{x0 + 52}" y="{ly - 10}" width="160" height="20" as="geometry"/></mxCell>')
+    if fig.get("note"):
+        nx, ny, ntext = fig["note"]
+        cells.append(f'<mxCell id="note" value="{esc(ntext)}" style="text;html=1;align=left;verticalAlign=middle;fontSize=14;fontFamily={FONT};" '
+                     f'vertex="1" parent="1"><mxGeometry x="{nx}" y="{ny - 10}" width="{fig["w"] - 2 * nx}" height="20" as="geometry"/></mxCell>')
     xml = (f'<mxfile host="app.diagrams.net">\n  <diagram name="{esc(fig["name"])}" id="{esc(fig["name"])}">\n'
            f'    <mxGraphModel grid="1" gridSize="10" guides="1" connect="1" arrows="1" page="1" pageWidth="{fig["w"]}" pageHeight="{fig["h"]}">\n'
            '      <root>\n        <mxCell id="0"/>\n        <mxCell id="1" parent="0"/>\n        ' + "\n        ".join(cells) +
@@ -171,6 +212,8 @@ def to_drawio(fig):
     return xml
 
 # ---------------- ตรวจผัง: กล่องทับกัน / ลูกศรทะลุกล่อง ----------------
+def contains(a, b):
+    return a["x"] <= b["x"] and a["y"] <= b["y"] and b["x"] + b["w"] <= a["x"] + a["w"] and b["y"] + b["h"] <= a["y"] + a["h"]
 def check(fig):
     inside_ok = {("student", "local"), ("back", "back_design")}
     ns = {n["id"]: n for n in fig["nodes"]}; bad = []
@@ -178,7 +221,7 @@ def check(fig):
     for i in range(len(ids)):
         for j in range(i + 1, len(ids)):
             a, b = ns[ids[i]], ns[ids[j]]
-            if (a["id"], b["id"]) in inside_ok: continue
+            if (a["id"], b["id"]) in inside_ok or contains(a, b) or contains(b, a): continue
             if a["x"] < b["x"] + b["w"] and b["x"] < a["x"] + a["w"] and a["y"] < b["y"] + b["h"] and b["y"] < a["y"] + a["h"]:
                 bad.append(f'ทับกัน {a["id"]}/{b["id"]}')
     for e in fig["edges"]:
@@ -210,7 +253,7 @@ def render_png(html_text, w, h, out_png):
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")
     os.makedirs(OUT, exist_ok=True)
-    for fig in (FIG1, FIG3):
+    for fig in (FIG1, FIG2, FIG3):
         problems = check(fig)
         io.open(os.path.join(OUT, fig["name"] + ".drawio"), "w", encoding="utf-8", newline="\n").write(to_drawio(fig))
         png = os.path.join(OUT, fig["name"] + ".png")
