@@ -1,6 +1,6 @@
 ---
 tags: [full-paper, CSTI-MJU, ร่าง]
-updated: 2026-10-12
+updated: 2026-10-15
 ---
 
 # ร่าง Full paper CSTI-MJU ครั้งที่ 8 — ฉบับที่ 1 (ข้อความพร้อมคัดลอกลงเทมเพลต)
@@ -10,6 +10,8 @@ updated: 2026-10-12
 > **สมมุติฐานของร่างนี้:** ใช้บทคัดย่อที่ส่งแล้วแบบคำต่อคำ (ทางเลือก ① ในไฟล์วิเคราะห์ §4) ตัวบทจึงเขียนส่วนที่ยังไม่เสร็จว่า "ออกแบบให้…" และบอกสถานะจริงที่ตารางที่ 3 กับหัวข้อข้อจำกัดเท่านั้น · ถ้าอาจารย์ให้ปรับบทคัดย่อ ใช้ฉบับปรับท้ายไฟล์
 
 ## วิธีวางลงเทมเพลต (อ่านก่อน ไม่ต้องคัดลอกส่วนนี้)
+
+> ✅ **15 ต.ค. 2569: ไม่ต้องวางมือแล้ว** — สคริปต์ `scripts/build_fullpaper_docx.py` วางข้อความจากไฟล์นี้ลงเทมเพลตให้ทั้งฉบับ → **`fullpaper-CSTI-MJU8.docx`** (ดูภาพรวมใน `fullpaper-CSTI-MJU8-พรีวิว.pdf`) · แก้ข้อความ**ในไฟล์ .md นี้**แล้วรันสคริปต์ใหม่ได้ทุกครั้ง (`python scripts/build_fullpaper_docx.py` ต้อง `pip install pythainlp` ก่อน) · **ถ้าเริ่มแก้ในไฟล์ Word โดยตรงเมื่อไร ให้ถือ .docx เป็นไฟล์หลักและหยุดรันสคริปต์** (ไม่งั้นทับของที่แก้) · ขั้นตอนข้างล่างคงไว้เผื่อต้องวางมือ
 
 1. คัดลอก `mjuF2027.docx` เป็นไฟล์ใหม่ เช่น `fullpaper-CSTI-MJU8.docx` แล้ววางทีละส่วน **วางแบบข้อความอย่างเดียว** (Ctrl+Shift+V หรือ "Keep Text Only") แล้วใช้ Format Painter จากย่อหน้าเดิมของเทมเพลต — ห้ามกดสไตล์จากแถบ Styles เพราะเป็น Times New Roman
 2. ฟอนต์ TH SarabunPSK ทั้งฉบับ · ชื่อเรื่อง 16 หนา · หัวข้อหลัก 14 หนา · เนื้อความ 14 ปกติ · บรรทัดหน่วยงาน 14 เอียง · บรรทัดผู้ประสานงาน 12 ปกติ
@@ -320,7 +322,7 @@ Corbett, A. T., & Anderson, J. R. (1994). Knowledge tracing: Modeling the acquis
 
 drkameleon. (n.d.). complete-hsk-vocabulary [Data set]. GitHub. https://github.com/drkameleon/complete-hsk-vocabulary
 
-Hao, Y., Duan, X., & Yan, Q. (2022). Processing aspectual agreement in a language with limited morphological inflection by second language learners: An ERP study of Mandarin Chinese. Brain Sciences, 12(5), 524. https://doi.org/10.3390/brainsci12050524
+Hao, Y., Duan, X., & Yan, Q. (2022). Processing aspectual agreement in a language with limited morphological inflection by second language learners: An ERP study of Mandarin Chinese. Brain Sciences, 12(5), Article 524. https://doi.org/10.3390/brainsci12050524
 
 HSK1.org. (n.d.). HSK 1 vocabulary list. Retrieved July 12, 2026, from https://hsk1.org/hsk/1/vocabulary
 
@@ -330,7 +332,7 @@ Inceoglu, S., Chen, W.-H., & Lim, H. (2023). Assessment of L2 intelligibility: C
 
 Kitikanan, P., & Al-Tamimi, J. (2012). The earliest stage of voiceless fricative acquisition among Thai learners of Mandarin Chinese. Annual Review of Education, Communication and Language Sciences, 9, 91–114. https://research.ncl.ac.uk/media/sites/researchwebsites/arecls/kitikanan_and_altamimi_vol9.pdf
 
-Kongkamnerd, K. (2024). Error analysis of the Chinese noun quantifier "ge" by Thai learners of Chinese in China. Journal of Sinology, 18(1), 92–109. https://journals.mfu.ac.th/jsino/article/view/130
+Kongkamnerd, K. (2024). Error analysis of the Chinese noun quantifier “ge” by Thai learners of Chinese in China. Journal of Sinology, 18(1), 92–109. https://journals.mfu.ac.th/jsino/article/view/130
 
 Li, L., & Imsamran, T. (2021). Error analysis of animal classifier words for Thai students: A case study of the prompt understanding of measure words. Chinese Language and Culture Journal, 8(1), 237–248. https://so02.tci-thaijo.org/index.php/clcjn/article/view/248475
 
@@ -358,11 +360,11 @@ Ye, J., Su, J., & Cao, Y. (2022). A stochastic shortest path algorithm for optim
 
 Zhang, C. (2023). 泰国学生汉语学习中定语语序的偏误分析 [Error analysis of attributive word order in Thai students' Chinese learning]. 现代语言学 [Modern Linguistics], 11(4), 1825–1831. https://doi.org/10.12677/ml.2023.114247
 
-Zhang, H., Chang, X., Liu, W., Zhang, Y., & Wang, N. (2025). Identification of Mandarin tones in loud speech for native speakers and second language learners. Behavioral Sciences, 15(8), 1062. https://doi.org/10.3390/bs15081062
+Zhang, H., Chang, X., Liu, W., Zhang, Y., & Wang, N. (2025). Identification of Mandarin tones in loud speech for native speakers and second language learners. Behavioral Sciences, 15(8), Article 1062. https://doi.org/10.3390/bs15081062
 
 Zhang, L., & Liu, S. (2020). Acoustic analysis of Chinese tone production by Thai-speaking learners of L2 Chinese. Journal of Second Language Studies, 3(2), 180–204. https://doi.org/10.1075/jsls.19035.zha
 
-Zhang, S., Thaveewatanaseth, N., & Numtong, K. (2026). Error analysis and teaching strategies of adverb "就是 (jiushi)" by students at Prince of Songkla University. Lawarath Social E-Journal, 8(1), 1–26. https://so04.tci-thaijo.org/index.php/lawarathjo/article/view/278088
+Zhang, S., Thaveewatanaseth, N., & Numtong, K. (2026). Error analysis and teaching strategies of adverb “就是 (jiushi)” by students at Prince of Songkla University. Lawarath Social E-Journal, 8(1), 1–26. https://so04.tci-thaijo.org/index.php/lawarathjo/article/view/278088
 
 ## ===== จบเนื้อหาบทความ =====
 
