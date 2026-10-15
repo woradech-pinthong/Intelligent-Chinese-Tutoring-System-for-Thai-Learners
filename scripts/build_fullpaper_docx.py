@@ -13,7 +13,7 @@
 อักษรจีนใช้ SimSun 12 · ลูกศร → ใช้ Times New Roman · สมการ BKT เป็น Equation (OMML) · ที่ว่างรอรูป = ไฮไลต์เหลือง
 ถ้าแก้ชื่อผู้แต่ง/หน่วยงาน/อีเมล ให้แก้ใน FRONT ด้านล่าง · ถ้าเพิ่มรายการอ้างอิง ต้องเพิ่มคีย์ใน ITALIC ด้วย (สคริปต์จะเตือนถ้าขาด)
 """
-import re, io, os, sys, shutil, zipfile, html, datetime, tempfile
+import re, io, os, sys, shutil, zipfile, html, datetime, tempfile, struct
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS = os.path.join(REPO, "docs", "01_เอกสารโครงงาน")
@@ -132,6 +132,24 @@ def body_runin(prefix, rest):
     return P(runs(prefix, bold=True) + inline(rest), jc="thaiDistribute", first=IND)
 def caption(label, rest, keep):
     return P(runs(label) + runs(rest), jc="center", keep=keep, before=120 if keep else 0, after=0 if keep else 120)
+FIGS = []   # รูปที่ฝังลงเอกสาร: (rId, ไฟล์ PNG ต้นทาง, ชื่อใน word/media)
+def figure(alt, rel_path):
+    """บรรทัด ![alt](path.png) ในร่าง → รูปกว้างเต็มคอลัมน์ กึ่งกลาง (ถ้าไม่พบไฟล์ จะกลับเป็นแถบเหลืองรอใส่รูป)"""
+    src = os.path.join(DOCS, *rel_path.split("/"))
+    if not os.path.exists(src): return placeholder(f"{alt} — ไม่พบไฟล์ {rel_path}")
+    n = len(FIGS) + 1; rid = f"rIdPaperFig{n}"; media = f"paperfig{n}.png"
+    FIGS.append((rid, src, media))
+    with open(src, "rb") as f: pw, ph = struct.unpack(">II", f.read(24)[16:24])
+    cx = W * 635; cy = round(cx * ph / pw)          # 1 dxa = 635 EMU
+    pic = (f'<w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="{cx}" cy="{cy}"/>'
+           f'<wp:effectExtent l="0" t="0" r="0" b="0"/><wp:docPr id="{9000 + n}" name="Figure {n}" descr="{esc(alt)}"/>'
+           '<wp:cNvGraphicFramePr><a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/></wp:cNvGraphicFramePr>'
+           '<a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">'
+           f'<pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><pic:nvPicPr><pic:cNvPr id="{9000 + n}" name="{media}"/><pic:cNvPicPr/></pic:nvPicPr>'
+           f'<pic:blipFill><a:blip r:embed="{rid}"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>'
+           f'<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="{cx}" cy="{cy}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr>'
+           '</pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r>')
+    return P(pic, jc="center", keep=True, before=120)
 def placeholder(text):
     return (P(runs("[ รอใส่รูป — ลบย่อหน้านี้เมื่อใส่รูปจริง ]", bold=True, highlight="yellow"), jc="center", keep=True, before=120)
             + P(runs(text, sz=24, highlight="yellow"), jc="thaiDistribute", keep=True))
@@ -339,6 +357,9 @@ def parse_body():
                 cells = [c.strip() for c in lines[i].split(" | ")]; rows.append(cells); add_text(" | ".join(cells))
                 i = next_nonblank(i + 1)
             xml.append(table(rows, WIDTHS[num])); xml.append(blank(sz=12)); continue
+        m_fig = re.match(r'^!\[(.*?)\]\((.+?\.png)\)$', l)
+        if m_fig:
+            xml.append(figure(m_fig.group(1), m_fig.group(2))); i += 1; continue   # ไม่นับในตรวจความครบของข้อความ
         if l.startswith("【"):
             inner = l.strip("【】").strip()
             xml.append(placeholder(inner)); add_text(l); i += 1; continue
@@ -366,6 +387,13 @@ def main():
     body_xml, plain = parse_body()
     start = doc.index("<w:body>") + len("<w:body>"); end = doc.index("<w:sectPr")
     new = doc[:start] + front_matter() + body_xml + doc[end:]
+    if FIGS:   # รูปที่ฝัง: คัดลอกไฟล์ + เพิ่ม relationship (ชนิด png มีใน [Content_Types].xml ของเทมเพลตแล้ว)
+        rels_p = os.path.join(OUT_DIR, "word", "_rels", "document.xml.rels"); rels = io.open(rels_p, encoding="utf-8").read()
+        for rid, src, media in FIGS:
+            shutil.copyfile(src, os.path.join(OUT_DIR, "word", "media", media))
+            rels = rels.replace("</Relationships>", f'<Relationship Id="{rid}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/{media}"/></Relationships>')
+        io.open(rels_p, "w", encoding="utf-8").write(rels)
+        print("embedded figures:", ", ".join(os.path.basename(s) for _, s, _ in FIGS))
     # the template still carries an old first-page header ("ครั้งที่ 6") and footer; unlink them so "Different First Page" can never show them
     new = re.sub(r'<w:(?:header|footer)Reference w:type="first" r:id="[^"]+"/>', '', new)
     io.open(os.path.join(OUT_DIR, "word", "document.xml"), "w", encoding="utf-8").write(new)
