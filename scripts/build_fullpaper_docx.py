@@ -6,7 +6,7 @@
 
 อินพุต : docs/01_เอกสารโครงงาน/fullpaper-CSTI-MJU8-ร่าง1.md  (ข้อความระหว่าง "เริ่มเนื้อหาบทความ" ถึง "จบเนื้อหาบทความ")
 เทมเพลต: docs/01_เอกสารโครงงาน/mjuF2027.docx  (คง header/โลโก้/ฟอนต์ฝัง TH SarabunPSK ของผู้จัดไว้ทั้งหมด)
-เอาต์พุต: docs/01_เอกสารโครงงาน/fullpaper-CSTI-MJU8.docx  (ระบุพาธอื่นเป็นอาร์กิวเมนต์แรกได้)
+เอาต์พุต: docs/01_เอกสารโครงงาน/mju376-407.docx  (ระบุพาธอื่นเป็นอาร์กิวเมนต์แรกได้)
 
 กติกาที่สคริปต์ทำให้: TH SarabunPSK 14 ทั้งฉบับ · ชื่อเรื่อง 16 หนา · หัวข้อหลัก 14 หนาไม่มีเลข · ย่อหน้าแรกเยื้อง 1.27 ซม. ·
 ชื่อตารางเหนือตาราง/ชื่อรูปใต้รูป กึ่งกลาง · อ้างอิง APA 7 ย่อหน้าแขวน 1.27 ซม. (ตัวเอียงตาม ITALIC ด้านล่าง) ·
@@ -19,7 +19,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DOCS = os.path.join(REPO, "docs", "01_เอกสารโครงงาน")
 TEMPLATE = os.path.join(DOCS, "mjuF2027.docx")
 SRC = os.path.join(DOCS, "fullpaper-CSTI-MJU8-ร่าง1.md")
-OUT_DOCX = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DOCS, "fullpaper-CSTI-MJU8.docx")
+OUT_DOCX = sys.argv[1] if len(sys.argv) > 1 else os.path.join(DOCS, "mju376-407.docx")
 _tmp = tempfile.mkdtemp(prefix="fullpaper-")
 TPL = os.path.join(_tmp, "tpl"); OUT_DIR = os.path.join(_tmp, "out")
 with zipfile.ZipFile(TEMPLATE) as _z: _z.extractall(TPL)
