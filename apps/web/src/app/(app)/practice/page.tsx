@@ -14,7 +14,8 @@ import SentenceOrder from "./SentenceOrder";
 import PracticeHub from "./PracticeHub";
 import { HUB_GROUPS, groupOfStart, type HubGroup } from "@/lib/practice-menu";
 import { Icon } from "@/components/Icon";
-import { Pinyin } from "@/components/Pinyin";
+import { Pinyin, PinyinMasked, PinyinToggle } from "@/components/Pinyin";
+import { usePinyinHidden } from "@/lib/pinyin-pref";
 import { Mascot, MascotSays } from "@/components/Mascot";
 import { audioRate, toggleAudioRate, playAtUserRate } from "@/lib/daily";
 import { ProgressBar } from "@/components/ProgressBar";
@@ -65,6 +66,9 @@ function PracticeInner({ cat, modeParam, group }: { cat: number | null; modePara
   const [done, setDone] = useState(false);
   const savedRef = useRef(false);
   const [choiceType, setChoiceType] = useState<ListenChoice>(loadListenChoice); // เมนูโชว์ค่าที่จำไว้ด้วย
+  // ตัวเลือก "ตัวจีน" ในโหมดฟัง: โชว์พินอินใต้ตัวจีนให้คนที่ยังอ่านจีนไม่ออก (กระดาษ HSK 1 จริงก็มีพินอินกำกับ)
+  // ซ่อนได้ด้วยสวิตช์ "ซ่อนพินอิน" ค่าเดียวกับทั้งแอป (บอลเสนอ 16 ต.ค. ตอนซ้อมเป็นผู้เรียนใหม่)
+  const [pinyinHidden] = usePinyinHidden();
   const qStartRef = useRef(0); // เวลาเริ่มข้อปัจจุบัน → time_spent_ms ตอน logAttempt
   const nextRef = useRef<HTMLButtonElement>(null);
 
@@ -352,6 +356,7 @@ function PracticeInner({ cat, modeParam, group }: { cat: number | null; modePara
               {t === "meaning" ? "คำแปล" : "ตัวจีน"}
             </button>
           ))}
+          {listenHanzi && <PinyinToggle className="ml-1" />}
         </div>
       )}
 
@@ -373,8 +378,11 @@ function PracticeInner({ cat, modeParam, group }: { cat: number | null; modePara
               disabled={answered}
               className={`flex items-center justify-between rounded-2xl border px-4 py-4 text-left transition ${cls}`}
             >
-              <span className={listenHanzi ? "font-[family-name:var(--font-sc)] text-2xl font-semibold" : "text-base"}>
-                {labelOf(c)}
+              <span className={listenHanzi ? "flex flex-col" : "text-base"}>
+                <span className={listenHanzi ? "font-[family-name:var(--font-sc)] text-2xl font-semibold" : undefined}>{labelOf(c)}</span>
+                {/* พินอินใต้ตัวจีน — ตอนซ่อนใช้แบบเบลอไม่มีตัวควบคุม เพราะอยู่ในปุ่มตัวเลือก (ดูหมายเหตุใน Pinyin.tsx) */}
+                {listenHanzi && !answered && (pinyinHidden ? <PinyinMasked text={c.pinyin} className="text-sm" /> : <Pinyin text={c.pinyin} className="text-sm font-medium" />)}
+                {listenHanzi && answered && <Pinyin text={c.pinyin} className="text-sm font-medium" />}
               </span>
               {answered && isCorrect && <Icon name="check" className="h-5 w-5 text-correct" strokeWidth={2.4} />}
               {answered && isPicked && !isCorrect && <Icon name="x" className="h-5 w-5 text-coral" strokeWidth={2.4} />}
