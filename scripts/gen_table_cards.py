@@ -17,7 +17,11 @@ OUT_DIR = os.path.join(ROOT, "docs", "08_สเปค-พัฒนา", "กา�
 U = "00000000-0000-4000-8000-0000000a0001"   # บัญชีสาธิต มิ้นท์
 
 # ลำดับตามเส้นทางมิ้นท์ ① สมัคร → ② เปิดหมวด → ③ ฟังคำ → ④ ควิซ → ⑤⑥ ตอบ → ⑦ ผล → ทักษะ
-ORDER = ["categories", "words", "users", "category_progress", "review_states", "sessions", "items", "item_skills", "attempts", "skills"]
+ORDER = ["categories", "words", "users", "category_progress", "review_states", "sessions", "items", "item_skills", "attempts", "skills",
+         # 16 ต.ค.: อีก 14 ตารางที่เหลือ (บอลขอครบ 24 ใบ) — ประโยค · ชุดข้อสอบ pre/post · พื้นฐานเสียง · สมอง BKT · หลังบ้าน
+         "sentences", "sentence_words", "sentence_states", "exam_forms", "form_items",
+         "foundation_stages", "foundation_lessons", "minimal_pairs", "foundation_progress",
+         "thai_l1_catalog", "mastery_snapshots", "bkt_training_runs", "approval_transfers", "roadmap_state"]
 
 PURPOSE = {
     "categories":        ("รายชื่อหมวด 5 หมวด (อาจารย์: cat)", "migration สร้างให้ · ไม่มีใครเพิ่มแถวในแอป · word_count DB นับเอง"),
@@ -30,6 +34,20 @@ PURPOSE = {
     "item_skills":       ("Q-matrix — ข้อไหนวัดทักษะอะไร (ข้อเดียวหลายป้ายได้)", "คนออกข้อติดป้ายตอนสร้าง/อนุมัติข้อ"),
     "attempts":          ("ทุกคำตอบ/ทุกการเห็นคำ 1 เหตุการณ์ = 1 แถว (อาจารย์: ตารางผล U · C · Lis · # → 1/0)", "แอป/API จดอย่างเดียว · ห้ามแก้ ห้ามลบ (BK-01 — trigger กันทุก role) · อาหารของโมเดล BKT (โมเดลอ่านเฉพาะแถว graded ที่ไม่ใช่ pre/post)"),
     "skills":            ("หน่วยความรู้ย่อย 23 ตัว ที่โมเดลวัดความแม่น (ทักษะชั้นที่ 2)", "migration seed · ค่า bkt_* โมเดลเติมหลังเทรน"),
+    "sentences":         ("ประโยคสำหรับฝึกระดับประโยค (ฟังประโยค · อ่านประโยค · เติมคำ · เรียงประโยค) — คู่ของ words ในระดับประโยค", "AI ร่าง → ตะวันตรวจ/อนุมัติ · แอปอ่านเฉพาะ approved"),
+    "sentence_words":    ("ประโยคนี้ประกอบจากคำไหนบ้าง เรียงตำแหน่ง (โยง sentences ↔ words)", "เติมพร้อมประโยค (สคริปต์/ตะวัน) · แอปอ่านอย่างเดียว"),
+    "sentence_states":   ("คน × ประโยค — ใครเรียงประโยคไหน ผ่านหรือยัง (คู่กับ review_states ที่เป็น คน × คำ)", "แอป/เซิร์ฟเวอร์อัปเดตหลังตรวจเรียงประโยค"),
+    "exam_forms":        ("ชุดข้อสอบ pre/post (ชุดเดียว ใช้ทั้งก่อนและหลังเรียน — มติอาจารย์)", "แอดมินสร้าง · แช่แข็งเมื่อ published หรือมีคนทำแล้ว (MK-02) · ชุดวิจัยห้ามโผล่ในโหมดฝึก (PL-09)"),
+    "form_items":        ("สารบัญชุดข้อสอบ — ชุดไหนมีข้อไหน ลำดับที่เท่าไหร่", "แอดมินเติมตอนประกอบชุด · แช่แข็งตาม exam_forms"),
+    "foundation_stages": ("ด่านของบทเรียนพื้นฐานเสียง 5 ด่าน (กติกา → พินอิน → วรรณยุกต์ → เกมแยกเสียง → ตารางอ้างอิง)", "migration seed · เกณฑ์ผ่านเป็น data แก้ได้ไม่ต้อง deploy"),
+    "foundation_lessons":("บทเรียนย่อยในแต่ละด่าน (เนื้อหา + เสียง)", "ตะวันเขียน/ตรวจ · แอปอ่านเฉพาะ approved"),
+    "minimal_pairs":     ("คู่เสียงที่ต่างกันจุดเดียว ที่ครูคัดแล้ว (เกมแยกเสียง) — แต่ละคู่ผูกจุดผิดคนไทย 1 หน่วย", "ตะวันคัด/อนุมัติ · วันนี้แอปสกัดคู่จาก words เองไปก่อน (22 คู่) จนกว่าตารางนี้จะมีแถว"),
+    "foundation_progress":("คน × ด่าน — ใครผ่านด่านพื้นฐานเสียงไหนแล้ว", "แอปอัปเดตหลังทำด่าน · ใช้ตัดสินข้ามโมดูล 0 (PA-01/PA-08)"),
+    "thai_l1_catalog":   ("คลังจุดผิดคนไทย 15 หน่วย — คำอธิบาย สาเหตุ วิธีแก้ หลักฐานวิจัย (1 แถว = 1 หน่วยใน skills)", "migration seed จาก catalog-v1.json (ร่าง รอตะวันอนุมัติ) · แอปอ่านอย่างเดียว"),
+    "mastery_snapshots": ("ผลของโมเดล BKT — คนนี้แม่นหน่วยความรู้ไหนกี่ % (1 แถว = คน × หน่วย × เวลาที่คำนวณ)", "เซิร์ฟเวอร์เขียนหลังรัน BKT · แอปอ่านของตัวเอง (dashboard จุดแข็ง/จุดอ่อน)"),
+    "bkt_training_runs": ("บันทึกการเทรนโมเดล BKT แต่ละรอบ — ใช้ข้อมูลถึงวันไหน กี่คำตอบ ได้ AUC เท่าไหร่ (full / ไม่มีจุดผิดคนไทย = ablation)", "สคริปต์เทรน (ml/) เขียน · ผลวิจัยในเล่มอ้างจากตารางนี้"),
+    "approval_transfers":("โอนสิทธิ์อนุมัติข้อสอบชั่วคราว (ตะวัน → คนอื่น) — DB ใช้ตรวจตอนอนุมัติข้อ (RO-03)", "แอดมินเขียน · ยกเลิกด้วย revoked_at"),
+    "roadmap_state":     ("ติ๊กความคืบหน้างานพัฒนาบนหน้า /roadmap (หลังบ้านทีม ไม่เกี่ยวผู้เรียน)", "ทีมติ๊กบนหน้าเว็บ · RO-04 จะจำกัดเฉพาะแอดมินเมื่อมีล็อกอิน"),
 }
 
 MEANINGS = {
@@ -82,6 +100,44 @@ MEANINGS = {
         "id": "เลขทักษะ", "code": "รหัส เช่น TL-TONE-T2AS3 · VOCAB-C1 · SKILL-LISTEN", "name_th": "ชื่อไทย", "type": "thai_l1 (จุดผิดคนไทย 15) · vocab (คำศัพท์หมวด 5) · skill (ฟัง/อ่าน/เรียง 3) · DB สำรอง grammar / tone / consonant ไว้ ยังไม่ใช้",
         "hsk_level": "ระดับ HSK", "bkt_prior": "BKT: โอกาสรู้อยู่แล้วตั้งแต่ต้น", "bkt_learn": "BKT: โอกาสเรียนรู้ต่อครั้ง", "bkt_slip": "BKT: รู้แต่ตอบผิด",
         "bkt_guess": "BKT: ไม่รู้แต่เดาถูก", "bkt_run_id": "ค่ามาจากรอบเทรนไหน", "created_at": "สร้างเมื่อไหร่"},
+    "sentences": {
+        "id": "เลขประโยค", "category": "ประโยคของหมวดไหน", "tokens": "คำที่ประกอบเป็นประโยค เรียงตามลำดับที่ถูก (ใช้สับให้เรียง / เว้นช่องให้เติม)",
+        "pinyin": "พินอินทั้งประโยค", "meaning_th": "คำแปลไทย (โจทย์ของฟังประโยค/อ่านประโยค)", "focus_th": "จุดไวยากรณ์ที่ประโยคนี้สอน (การ์ด “ต่างจากไทยตรงไหน”)",
+        "skill_id": "จุดผิดคนไทยที่ประโยคนี้ดัก (หน่วยใน skills) — ว่างถ้าเป็นประโยคโครงสร้างทั่วไป", "audio_path": "ไฟล์เสียงจริงของประโยค (ว่าง = ใช้เสียงอ่านจากเครื่องไปก่อน)",
+        "source_attribution": "เครดิตที่มา ถ้าดึงจากคลังเปิด (เช่น Tatoeba)", "status": "draft / pending / approved / rejected / suspended — เสิร์ฟเฉพาะ approved",
+        "created_at": "สร้างเมื่อไหร่", "updated_at": "แก้ล่าสุดเมื่อไหร่"},
+    "sentence_words": {"sentence_id": "ประโยคไหน", "word_id": "คำไหน (โยงไป words — เอาเสียง/คำแปลรายคำมาใช้ได้)", "position": "อยู่ตำแหน่งที่เท่าไหร่ในประโยค (เริ่ม 1)"},
+    "sentence_states": {"user_id": "คนไหน", "sentence_id": "ประโยคไหน", "tries": "ลองเรียงมาแล้วกี่รอบ", "best_correct": "เคยเรียงถูกครบไหม",
+                        "last_at": "ทำล่าสุดเมื่อไหร่", "passed_at": "เรียงถูกครั้งแรกเมื่อไหร่ (ว่าง = ยังไม่ผ่าน)"},
+    "exam_forms": {
+        "id": "เลขชุด", "code": "รหัสชุด เช่น HSK1-PREPOST-A", "version": "เวอร์ชัน — ออกชุดใหม่ = code เดิม version +1 (ชุดเดิมห้ามแก้)", "name_th": "ชื่อชุด",
+        "kind": "pretest = ชุดวิจัยใช้ทั้ง pre และ post · mock = สงวนไว้ ยังไม่ใช้", "hsk_level": "ระดับ HSK", "item_count": "กี่ข้อ (นับจาก form_items)",
+        "time_limit_s": "เวลาทำ (วินาที)", "locked_until": "ชุด post ห้ามเสิร์ฟจนถึงวันวัดผล", "published_at": "แช่แข็งเมื่อไหร่ — หลังจากนี้ห้ามแก้ข้อในชุด",
+        "research_use_only": "true = ใช้ได้แค่ pre/post · ข้อในชุดห้ามโผล่ในโหมดฝึกและควิซ (กัน practice effect — PL-09)",
+        "status": "draft / pending / approved / rejected / suspended", "created_at": "สร้างเมื่อไหร่", "updated_at": "แก้ล่าสุดเมื่อไหร่"},
+    "form_items": {"form_id": "ชุดไหน", "item_id": "ข้อไหน (จาก items)", "position": "ข้อที่เท่าไหร่ในชุด (post สลับลำดับตอนเสิร์ฟ ไม่แก้ค่านี้)"},
+    "foundation_stages": {"code": "รหัสด่าน: intro / pinyin / tones / ear_game / reference", "name_th": "ชื่อด่าน", "position": "ลำดับด่าน",
+                          "pass_threshold": "เกณฑ์ผ่าน (ear_game = 0.80 · ด่านอ่านอย่างเดียว = ว่าง)", "soft_gate_after_tries": "ไม่ผ่านครบกี่รอบถึงเปิดประตูนุ่มให้ข้ามได้ (PA-08)"},
+    "foundation_lessons": {"id": "เลขบทเรียน", "stage": "อยู่ด่านไหน", "position": "ลำดับในด่าน", "title_th": "ชื่อบทเรียน", "body_th": "เนื้อหา",
+                           "audio_path": "ไฟล์เสียงประกอบ", "status": "draft / pending / approved …", "created_at": "สร้างเมื่อไหร่", "updated_at": "แก้ล่าสุดเมื่อไหร่"},
+    "minimal_pairs": {
+        "id": "เลขคู่", "skill_id": "จุดผิดคนไทยที่คู่นี้ดัก (เช่น TL-TONE-T2AS3 · TL-RETRO-FLAT-MERGE)", "hanzi_a": "คำ A (ตัวจีน)", "pinyin_a": "พินอินคำ A",
+        "audio_a_path": "เสียงคำ A", "word_a_id": "คำ A คือคำไหนใน words (ว่างถ้าไม่อยู่ใน 300 คำ)", "hanzi_b": "คำ B (ตัวจีน)", "pinyin_b": "พินอินคำ B",
+        "audio_b_path": "เสียงคำ B", "word_b_id": "คำ B คือคำไหนใน words", "note_th": "อธิบายแบบคนไทยว่าสองคำต่างกันตรงไหน (โชว์ตอนตอบผิด)",
+        "status": "draft / pending / approved …", "created_at": "สร้างเมื่อไหร่", "updated_at": "แก้ล่าสุดเมื่อไหร่"},
+    "foundation_progress": {"user_id": "คนไหน", "stage": "ด่านไหน", "tries": "ทำมาแล้วกี่รอบ", "best_accuracy": "ความแม่นดีสุด (เทียบ pass_threshold)", "passed_at": "ผ่านด่านเมื่อไหร่"},
+    "thai_l1_catalog": {
+        "id": "เลขรายการ", "code": "รหัสจุดผิด เช่น TL-TONE-T2AS3", "error_group": "กลุ่ม: TL-TONE วรรณยุกต์ · TL-RETRO ม้วนลิ้น · TL-GRAM ไวยากรณ์",
+        "description_th": "ลักษณะข้อผิด", "example": "ตัวอย่างข้อผิด", "cause_th": "สาเหตุจากภาษาไทย", "remedy": "วิธีเจาะสอน",
+        "evidence": "งานวิจัยที่รองรับ (ตรวจแล้วว่ามีจริง — ห้ามแต่ง)", "skill_id": "ตรงกับหน่วยไหนใน skills (1 ต่อ 1)"},
+    "mastery_snapshots": {"user_id": "คนไหน", "skill_id": "หน่วยความรู้ไหน", "p_mastery": "ความน่าจะเป็นว่าแม่นแล้ว 0–1 (ผล BKT)",
+                          "bkt_run_id": "คำนวณด้วยพารามิเตอร์จากรอบเทรนไหน", "computed_at": "คำนวณเมื่อไหร่ (เก็บทุกรอบ ดูพัฒนาการได้)"},
+    "bkt_training_runs": {
+        "id": "เลขรอบเทรน", "run_at": "เทรนเมื่อไหร่", "data_until": "ใช้คำตอบถึงวันไหน", "n_attempts": "ใช้กี่คำตอบ", "n_users": "จากผู้เรียนกี่คน", "kc_count": "กี่หน่วยความรู้",
+        "variant": "full = มีจุดผิดคนไทย · no_thai_l1 = ตัดออก (ablation) · slam_benchmark = ทดสอบ pipeline", "split_seed": "seed แบ่ง train/test (ทำซ้ำได้)",
+        "auc": "ค่า AUC บนชุดทดสอบ (เติมหลังเทรนจริง)", "auc_by_skill": "AUC แยกรายหน่วย (json)", "params": "พารามิเตอร์ทุกหน่วยของรอบนี้ (json)", "notes": "บันทึก"},
+    "approval_transfers": {"id": "เลขรายการ", "from_user_id": "ผู้โอนสิทธิ์ (approver)", "to_user_id": "ผู้รับสิทธิ์", "reason": "เหตุผล", "granted_at": "โอนเมื่อไหร่", "revoked_at": "ยกเลิกเมื่อไหร่ (ว่าง = ยังมีผล)"},
+    "roadmap_state": {"item_id": "รหัสงานในหน้า /roadmap", "done": "ติ๊กเสร็จแล้วไหม", "updated_by": "ใครติ๊ก", "updated_at": "ติ๊กเมื่อไหร่"},
 }
 
 TYPE_TH = {"character varying": "text", "timestamp with time zone": "timestamptz", "integer": "int", "boolean": "bool", "ARRAY": "list",
@@ -102,6 +158,44 @@ SAMPLE_SQL = {
     "items": "select * from items where distractor_rationale->>'seed' = 'demo-mint' order by id limit 1",
     "item_skills": "select * from item_skills where item_id = 1 order by skill_id", "attempts": f"select * from attempts where user_id = '{U}' order by id",
     "skills": "select * from skills where id in (21, 16, 1) order by id desc",
+    "sentences": "select * from sentences order by id limit 1", "sentence_words": "select * from sentence_words order by sentence_id, position limit 2",
+    "sentence_states": f"select * from sentence_states where user_id = '{U}' limit 1", "exam_forms": "select * from exam_forms order by id limit 1",
+    "form_items": "select * from form_items order by form_id, position limit 2", "foundation_stages": "select * from foundation_stages where code = 'ear_game'",
+    "foundation_lessons": "select * from foundation_lessons order by id limit 1", "minimal_pairs": "select * from minimal_pairs order by id limit 1",
+    "foundation_progress": f"select * from foundation_progress where user_id = '{U}' limit 1", "thai_l1_catalog": "select * from thai_l1_catalog where code = 'TL-TONE-T2AS3'",
+    "mastery_snapshots": f"select * from mastery_snapshots where user_id = '{U}' order by computed_at desc limit 1",
+    "bkt_training_runs": "select * from bkt_training_runs order by id desc limit 1", "approval_transfers": "select * from approval_transfers order by id limit 1",
+    "roadmap_state": "select * from roadmap_state where done order by updated_at desc limit 1",
+}
+
+# ตารางที่ยังว่างใน Supabase → โชว์ "ตัวอย่างตามแบบ" ให้เห็นว่าแถวหน้าตาเป็นอย่างไร (สีเทา + หมายเหตุชัดเจน ไม่ใช่ข้อมูลจริง)
+# {skill:CODE} / {word:ตัวจีน} / {wordid:ตัวจีน} จะถูกแทนด้วย id จริงตอนรัน · ตารางโมเดลใช้ข้อความแทนตัวเลข (ห้ามมีตัวเลข AUC/ความแม่นสมมุติ)
+EMPTY_WHEN = {
+    "sentences": "ตะวันตรวจประโยคชุดแรก (10 ประโยค) แล้วใส่ลงตาราง", "sentence_words": "ใส่ประโยคพร้อมคำที่ประกอบ",
+    "sentence_states": "มีล็อกอิน + ผู้เรียนเรียงประโยคครั้งแรก", "exam_forms": "สร้างชุด pre/post 40 ข้อ (หลังอาจารย์เคาะจำนวนข้อ)",
+    "form_items": "ประกอบชุด pre/post", "foundation_lessons": "ตะวันเขียนบทเรียนพื้นฐานเสียง", "minimal_pairs": "ตะวันคัดคู่เสียงจาก 22 คู่ที่ระบบสกัดให้",
+    "foundation_progress": "มีล็อกอิน + ผู้เรียนทำด่านพื้นฐานเสียง", "mastery_snapshots": "รัน BKT ครั้งแรกหลังมีคำตอบในฐานข้อมูล",
+    "bkt_training_runs": "เทรน BKT รอบแรก (หลังทดลองเก็บคำตอบ)", "approval_transfers": "ตะวันโอนสิทธิ์อนุมัติให้คนอื่นชั่วคราว",
+}
+DESIGN_EXAMPLE = {
+    "sentences": dict(id=4, category=1, tokens=["这", "是", "我", "的", "书"], pinyin="zhè shì wǒ de shū", meaning_th="นี่คือหนังสือของฉัน",
+                      focus_th="ของใคร: 我的 วางหน้าคำนาม (ไทยวางหลัง)", skill_id="{skill:TL-GRAM-DE-ORDER}", audio_path="sentences/4.mp3",
+                      source_attribution=None, status="approved", created_at="(วันที่ใส่)", updated_at=None),
+    "sentence_words": [dict(sentence_id=4, word_id="{word:这}", position=1), dict(sentence_id=4, word_id="{word:书}", position=5)],
+    "sentence_states": dict(user_id=U, sentence_id=4, tries=2, best_correct=True, last_at="(เวลาที่ทำ)", passed_at="(ครั้งแรกที่เรียงถูก)"),
+    "exam_forms": dict(id=1, code="HSK1-PREPOST-A", version=1, name_th="แบบทดสอบก่อน/หลังเรียน HSK 1 ชุด A", kind="pretest", hsk_level=1, item_count=40,
+                       time_limit_s=2400, locked_until="(วันวัดผล)", published_at="(วันแช่แข็ง)", research_use_only=True, status="approved", created_at="(วันที่สร้าง)", updated_at=None),
+    "form_items": [dict(form_id=1, item_id="(ข้อฟังข้อที่ 1)", position=1), dict(form_id=1, item_id="(ข้ออ่านข้อที่ 1)", position=21)],
+    "foundation_lessons": dict(id=1, stage="tones", position=1, title_th="วรรณยุกต์ 4 เสียง เทียบกับเสียงไทย", body_th="(เนื้อหาบทเรียน)",
+                               audio_path="foundation/tones-1.mp3", status="approved", created_at="(วันที่ใส่)", updated_at=None),
+    "minimal_pairs": dict(id=1, skill_id="{skill:TL-TONE-T2AS3}", hanzi_a="玩", pinyin_a="wán", audio_a_path="words/{wordid:玩}.mp3", word_a_id="{word:玩}",
+                          hanzi_b="晚", pinyin_b="wǎn", audio_b_path="words/{wordid:晚}.mp3", word_b_id="{word:晚}",
+                          note_th="เสียง 2 ขึ้นเส้นเดียว · เสียง 3 กดต่ำก่อนแล้วค่อยขึ้น", status="approved", created_at="(วันที่คัด)", updated_at=None),
+    "foundation_progress": dict(user_id=U, stage="ear_game", tries=2, best_accuracy="(ความแม่นดีสุด เช่น 0.85)", passed_at="(วันที่ผ่าน)"),
+    "mastery_snapshots": dict(user_id=U, skill_id="{skill:SKILL-LISTEN}", p_mastery="(ค่า 0–1 จาก BKT หลังเทรนจริง)", bkt_run_id=1, computed_at="(เวลาที่คำนวณ)"),
+    "bkt_training_runs": dict(id=1, run_at="(วันเทรน)", data_until="(วันตัดข้อมูล)", n_attempts="(จำนวนคำตอบที่ใช้)", n_users="(จำนวนผู้เรียน)", kc_count=23,
+                              variant="full", split_seed=42, auc="(ค่าจริงหลังเทรน)", auc_by_skill="(json)", params="(json)", notes=None),
+    "approval_transfers": dict(id=1, from_user_id="(id ของตะวัน)", to_user_id="(id ของบอล)", reason="ตะวันติดงานประจำ 2 สัปดาห์", granted_at="(วันโอน)", revoked_at=None),
 }
 
 def fetch():
@@ -123,8 +217,29 @@ def fetch():
             cur.execute(SAMPLE_SQL[t])
             names = [d[0] for d in cur.description]
             rows = [dict(zip(names, r)) for r in cur.fetchall()]
-            out[t] = dict(cols=cols, pk=pk, fk=fk, rows=rows)
+            design = False
+            if not rows and t in DESIGN_EXAMPLE:
+                ex = DESIGN_EXAMPLE[t]; rows = [dict(r) for r in (ex if isinstance(ex, list) else [ex])]
+                for r in rows:
+                    for k, v in r.items():
+                        if isinstance(v, str) and "{" in v: r[k] = resolve(cur, v)
+                design = True
+            demo = (not design) and any(str(r.get("user_id")) == U for r in rows)
+            out[t] = dict(cols=cols, pk=pk, fk=fk, rows=rows, design=design, demo=demo)
     return out
+
+def resolve(cur, text):
+    """แทน {skill:CODE} → id ใน skills · {word:汉字} / {wordid:汉字} → id ใน words"""
+    import re
+    def _rep(m):
+        kind, key = m.group(1), m.group(2)
+        if kind == "skill":
+            cur.execute("select id from skills where code = %s", (key,)); r = cur.fetchone()
+            return f"{r[0]} ({key})" if r else f"? ({key})"
+        cur.execute("select id from words where hanzi = %s", (key,)); r = cur.fetchone()
+        if kind == "wordid": return str(r[0]) if r else "?"
+        return f"{r[0]} ({key})" if r else f"? ({key})"
+    return re.sub(r"\{(skill|word|wordid):([^}]+)\}", _rep, text)
 
 def fmt(v):
     if v is None: return "–"
@@ -201,7 +316,14 @@ def card(idx, t, data, date):
         n = max(len(m_lines), len(v_lines), len(l_lines))
         body.append((l_lines, typ, m_lines, v_lines, 10 + 15 * n))
     head_h = 92
-    sample_note = f"แถวตัวอย่าง: {len(rows)} แถว" + (" (ค่าหลายแถวคั่นด้วย | ตามลำดับ id)" if len(rows) > 1 else "") + " — ข้อมูลสาธิต \"มิ้นท์\" ใน Supabase"
+    design = data.get("design", False)
+    if design:
+        sample_note = f"ตารางนี้ยังว่างใน Supabase — ช่องขวาเป็น \"ตัวอย่างตามแบบ\" ไม่ใช่ข้อมูลจริง · แถวแรกจะเกิดเมื่อ: {EMPTY_WHEN.get(t, '—')}"
+    elif data.get("demo"):
+        sample_note = f"แถวตัวอย่าง: {len(rows)} แถว" + (" (ค่าหลายแถวคั่นด้วย | ตามลำดับ id)" if len(rows) > 1 else "") + " — ข้อมูลสาธิต \"มิ้นท์\" ใน Supabase"
+    else:
+        sample_note = f"แถวตัวอย่าง: {len(rows)} แถว" + (" (ค่าหลายแถวคั่นด้วย |)" if len(rows) > 1 else "") + " — ข้อมูลจริงใน Supabase (ข้อมูลตั้งต้น ไม่ใช่ของมิ้นท์)"
+    val_head = "ตัวอย่างตามแบบ (ยังไม่มีแถวจริง)" if design else "ค่าของมิ้นท์ / ตัวอย่างจริง"
     H = head_h + 26 + sum(b[4] for b in body) + 44
     im = Image.new("RGB", (W * S, H * S), "white"); d = ImageDraw.Draw(im)
     # หัวการ์ด
@@ -213,7 +335,7 @@ def card(idx, t, data, date):
     # หัวคอลัมน์
     y = head_h
     x = 20
-    for (hd, wd) in zip(["ช่อง (ชี้ไปตารางไหน)", "ชนิด", "เก็บอะไร", "ค่าของมิ้นท์ / ตัวอย่างจริง"], COLW):
+    for (hd, wd) in zip(["ช่อง (ชี้ไปตารางไหน)", "ชนิด", "เก็บอะไร", val_head], COLW):
         d.rectangle([x * S, y * S, (x + wd) * S, (y + 26) * S], fill="#f5f5f5", outline="#6c8ebf", width=S)
         draw_text(d, x + 6, y + 13, hd, 10, True); x += wd
     y += 26
@@ -226,7 +348,7 @@ def card(idx, t, data, date):
         for k, ln in enumerate(l_lines): draw_text(d, 26, y + 12 + 15 * k, ln, 10.5, True)
         draw_text(d, 20 + COLW[0] + 6, y + 12, typ, 10, color="#555555")
         for k, ln in enumerate(m_lines): draw_text(d, 20 + COLW[0] + COLW[1] + 6, y + 12 + 15 * k, ln, 10.5)
-        for k, ln in enumerate(v_lines): draw_text(d, 20 + COLW[0] + COLW[1] + COLW[2] + 6, y + 12 + 15 * k, ln, 10.5, color="#1f4e79")
+        for k, ln in enumerate(v_lines): draw_text(d, 20 + COLW[0] + COLW[1] + COLW[2] + 6, y + 12 + 15 * k, ln, 10.5, color="#8a8a8a" if design else "#1f4e79")
         y += rh
     draw_text(d, 20, y + 20, f"สีเหลือง = คีย์/ช่องที่ชี้ไปตารางอื่น · ชื่อช่อง/ชนิดดึงจาก Supabase จริง {date} · ความหมายอิง er-drawio.sql · สร้างด้วย scripts/gen_table_cards.py",
               9, color="#777777")
