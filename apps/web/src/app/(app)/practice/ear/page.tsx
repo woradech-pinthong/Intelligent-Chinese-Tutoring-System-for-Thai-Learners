@@ -188,7 +188,7 @@ export default function EarGame() {
               <Icon name="headphone" className="h-6 w-6 text-ocean-700" />
             </div>
             <div className="min-w-0 flex-1">
-              <div className="font-medium text-slate-700">มีคู่เสียง {pairs.length} คู่ (ชุดทดลอง)</div>
+              <div className="font-medium text-slate-700">มีคู่เสียง {pairs.length} คู่</div>
               <div className="text-xs text-slate-400">คู่คำที่ต่างกันแค่จุดเดียว เช่น shì / sì หรือ wán / wǎn</div>
             </div>
           </div>
@@ -203,11 +203,6 @@ export default function EarGame() {
               </div>
               <p className="mt-1.5 text-[10px] text-slate-400">({DRAFT_NOTE_TH})</p>
             </>
-          )}
-          {pairs.length > 0 && (
-            <p className="mt-3 rounded-xl bg-slate-50 px-3 py-2 text-xs leading-relaxed text-slate-500">
-              คู่เสียงชุดนี้ระบบจับคู่จากคลังคำให้อัตโนมัติ — รอครูคัดและฟังยืนยันอีกรอบ
-            </p>
           )}
           {pairs.length > 0 && pairs.length < FEW_PAIRS && (
             <p className="mt-3 rounded-xl bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-700">

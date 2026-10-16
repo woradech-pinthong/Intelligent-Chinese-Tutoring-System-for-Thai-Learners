@@ -10,7 +10,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { MenuLink } from "@/components/MenuLink";
-import { SENTENCES, SENTENCES_REVIEWED, draftSentenceRef, type SentenceItem } from "@/data/sentences";
+import { SENTENCES, draftSentenceRef, type SentenceItem } from "@/data/sentences";
 import { FeedbackCard } from "@/components/FeedbackCard";
 import { Icon } from "@/components/Icon";
 import { Mascot, MascotSays } from "@/components/Mascot";
@@ -154,10 +154,7 @@ export default function ListenSentence() {
         <div className="flex gap-2 rounded-2xl bg-slate-50 p-4 text-xs leading-relaxed text-slate-500">
           <Icon name="bulb" className="mt-0.5 h-4 w-4 shrink-0 text-xp" />
           <p>
-            {SENTENCES_REVIEWED
-              ? `เดโม: ใช้เสียงอ่านอัตโนมัติจากเครื่อง (${SENTENCES.length} ประโยค) — ของจริง: ไฟล์เสียงที่อัดเตรียมไว้`
-              : `เดโม: ประโยคยังเป็นฉบับร่าง (ชุดเดียวกับโหมดเรียงประโยค ${SENTENCES.length} ประโยค · รอหฤทัยตรวจ) และใช้เสียงอ่านอัตโนมัติจากเครื่อง — ของจริง: ประโยคที่ตรวจแล้ว + ไฟล์เสียงที่อัดเตรียมไว้`}{" "}
-            · ตอบแล้วจะเห็นตัวจีน พินอิน และคำแปล · ผลการฝึกไปแสดงในหน้า{" "}
+            ประโยคในชุดนี้มี {SENTENCES.length} ประโยค · ตอบแล้วจะเห็นตัวจีน พินอิน และคำแปล · ผลการฝึกไปแสดงในหน้า{" "}
             <Link href="/progress" className="text-ocean-500 underline">
               ผล
             </Link>
