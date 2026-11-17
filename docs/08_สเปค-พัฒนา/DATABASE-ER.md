@@ -545,7 +545,7 @@ erDiagram
 - กติกาใหม่: **แก้โครงที่ `er-drawio.sql` ก่อน → ออก migration ใหม่ให้ตรง → ห้ามแก้ตารางมือใน SQL Editor อีก** · ตารางจริงใน Supabase วันนี้ยังเป็น words + roadmap_state (+ schema_migrations) จนกว่าจะรัน `--apply`
 - `skills.type` เพิ่มค่า `skill` (ทักษะฟัง/อ่าน/เรียงประโยค 3 ตัวตาม CG-08) · ผังเดิม regenerate แล้ว
 
-### ปรับ 18 พ.ย. 2026 — กฎผู้ตรวจเนื้อหา CG-01/RO-03 (บอลเคาะ: ไม่ผูกหฤทัยคนเดียว)
+### ปรับ 18 พ.ย. 2026 — กฎผู้ตรวจเนื้อหา CG-01/RO-03 (ทีมเคาะ — หฤทัยเห็นด้วยเอง: ไม่ผูกหฤทัยคนเดียว)
 - **โครงตารางไม่เปลี่ยน** — เปลี่ยนความหมายของค่า: `users.role='approver'` ให้ทั้งบอลและหฤทัย (เดิมหฤทัยคนเดียว) · `items.approved_by` = ใครในทีมกด · ว่างได้เมื่อเป็นข้ออัตโนมัติที่ผ่านกฎ (CG-01 ก)
 - **ต้องเติมใน 0007:** `items.generator` (human | ai_draft | auto) + ข้อยกเว้นใน `items_approver_guard` ให้ approved_by ว่างเฉพาะ generator='auto' · `approval_transfers` หมดความจำเป็นหลัก (พิจารณาตัด)
 - คอมเมนต์ใน `er-drawio.sql` (reviewed_by · role · approved_by · sentences.status · approval_transfers) แก้แล้ว → ผัง mermaid/drawio เจนใหม่ · กฎเต็มดู `กฎการทำงานระบบ-BUSINESS-RULES.md` CG-01/RO-03 · เหตุผล: คิวตรวจค้างเป็นเดือน
