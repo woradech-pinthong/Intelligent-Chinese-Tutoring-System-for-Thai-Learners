@@ -33,7 +33,7 @@ CREATE TABLE words (
   meaning_th text,
   th_reviewed boolean NOT NULL,    -- มีจริงวันนี้ · เก็บไว้เพื่อ backward-compat
   review_status text,              -- (แผน m7-2) STATUS5 — boolean แทน "รอตรวจ" ของโฟลว์ 4.1 ไม่ได้
-  reviewed_by uuid REFERENCES users(id),  -- (แผน m7-2) CG-01 บังคับว่าคำแปลต้องผ่านหฤทัย — ต้องรู้ว่าใครตรวจ
+  reviewed_by uuid REFERENCES users(id),  -- (แผน m7-2) CG-01 ข: คำแปลต้องมีคนในทีมตรวจ (ใครก็ได้ · 18 พ.ย.) — ต้องรู้ว่าใครตรวจ
   reviewed_at timestamptz,         -- (แผน m7-2)
   hsk_level integer NOT NULL,
   category smallint REFERENCES categories(id),  -- (แผน m7-2) วันนี้ใน DB จริงยังเป็นเลขลอย ๆ 1-5 ไม่มี constraint ·
@@ -69,7 +69,7 @@ CREATE TABLE categories (
   updated_at timestamptz
 );
 
--- role            = บังคับ RO-02/RO-03 เชิงข้อมูล (ปุ่มอนุมัติกดได้เฉพาะหฤทัย)
+-- role            = บังคับ RO-02/RO-03 เชิงข้อมูล (approver = ทั้งบอลและหฤทัย — แก้ 18 พ.ย. 2026 · เดิมหฤทัยคนเดียว)
 -- consent_version = ต้องรู้ว่าใครยอมรับข้อความ consent "ฉบับไหน" ถ้าแก้ข้อความทีหลัง (ข้อกำหนด PDPA)
 -- cohort/trial_started_at = แยกผู้เข้าร่วมทดลอง ~10 คน (ME-02) ออกจากบัญชีทีมตอนวิเคราะห์
 -- anonymized_at   = ทางลงของ ON-05: ล้าง PII ในแถวนี้ แต่คง id ไว้ → attempts ยัง append-only ครบ FK ไม่พัง
@@ -187,7 +187,7 @@ CREATE TABLE items (
   status text NOT NULL,            -- STATUS5 (โฟลว์ 4.2)
   reject_reason text,
   created_by uuid REFERENCES users(id),
-  approved_by uuid REFERENCES users(id),   -- หฤทัยเท่านั้น (RO-03)
+  approved_by uuid REFERENCES users(id),   -- approver ในทีมคนใดคนหนึ่ง (RO-03 แก้ 18 พ.ย.) · ว่าง = ข้อ auto ผ่านกฎ (CG-01 ก)
   approved_at timestamptz,
   created_at timestamptz NOT NULL,
   updated_at timestamptz
@@ -221,7 +221,7 @@ CREATE TABLE sentences (
   skill_id bigint REFERENCES skills(id),  -- KC ที่ประโยคนี้ฝึก (เดิมเป็น kc_code text)
   audio_path text,
   source_attribution text,         -- เครดิตถ้าดึงจาก Tatoeba (CC BY 2.0 FR) — ห้ามลืม
-  status text NOT NULL,            -- STATUS5 (CG-01 ต้องผ่านหฤทัยก่อนเสิร์ฟ)
+  status text NOT NULL,            -- STATUS5 (CG-01 ข: ต้องมีคนในทีมตรวจก่อนเสิร์ฟ)
   created_at timestamptz NOT NULL,
   updated_at timestamptz
 );
@@ -427,7 +427,7 @@ CREATE TABLE foundation_progress (
 --    · คำอธิบายจุดผิด = thai_l1_catalog (คงไว้) · จุดแข็ง/อ่อน = query จาก mastery_snapshots (ไม่เก็บซ้ำ)
 
 -- บันทึกการโอนสิทธิ์อนุมัติ — โฟลว์ผู้ใช้ §7-6 "จดบันทึกการโอนทุกครั้ง"
--- เคสจริง: บัญชีหฤทัยใช้ไม่ได้ (ลืมรหัส/หลุด) แล้วต้องให้บอลอนุมัติแทนชั่วคราว
+-- เคสเดิม: บัญชีหฤทัยใช้ไม่ได้แล้วต้องให้บอลอนุมัติแทนชั่วคราว · 18 พ.ย.: approver 2 คนแล้ว (RO-03) — เหลือไว้กรณีเพิ่มผู้ตรวจภายนอก · พิจารณาตัดใน 0007
 CREATE TABLE approval_transfers (
   id bigint PRIMARY KEY,
   from_user_id uuid NOT NULL REFERENCES users(id),

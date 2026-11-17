@@ -120,7 +120,7 @@ erDiagram
         text meaning_th
         boolean th_reviewed "มีจริงวันนี้ · เก็บไว้เพื่อ backward-compat"
         text review_status "(แผน m7-2) STATUS5 — boolean แทน รอตรวจ ของโฟลว์ 4.1 ไม่ได้"
-        uuid reviewed_by FK "(แผน m7-2) CG-01 บังคับว่าคำแปลต้องผ่านหฤทัย — ต้องรู้ว่าใครตรวจ"
+        uuid reviewed_by FK "(แผน m7-2) CG-01 ข: คำแปลต้องมีคนในทีมตรวจ (ใครก็ได้ · 18 พ.ย.)…"
         timestamptz reviewed_at "(แผน m7-2)"
         integer hsk_level
         smallint category FK "(แผน m7-2) วันนี้ใน DB จริงยังเป็นเลขลอย ๆ 1-5 ไม่มี constraint…"
@@ -222,7 +222,7 @@ erDiagram
         text status "STATUS5 (โฟลว์ 4.2)"
         text reject_reason
         uuid created_by FK
-        uuid approved_by FK "หฤทัยเท่านั้น (RO-03)"
+        uuid approved_by FK "approver ในทีมคนใดคนหนึ่ง (RO-03 แก้ 18 พ.ย.) · ว่าง = ข้อ auto…"
         timestamptz approved_at
         timestamptz created_at
         timestamptz updated_at
@@ -246,7 +246,7 @@ erDiagram
         bigint skill_id FK "KC ที่ประโยคนี้ฝึก (เดิมเป็น kc_code text)"
         text audio_path
         text source_attribution "เครดิตถ้าดึงจาก Tatoeba (CC BY 2.0 FR) — ห้ามลืม"
-        text status "STATUS5 (CG-01 ต้องผ่านหฤทัยก่อนเสิร์ฟ)"
+        text status "STATUS5 (CG-01 ข: ต้องมีคนในทีมตรวจก่อนเสิร์ฟ)"
         timestamptz created_at
         timestamptz updated_at
     }
@@ -404,7 +404,7 @@ erDiagram
 - `minimal_pairs` เก็บ `hanzi/pinyin` ตรง ๆ **ไม่บังคับผูก `words`** เพราะบางคู่ (妈/马) ไม่ได้อยู่ในลิสต์ HSK1 300 คำทั้งคู่
 - ℹ️ `foundation_lessons` ไม่มีเส้นความสัมพันธ์ — **ตั้งใจ ไม่ใช่ลืม** · มันผูกกับ `foundation_progress` ผ่านค่า `stage` ที่ใช้ชุดเดียวกัน (intro/pinyin/tones/ear_game) ไม่ใช่ผ่าน FK เพราะ 1 ด่านมีได้หลายบทเรียน
 - **ประโยค ↔ คำ เป็น M:N** ผ่าน `sentence_words` (ประโยค 1 ประโยคใช้หลายคำ · คำ 1 คำโผล่ได้หลายประโยค) — ตารางนี้คือสิ่งที่บังคับกฎ "ประโยคใช้เฉพาะคำที่เรียนแล้ว" ได้จริง และทำให้เตือนก่อนลบคำที่ถูกอ้างอยู่ได้ (RO-02)
-- `items.approved_by` → `users` = **หฤทัยคนเดียวที่กดอนุมัติได้ (RO-03)** เก็บเป็นข้อมูล ไม่ใช่แค่กฎในโค้ด
+- `items.approved_by` → `users` = **approver ในทีมคนใดคนหนึ่ง (RO-03 แก้ 18 พ.ย. 2026 — เดิมหฤทัยคนเดียว)** เก็บเป็นข้อมูลว่าใครกด ไม่ใช่แค่กฎในโค้ด · ว่าง = ข้ออัตโนมัติที่ผ่านกฎ (CG-01 ก)
 
 ### นโยบายความปลอดภัย (RLS) — สรุป
 - ตารางรายผู้ใช้ (`attempts`, `sessions`, `review_states`, `sentence_states`, `category_progress`, `mastery_snapshots`, `foundation_progress`, `users`): เปิด RLS `user_id = auth.uid()` — เห็น/เพิ่มของตัวเองเท่านั้น · `attempts` ไม่ให้ UPDATE/DELETE เชิง policy
@@ -416,7 +416,7 @@ erDiagram
 ---
 
 ### ปรับ 14 ส.ค. (หลังไล่ตรวจเทียบมติล่าสุด — พิมพ์เขียวเดิมตามไม่ทัน 4 จุด)
-1. `items.reviewed_by_human (boolean)` → **`status` 5 สถานะ** ตามวงจรโฟลว์แอดมิน 4.2 (ร่าง→รออนุมัติ→อนุมัติ→ตีกลับ→ระงับ) + `approved_by` บังคับ RO-03 เชิงข้อมูล
+1. `items.reviewed_by_human (boolean)` → **`status` 5 สถานะ** ตามวงจรโฟลว์แอดมิน 4.2 (ร่าง→รออนุมัติ→อนุมัติ→ตีกลับ→ระงับ) + `approved_by` บังคับ RO-03 เชิงข้อมูล (18 พ.ย.: approver 2 คน)
 2. `users` เพิ่ม `target_level`, `exam_date` (เก็บคำตอบ onboarding ①②) + `audio_rate`
 3. `words` เพิ่ม `image_path` (รูปประกอบ — แผน C5) และ `etymology_*` (การ์ดที่มาอักษร m1-7)
 4. เพิ่มตาราง **`sentences`** — ประโยคตัวอย่าง/เรียงคำเป็น "เนื้อหาเรียน" คนละชนิดกับ `items` ที่เป็นข้อสอบ (ตอนนี้อยู่ใน sentences.ts — จะยกขึ้นตารางนี้)
@@ -478,7 +478,7 @@ erDiagram
 |---|---|
 | `attempts.app_version` | แก้บั๊กกลางการทดลอง → แยกข้อมูลก่อน/หลังแก้ได้ · **ย้อนหลังเติมไม่ได้** |
 | `users.consent_version` | แก้ข้อความ consent แล้วต้องรู้ว่าใครยอมรับฉบับไหน (ข้อกำหนด PDPA) |
-| `users.role` | RO-02/RO-03 — บังคับ "หฤทัยกดอนุมัติได้คนเดียว" ในระดับข้อมูล |
+| `users.role` | RO-02/RO-03 — บังคับ "กดอนุมัติได้เฉพาะ role approver" ในระดับข้อมูล (18 พ.ย.: approver = ทั้ง 2 คนในทีม) |
 | `users.pinyin_hidden` | m1-6 "จำค่าไว้" — ตอนนี้จำได้แค่ในเครื่อง |
 | `skills.bkt_run_id` | ค่าพารามิเตอร์ที่ใช้อยู่มาจากการเทรนรอบไหน |
 
@@ -502,7 +502,7 @@ erDiagram
 - **`review_states` เก็บ FSRS ครบแล้ว** — เติม `elapsed_days` / `scheduled_days` / `learning_steps` (เดิมขาด → sync client-server จะคำนวณนัดถัดไปไม่ตรงกัน · ทีมจดข้อนี้ไว้เองตั้งแต่ 20 ส.ค.)
 - **`mastery_snapshots` + `bkt_run_id`** — snapshot คำนวณด้วยโมเดลรอบไหน ไม่งั้นกราฟพัฒนาการอาจผสมผลจากคนละโมเดล
 - **`foundation_stages` เป็นตาราง** (ตารางที่ 23) — เดิม `stage` เป็น text อยู่ 2 ตารางที่ต้องตรงกันเป๊ะแต่ไม่มีอะไรบังคับ · ผลพลอยได้: เกณฑ์ PA-01 (80%) และ PA-08 (3 รอบ) กลายเป็น **ข้อมูลที่ปรับได้** แทนเลขฝังในโค้ด และกล่อง `foundation_lessons` มีเส้นเชื่อมแล้ว
-- **`words` + `review_status` / `reviewed_by` / `reviewed_at`** (แผน m7-2) — `th_reviewed` boolean แทนสถานะ "รอตรวจ" ของโฟลว์ 4.1 ไม่ได้ และ CG-01 บังคับว่าคำแปลต้องผ่านหฤทัย จึงต้องรู้ว่าใครตรวจเมื่อไหร่
+- **`words` + `review_status` / `reviewed_by` / `reviewed_at`** (แผน m7-2) — `th_reviewed` boolean แทนสถานะ "รอตรวจ" ของโฟลว์ 4.1 ไม่ได้ และ CG-01 ข บังคับว่าคำแปลต้องมีคนในทีมตรวจ (ใครก็ได้ — 18 พ.ย.) จึงต้องรู้ว่าใครตรวจเมื่อไหร่
 - **รวมคำว่า `status` ให้ตรงกันทั้งระบบ** = `STATUS5` (draft/pending/approved/rejected/suspended) — เดิม 5 ตารางใช้ชื่อคอลัมน์เดียวกันแต่ค่าไม่ตรงกันสักคู่
 - `attempts.client_attempt_id` → **NOT NULL** (เป็น UNIQUE แต่ nullable = กัน sync ซ้ำไม่ได้จริง เพราะ null ซ้ำกันได้)
 - `thai_l1_catalog.skill_id` → **NOT NULL UNIQUE** (KC จุดผิดที่ไม่ผูก skill = BKT ตามไม่ได้ = ไม่มีความหมาย)
@@ -544,6 +544,11 @@ erDiagram
 - `scripts/db_migrate.py` — dry-run (BEGIN…ROLLBACK บน Supabase จริง) / `--apply` / `--status` / `--mark` · จดเวอร์ชันใน `public.schema_migrations` · dry-run 7 ต.ค. ผ่านบน Postgres 17.6 (25 ตาราง)
 - กติกาใหม่: **แก้โครงที่ `er-drawio.sql` ก่อน → ออก migration ใหม่ให้ตรง → ห้ามแก้ตารางมือใน SQL Editor อีก** · ตารางจริงใน Supabase วันนี้ยังเป็น words + roadmap_state (+ schema_migrations) จนกว่าจะรัน `--apply`
 - `skills.type` เพิ่มค่า `skill` (ทักษะฟัง/อ่าน/เรียงประโยค 3 ตัวตาม CG-08) · ผังเดิม regenerate แล้ว
+
+### ปรับ 18 พ.ย. 2026 — กฎผู้ตรวจเนื้อหา CG-01/RO-03 (บอลเคาะ: ไม่ผูกหฤทัยคนเดียว)
+- **โครงตารางไม่เปลี่ยน** — เปลี่ยนความหมายของค่า: `users.role='approver'` ให้ทั้งบอลและหฤทัย (เดิมหฤทัยคนเดียว) · `items.approved_by` = ใครในทีมกด · ว่างได้เมื่อเป็นข้ออัตโนมัติที่ผ่านกฎ (CG-01 ก)
+- **ต้องเติมใน 0007:** `items.generator` (human | ai_draft | auto) + ข้อยกเว้นใน `items_approver_guard` ให้ approved_by ว่างเฉพาะ generator='auto' · `approval_transfers` หมดความจำเป็นหลัก (พิจารณาตัด)
+- คอมเมนต์ใน `er-drawio.sql` (reviewed_by · role · approved_by · sentences.status · approval_transfers) แก้แล้ว → ผัง mermaid/drawio เจนใหม่ · กฎเต็มดู `กฎการทำงานระบบ-BUSINESS-RULES.md` CG-01/RO-03 · เหตุผล: คิวตรวจค้างเป็นเดือน
 
 ## 2.1) ตรวจแบบด้วย query จริง (ขั้น 5)
 
