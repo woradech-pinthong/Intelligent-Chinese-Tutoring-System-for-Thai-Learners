@@ -464,7 +464,7 @@
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
         <mxCell id="exam_forms" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="20. ชุดข้อสอบ" vertex="1">
-          <mxGeometry height="320" width="230" x="792" y="800" as="geometry" />
+          <mxGeometry height="296" width="230" x="792" y="800" as="geometry" />
         </mxCell>
         <mxCell id="exam_forms__0" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสชุด" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -487,20 +487,17 @@
         <mxCell id="exam_forms__7" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสอบ" vertex="1">
           <mxGeometry height="24" width="230" y="176" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__8" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ล็อกถึงวันที่" vertex="1">
+        <mxCell id="exam_forms__9" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เผยแพร่เมื่อ" vertex="1">
           <mxGeometry height="24" width="230" y="200" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__9" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เผยแพร่เมื่อ" vertex="1">
+        <mxCell id="exam_forms__active" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เปิดใช้อยู่" vertex="1">
           <mxGeometry height="24" width="230" y="224" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__active" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เปิดใช้อยู่" vertex="1">
+        <mxCell id="exam_forms__11" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
           <mxGeometry height="24" width="230" y="248" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__11" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
-          <mxGeometry height="24" width="230" y="272" as="geometry" />
-        </mxCell>
         <mxCell id="exam_forms__12" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาแก้" vertex="1">
-          <mxGeometry height="24" width="230" y="296" as="geometry" />
+          <mxGeometry height="24" width="230" y="272" as="geometry" />
         </mxCell>
         <mxCell id="form_blueprints" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="21. พิมพ์เขียวชุดข้อสอบ" vertex="1">
           <mxGeometry height="176" width="230" x="1172" y="1343" as="geometry" />
@@ -3081,7 +3078,7 @@
           <mxGeometry x="0" y="56" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p4_exam_forms" value="ชุดข้อสอบ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="362" y="132" width="230" height="320" as="geometry" />
+          <mxGeometry x="362" y="132" width="230" height="296" as="geometry" />
         </mxCell>
         <mxCell id="p4_exam_forms__0" value="รหัสชุด" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="32" width="230" height="24" as="geometry" />
@@ -3104,20 +3101,17 @@
         <mxCell id="p4_exam_forms__7" value="เวลาสอบ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="176" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p4_exam_forms__8" value="ล็อกถึงวันที่" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
+        <mxCell id="p4_exam_forms__9" value="เผยแพร่เมื่อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="200" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p4_exam_forms__9" value="เผยแพร่เมื่อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
-          <mxGeometry x="0" y="224" width="230" height="24" as="geometry" />
-        </mxCell>
         <mxCell id="p4_exam_forms__active" parent="p4_exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เปิดใช้อยู่" vertex="1">
-          <mxGeometry height="24" width="230" y="248" as="geometry" />
+          <mxGeometry height="24" width="230" y="224" as="geometry" />
         </mxCell>
         <mxCell id="p4_exam_forms__11" value="เวลาสร้าง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
-          <mxGeometry x="0" y="272" width="230" height="24" as="geometry" />
+          <mxGeometry x="0" y="248" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p4_exam_forms__12" value="เวลาแก้" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
-          <mxGeometry x="0" y="296" width="230" height="24" as="geometry" />
+          <mxGeometry x="0" y="272" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p4_form_blueprints" value="พิมพ์เขียวชุดข้อสอบ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="732" y="277" width="230" height="176" as="geometry" />
