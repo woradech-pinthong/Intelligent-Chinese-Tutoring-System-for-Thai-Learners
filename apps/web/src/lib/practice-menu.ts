@@ -38,7 +38,7 @@ export type MenuGroup = {
 // รอบทดลองกับผู้เรียนจริง (ME-02 · CG-02): build ด้วย NEXT_PUBLIC_SHOW_DEMO=0 → ซ่อนแบบฝึกที่เนื้อหายังไม่ผ่านตรวจ
 export const SHOW_DEMO = process.env.NEXT_PUBLIC_SHOW_DEMO !== "0";
 const UNREVIEWED: ReadonlySet<MenuStatus> = new Set<MenuStatus>(["demo", "draft", "mock", "tempimg"]);
-// ประโยคชุด sentences.ts — "พร้อม" ได้เมื่อหฤทัยตรวจครบเท่านั้น (CG-03)
+// ประโยคชุด sentences.ts — "พร้อม" ได้เมื่อทีมตรวจครบเท่านั้น (CG-03)
 const SENTENCE_STATUS: MenuStatus = SENTENCES_REVIEWED ? "ready" : "draft";
 
 const MENU: MenuGroup[] = [

@@ -1,7 +1,7 @@
 "use client";
 
 // จับคู่คำถาม ↔ คำตอบ (รูปแบบข้อสอบ HSK 1 พาร์ตอ่าน) — เดโมด้วยเนื้อหาสมมุติ
-// ⚠️ คู่ถาม-ตอบ = ร่าง AI ใน src/data/mock-activities.ts (รอหฤทัยตรวจ) · คำอธิบายคำแสดงคำถามด้านล่างก็ร่าง AI เช่นกัน
+// ⚠️ คู่ถาม-ตอบ = ร่าง AI ใน src/data/mock-activities.ts (รอทีมตรวจ) · คำอธิบายคำแสดงคำถามด้านล่างก็ร่าง AI เช่นกัน
 // PR-06: ทักษะอ่าน ไม่มีเสียง · ตัวลวง = คำตอบของคู่อื่น 3 ข้อ · ตอบแล้วเฉลยคำแปลทุกตัวเลือก
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
@@ -54,7 +54,7 @@ export default function QAPractice() {
   const [roundNo, setRoundNo] = useState(0);
   return (
     <div className="flex flex-col gap-5 p-5">
-      <MockBadge title="เนื้อหาสมมุติ (ร่าง AI · รอหฤทัยตรวจ)" real="ของจริง: คู่ถาม-ตอบรายหมวดจากหฤทัย" />
+      <MockBadge title="เนื้อหาสมมุติ (ร่าง AI · รอทีมตรวจ)" real="ของจริง: คู่ถาม-ตอบรายหมวดจากทีม" />
       {isClient ? <QARound key={roundNo} onAgain={() => setRoundNo((n) => n + 1)} /> : <Center>กำลังเตรียมข้อ...</Center>}
     </div>
   );

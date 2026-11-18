@@ -3,7 +3,7 @@
   "version": "v1-draft",
   "status": "pending_review_haruthai",
   "created": "2026-07-12",
-  "note": "ร่างจาก workflow ค้นวิจัย + ตรวจ citation แบบ adversarial · ทุกรายการต้องผ่านหฤทัย (HSK5) ก่อนเข้า item bank · ห้ามใช้ตัวเลข %/citation ที่ยังไม่ verified",
+  "note": "ร่างจาก workflow ค้นวิจัย + ตรวจ citation แบบ adversarial · ทุกรายการต้องผ่านทีมก่อนเข้า item bank · ห้ามใช้ตัวเลข %/citation ที่ยังไม่ verified",
   "kc_scheme": "TL-<GROUP>-<CODE>",
   "kc_index": [
     {

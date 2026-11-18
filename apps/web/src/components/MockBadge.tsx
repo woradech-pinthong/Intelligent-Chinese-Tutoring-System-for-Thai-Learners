@@ -23,7 +23,7 @@ export function MockBadge({ title, real }: { title: string; real: string }) {
 export function DraftSentenceBadge() {
   return (
     <MockBadge
-      title="ประโยคฉบับร่าง (ร่าง AI · รอหฤทัยตรวจ)"
+      title="ประโยคฉบับร่าง (ร่าง AI · รอทีมตรวจ)"
       real="ของจริง: ประโยคที่ครูตรวจแล้ว แยกตามหมวด หมวดละ 5–10 ประโยค"
     />
   );

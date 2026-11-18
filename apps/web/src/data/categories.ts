@@ -1,5 +1,5 @@
-// โครง 5 หมวดเนื้อหา HSK1 (หฤทัยอนุมัติ 26 ก.ค. 2026) — id ตรงกับคอลัมน์ words.category ใน Supabase
-// ที่มา: data/wordlist/REVIEW-หมวด300คำ-สำหรับหฤทัย.md · ยอดคำจริงนับจาก DB เสมอ (ไม่ hardcode)
+// โครง 5 หมวดเนื้อหา HSK1 (ทีมอนุมัติ 26 ก.ค. 2026) — id ตรงกับคอลัมน์ words.category ใน Supabase
+// ที่มา: data/wordlist/REVIEW-หมวด300คำ.md · ยอดคำจริงนับจาก DB เสมอ (ไม่ hardcode)
 import type { IconName } from "@/components/Icon";
 
 export type Category = {

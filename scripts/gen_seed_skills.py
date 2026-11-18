@@ -1,5 +1,5 @@
 # gen_seed_skills.py — สร้าง supabase/migrations/20261007000006_seed_skills_catalog.sql
-# จาก data/thai-l1/catalog-v1.json (จุดผิดคนไทย 15 KC — ร่าง v1 รอหฤทัยตรวจ) + KC คำศัพท์รายหมวด 5 + ทักษะ 3 (CG-08 = 23 KC)
+# จาก data/thai-l1/catalog-v1.json (จุดผิดคนไทย 15 KC — ร่าง v1 รอทีมตรวจ) + KC คำศัพท์รายหมวด 5 + ทักษะ 3 (CG-08 = 23 KC)
 # รัน: python scripts/gen_seed_skills.py   (ไฟล์ปลายทางรันซ้ำได้ — upsert ด้วย code)
 # ⚠️ หลังรัน --apply แล้ว ถ้า JSON เปลี่ยน ให้รันสคริปต์นี้ใหม่แล้ว `python scripts/db_migrate.py --rerun 20261007000006_seed_skills_catalog`
 import io, json, os, sys
@@ -9,7 +9,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, "data", "thai-l1", "catalog-v1.json")
 OUT = os.path.join(ROOT, "supabase", "migrations", "20261007000006_seed_skills_catalog.sql")
 
-# ป้ายสั้นที่ผู้เรียนเห็นบน dashboard (≤30 ตัวอักษร) — ร่างโดย AI 8 ต.ค. รอหฤทัยตรวจ/แก้ · ถ้า JSON มี "name_th" จะใช้ของ JSON ก่อน
+# ป้ายสั้นที่ผู้เรียนเห็นบน dashboard (≤30 ตัวอักษร) — ร่างโดย AI 8 ต.ค. รอทีมตรวจ/แก้ · ถ้า JSON มี "name_th" จะใช้ของ JSON ก่อน
 NAME_TH = {
     "TL-TONE-T2AS3":       "เสียง 2 เพี้ยนไปคล้ายเสียง 3",
     "TL-TONE-T3AS2":       "เสียง 3 เพี้ยนไปคล้ายเสียง 2",
@@ -58,10 +58,10 @@ if missing:
 
 lines = [
     "-- 20261007000006_seed_skills_catalog.sql — seed ตาราง skills (23 KC) + thai_l1_catalog (15 จุดผิดคนไทย)",
-    "-- ⚠️ สร้างโดย scripts/gen_seed_skills.py จาก data/thai-l1/catalog-v1.json (สถานะ v1-draft · รอหฤทัยตรวจ) — อย่าแก้มือ แก้ที่ JSON/สคริปต์แล้วรันใหม่",
+    "-- ⚠️ สร้างโดย scripts/gen_seed_skills.py จาก data/thai-l1/catalog-v1.json (สถานะ v1-draft · รอทีมตรวจ) — อย่าแก้มือ แก้ที่ JSON/สคริปต์แล้วรันใหม่",
     "--    หลัง --apply แล้ว: python scripts/db_migrate.py --rerun 20261007000006_seed_skills_catalog",
     "-- KC 23 ตัวตาม CG-08: จุดผิดคนไทย 15 (type thai_l1) + คำศัพท์รายหมวด 5 (vocab) + ทักษะ 3 ฟัง/อ่าน/เรียงประโยค (skill)",
-    "-- name_th = ป้ายสั้นบน dashboard (ร่าง AI 8 ต.ค. รอหฤทัย) · description_th/cause_th/remedy/evidence คัดจาก JSON ตรง ๆ",
+    "-- name_th = ป้ายสั้นบน dashboard (ร่าง AI 8 ต.ค. รอทีม) · description_th/cause_th/remedy/evidence คัดจาก JSON ตรง ๆ",
     "-- ค่า BKT (bkt_prior/learn/slip/guess) ยังว่าง — เติมหลังเทรนรอบแรก (bkt_training_runs)",
     "begin;",
     "",

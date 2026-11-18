@@ -10,7 +10,7 @@
 --   ④ กดเริ่มควิซหมวด 1                               → sessions 1 แถว (quiz · attempt_no DB เติม)
 --   ⑤⑥ ตอบข้อฟัง 3 ข้อ: 谢谢 ถูก · 再见 ถูก · 对不起 ผิด → attempts 3 แถว (graded, item_id) · ข้อสอบอยู่ items 3 แถว (+ item_skills Q-matrix)
 --   ⑦ จบควิซ 2/3                                      → sessions.status = done · score 2 / total 3
--- หมายเหตุ: ข้อสอบ 3 ข้อเป็นตัวอย่าง status = pending (ยังไม่ผ่านตะวันตรวจ — RO-03) · cohort = team → ไม่ปนผลวิจัย (ME-02)
+-- หมายเหตุ: ข้อสอบ 3 ข้อเป็นตัวอย่าง status = pending (ยังไม่ผ่านทีมตรวจ — RO-03) · cohort = team → ไม่ปนผลวิจัย (ME-02)
 --           ตัวเลือกข้อฟังเป็นคำแปลไทย (❓ รอบอลเคาะ: คำแปลไทย หรือตัวจีน)
 
 do $$
@@ -60,19 +60,19 @@ begin
   insert into public.items (module, item_type, category, stem, audio_path, choices, answer_key, distractor_rationale, hsk_level, status)
   values ('listening', 'mcq', 1, 'ฟังแล้วเลือกความหมาย', 'words/241.mp3',
           '["ขอบคุณ","สวัสดี","ลาก่อน","ขอโทษ"]', '"ขอบคุณ"',
-          '{"seed":"demo-mint","word_id":241,"note":"ข้อตัวอย่างสาธิต รอตะวันตรวจ"}', 1, 'pending')
+          '{"seed":"demo-mint","word_id":241,"note":"ข้อตัวอย่างสาธิต รอทีมตรวจ"}', 1, 'pending')
   returning id into v_i1;
 
   insert into public.items (module, item_type, category, stem, audio_path, choices, answer_key, distractor_rationale, hsk_level, status)
   values ('listening', 'mcq', 1, 'ฟังแล้วเลือกความหมาย', 'words/272.mp3',
           '["สวัสดี","ลาก่อน","ขอบคุณ","ขอโทษ"]', '"ลาก่อน"',
-          '{"seed":"demo-mint","word_id":272,"note":"ข้อตัวอย่างสาธิต รอตะวันตรวจ"}', 1, 'pending')
+          '{"seed":"demo-mint","word_id":272,"note":"ข้อตัวอย่างสาธิต รอทีมตรวจ"}', 1, 'pending')
   returning id into v_i2;
 
   insert into public.items (module, item_type, category, stem, audio_path, choices, answer_key, distractor_rationale, hsk_level, status)
   values ('listening', 'mcq', 1, 'ฟังแล้วเลือกความหมาย', 'words/45.mp3',
           '["ขอโทษ","สวัสดี","ขอบคุณ","ลาก่อน"]', '"ขอโทษ"',
-          '{"seed":"demo-mint","word_id":45,"note":"ข้อตัวอย่างสาธิต รอตะวันตรวจ"}', 1, 'pending')
+          '{"seed":"demo-mint","word_id":45,"note":"ข้อตัวอย่างสาธิต รอทีมตรวจ"}', 1, 'pending')
   returning id into v_i3;
 
   -- Q-matrix: ข้อนี้วัดทักษะอะไร (BK-02)

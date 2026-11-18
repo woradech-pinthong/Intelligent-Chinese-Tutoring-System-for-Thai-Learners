@@ -75,7 +75,7 @@ def main():
                 "hsk_level": 1,
                 "wordlist_version": VERSION,
             })
-        else:  # คำ/วลีสอบที่ไม่อยู่ใน dataset — สร้างโครงด้วย pypinyin แล้วให้ AI+หฤทัยเติม
+        else:  # คำ/วลีสอบที่ไม่อยู่ใน dataset — สร้างโครงด้วย pypinyin แล้วให้ AI+ทีมเติม
             missing.append(w)
             out.append({
                 "hanzi": w,

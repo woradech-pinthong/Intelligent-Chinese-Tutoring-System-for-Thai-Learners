@@ -74,7 +74,7 @@ class ReviewIn(BaseModel):
 
 @app.post("/words/{word_id}/review")
 def review_word(word_id: int, body: ReviewIn):
-    """หฤทัยตรวจคำแปล: อัปเดต meaning_th + ตั้ง th_reviewed
+    """ทีมตรวจคำแปล: อัปเดต meaning_th + ตั้ง th_reviewed
     (เขียนผ่าน server เพราะตาราง words เปิด client อ่านอย่างเดียว — ตาม ARCHITECTURE §4)
     """
     if not DB_URL:

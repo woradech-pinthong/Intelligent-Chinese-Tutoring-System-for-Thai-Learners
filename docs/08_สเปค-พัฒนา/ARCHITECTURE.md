@@ -182,7 +182,7 @@ apps/api/
 | `POST` | `/mock-exam/start` | ประกอบชุดข้อสอบฟัง+อ่านเต็มรูปแบบ + เวลาเริ่ม |
 | `POST` | `/mock-exam/{session_id}/submit` | ตรวจทั้งชุด → คะแนนสเกล 200 (ผ่าน 120) → attempts เข้า BKT → สรุปรายทักษะ |
 | `GET` | `/mock-exam/history` | ประวัติ mock exam (ใช้ทำ pre/post gain score) |
-| `POST` | `/content/draft` | (optional) Gemini ร่างประโยคตัวอย่าง/คำอธิบายไทย — ติดธง `draft` เสมอ มนุษย์ (หฤทัย) ตรวจก่อนเข้า item bank |
+| `POST` | `/content/draft` | (optional) Gemini ร่างประโยคตัวอย่าง/คำอธิบายไทย — ติดธง `draft` เสมอ มนุษย์ (ทีม) ตรวจก่อนเข้า item bank |
 
 **Auth:** client ล็อกอินผ่าน Supabase Auth → ทุก request แนบ JWT → FastAPI verify (JWKS/secret ของ Supabase) → ได้ `user_id` — endpoint เนื้อหาสาธารณะ (`/words`, `/health`) ไม่ต้องล็อกอิน
 
@@ -204,9 +204,9 @@ apps/api/
 | `minimal_pairs` | `skill_id`, `hanzi_a/pinyin_a/audio_a_path/word_a_id`, `hanzi_b/…`, `note_th`, `status` | PR-05 ~20 คู่ (วรรณยุกต์ 2/3 ~10 + zh/ch/sh ~10) · เก็บ hanzi ตรง ๆ ไม่บังคับผูก `words` เพราะบางคู่ (妈/马) ไม่ได้อยู่ในลิสต์ 300 คำทั้งคู่ |
 | `approval_transfers` | `from_user_id`, `to_user_id`, `reason`, `granted_at`, `revoked_at` | โฟลว์ §7-6 "จดบันทึกการโอนสิทธิ์ทุกครั้ง" |
 | `users` | `id (uuid, = auth.users.id)`, `display_name`, **`role (learner\|admin\|approver)`**, `pdpa_consent_at`, **`consent_version`**, `target_level`, `exam_date (date)`, **`self_level (cant_read\|some_basics\|unsure — ON-02 ③ · 28 ก.ย.)`**, `audio_rate (real)`, **`pinyin_hidden`**, **`cohort`**, **`trial_started_at`**, **`anonymized_at`**, `created_at` | โปรไฟล์ต่อยอดจาก Supabase Auth · 3 คอลัมน์กลางเก็บคำตอบ onboarding ①② + ค่าตั้งเสียงช้า (ON-02/m2-7) · `cohort/trial_started_at` แยกผู้ทดลอง ~10 คน (ME-02) ออกจากบัญชีทีม · `anonymized_at` = ทางลงของ ON-05 |
-| `words` | `id`, `hanzi`, `pinyin`, `meaning_en (CC-CEDICT — ใส่เครดิต CC BY-SA)`, `meaning_th (AI แปลทีเดียว + หฤทัยตรวจ)`, `th_reviewed`, `hsk_level (1\|2)`, `category (smallint 1-5)`, `audio_path`, `wordlist_version ('HSK3.0')` · **(พิมพ์เขียว ยังไม่มีจริง)** `image_path`, `etymology_image_path`, `etymology_story_th` | HSK 3.0 เท่านั้น (L1=300, L2=500 สะสม) — version-stamp เพราะช่วงเปลี่ยนผ่าน |
+| `words` | `id`, `hanzi`, `pinyin`, `meaning_en (CC-CEDICT — ใส่เครดิต CC BY-SA)`, `meaning_th (AI แปลทีเดียว + ทีมตรวจ)`, `th_reviewed`, `hsk_level (1\|2)`, `category (smallint 1-5)`, `audio_path`, `wordlist_version ('HSK3.0')` · **(พิมพ์เขียว ยังไม่มีจริง)** `image_path`, `etymology_image_path`, `etymology_story_th` | HSK 3.0 เท่านั้น (L1=300, L2=500 สะสม) — version-stamp เพราะช่วงเปลี่ยนผ่าน |
 | `skills` | `id`, `code`, `name_th`, `type (vocab\|grammar\|tone\|consonant\|thai_l1)`, `hsk_level`, `bkt_prior/learn/slip/guess (พารามิเตอร์เทรนแล้ว — เริ่มด้วยค่าตั้งต้นจากงานวิจัย)` | Knowledge Components: คำศัพท์/ไวยากรณ์ 129 จุด (สะสม — HSK 1 = 48 จุดแรก)/วรรณยุกต์/พยัญชนะ **+ Thai-L1 KCs** (เช่น `TONE_2_3`, `RETROFLEX_ZH_CH_SH_R`, `MODIFIER_ORDER`) |
-| `items` | `id`, `module (listening\|reading\|vocab\|grammar\|minimal_pair)`, `item_type (mcq\|match\|true_false\|pick_pinyin\|listen_pick_image\|word_order)`, **`category`**, `stem`, `choices (jsonb)`, `answer_key (jsonb — รวม accepted_answers ของข้อเรียงคำ)`, `audio_path`, `hsk_level`, `distractor_rationale (jsonb — ตัวลวงข้อไหนสะท้อน Thai-L1 จุดไหน)`, **`status (draft\|pending\|approved\|rejected\|suspended)`**, `reject_reason`, **`created_by`**, `approved_by (uuid → users)`, `approved_at`, `created_at`, **`updated_at`** | ⭐ ข้อที่ AI สร้าง (`/hsk-item`) ต้อง `status = approved` ก่อนเสิร์ฟ · `approved_by` บังคับ RO-03 เชิงข้อมูล (หฤทัยคนเดียว) · ข้อฟัง: stem ห้ามโชว์พินอิน/ฮั่นจื้อของสิ่งที่ให้ฟัง (audio-only) |
+| `items` | `id`, `module (listening\|reading\|vocab\|grammar\|minimal_pair)`, `item_type (mcq\|match\|true_false\|pick_pinyin\|listen_pick_image\|word_order)`, **`category`**, `stem`, `choices (jsonb)`, `answer_key (jsonb — รวม accepted_answers ของข้อเรียงคำ)`, `audio_path`, `hsk_level`, `distractor_rationale (jsonb — ตัวลวงข้อไหนสะท้อน Thai-L1 จุดไหน)`, **`status (draft\|pending\|approved\|rejected\|suspended)`**, `reject_reason`, **`created_by`**, `approved_by (uuid → users)`, `approved_at`, `created_at`, **`updated_at`** | ⭐ ข้อที่ AI สร้าง (`/hsk-item`) ต้อง `status = approved` ก่อนเสิร์ฟ · `approved_by` บังคับ RO-03 เชิงข้อมูล (คนเดียว) · ข้อฟัง: stem ห้ามโชว์พินอิน/ฮั่นจื้อของสิ่งที่ให้ฟัง (audio-only) |
 | `item_skills` | `item_id`, `skill_id` (PK คู่) | **Q-matrix** — ไม่มีตารางนี้ BKT ไม่รู้จะอัปเดตทักษะไหน |
 | `attempts` | `id`, `client_attempt_id (unique — idempotent sync)`, `user_id`, `session_id`, **`item_id (nullable)`**, **`word_id`**, **`sentence_id`**, **`skill_id`**, **`generator`**, `answer (jsonb)`, `is_correct`, `answered_at`, `time_spent_ms`, `context (practice\|review\|quiz\|pretest\|**posttest** — 28 ก.ย. ตัด placement/micro_check · mock สงวนไว้)` | ⭐ **append-only** — ห้าม UPDATE/DELETE · ป้อนเทรน BKT + วัด AUC · **อ้างได้ทั้งข้อสอบ/คำ/ประโยค** เพราะบัตรคำ-ฝึก-ควิซปั้นข้อสดจากคำ · `skill_id` จด KC ณ เวลาตอบ (ข้อปั้นสดไม่มี `item_skills` ให้เดิน + กันข้อมูลทดลองเปลี่ยนความหมายย้อนหลัง) |
 | `sessions` | `id`, `user_id`, `kind (pretest\|**posttest**\|quiz\|practice\|review — mock สงวนไว้ · 28 ก.ย. ตัด micro_check/placement)`, `form_id`, `category`, `mode`, `attempt_no`, `started_at`, `finished_at`, `status (running\|done\|abandoned)`, `total`, `score`, **`score_listening`**, **`score_reading`**, **`score_total (200)`**, **`passed (>=120)`**, `detail (jsonb)` | **แทน `mock_exam_sessions` เดิม** — เครื่องมือวัดทั้ง 5 ชนิดรูปร่างเหมือนกัน · `attempt_no` + `status` ทำให้ QZ-08/09/12 ทำงานได้ และแยกรอบที่ทิ้งกลางคันออกจากคะแนนทางการ · **pretest ≠ mock** ตาม PL-03 |
@@ -219,7 +219,7 @@ apps/api/
 | `mastery_snapshots` | `user_id`, `skill_id`, `p_mastery`, **`bkt_run_id`**, `computed_at` | ผล BKT posterior ล่าสุด (+ ประวัติไว้พล็อตพัฒนาการ) |
 | ~~`mock_exam_sessions`~~ | **ยุบเข้า `sessions` แล้ว (21 ส.ค.)** — คะแนน mock เป็นคอลัมน์จริงใน `sessions` (score_listening/score_reading/score_total สเกล 200/passed ≥120 — ยกออกจาก detail jsonb 21 ส.ค.) | pre/post = หลักฐาน gain score เหมือนเดิม แต่ `kind` แยก pretest ออกจาก mock ตาม PL-03 |
 | `thai_l1_catalog` | `id`, `code`, `error_group (tone_2_3\|retroflex\|grammar_transfer\|...)`, `description_th`, `example`, `cause_th (อธิบายด้วย L1 transfer)`, `remedy (วิธีเจาะสอน เช่น minimal pair)`, `evidence (อ้างอิงงานวิจัยจริง — ห้ามแต่ง)`, **`skill_id`** NOT NULL UNIQUE (KC ที่ไม่ผูก skill = BKT ตามไม่ได้ = ไม่มีความหมาย) | จุดขายหลัก — เผยแพร่เป็น open dataset ได้ (Zenodo DOI) |
-| `sentences` | `id`, `category`, `tokens (jsonb — ลำดับคำเฉลย)`, `pinyin`, `meaning_th`, `focus_th`, **`skill_id (FK — เดิมเป็น `kc_code` text ลอย)`**, `audio_path`, **`source_attribution`**, `status` | **เนื้อหาเรียน ไม่ใช่ข้อสอบ** (คนละตารางกับ `items`) — ตอนนี้อยู่ใน `apps/web/src/data/sentences.ts` จะยกขึ้นตารางนี้ · ต้องผ่านหฤทัยก่อนเสิร์ฟ (CG-01) · `source_attribution` = เครดิตถ้าดึงประโยคจาก Tatoeba (CC BY 2.0 FR) |
+| `sentences` | `id`, `category`, `tokens (jsonb — ลำดับคำเฉลย)`, `pinyin`, `meaning_th`, `focus_th`, **`skill_id (FK — เดิมเป็น `kc_code` text ลอย)`**, `audio_path`, **`source_attribution`**, `status` | **เนื้อหาเรียน ไม่ใช่ข้อสอบ** (คนละตารางกับ `items`) — ตอนนี้อยู่ใน `apps/web/src/data/sentences.ts` จะยกขึ้นตารางนี้ · ต้องผ่านทีมก่อนเสิร์ฟ (CG-01) · `source_attribution` = เครดิตถ้าดึงประโยคจาก Tatoeba (CC BY 2.0 FR) |
 | `sentence_words` | `sentence_id`, `word_id`, `position` (PK ร่วม) | **M:N ประโยค ↔ คำ** — บังคับกฎ "ประโยคใช้เฉพาะคำที่เรียนแล้ว" และเตือนก่อนลบคำที่ถูกอ้างอยู่ (RO-02) |
 
 **RLS (Row-Level Security):**
@@ -273,7 +273,7 @@ client โหลดผ่าน Serwist runtime cache (CacheFirst) → ฟัง
 
 - minimal pair (วรรณยุกต์ 2/3, zh/ch/sh/r) = คู่ไฟล์เสียงเทียบ ต่างกันจุดเดียว — วินิจฉัย "หู" โดยไม่ต้อง ASR
 - MeloTTS = ตัวสำรองถ้า edge-tts มีปัญหา (ตาม proposal 1.3.3)
-- เสียง/คำอ่านที่ generate ต้องผ่านหูหฤทัยตรวจก่อนใช้ใน item bank (กติกาทีม)
+- เสียง/คำอ่านที่ generate ต้องผ่านหูทีมตรวจก่อนใช้ใน item bank (กติกาทีม)
 
 ---
 
@@ -310,7 +310,7 @@ client โหลดผ่าน Serwist runtime cache (CacheFirst) → ฟัง
 │       └── constants.ts|py   # ค่าคงที่: HSK_LEVELS, PASS_SCORE=120, MAX_SCORE=200, module codes
 ├── data/                     # ข้อมูลตั้งต้น (version-stamp ทุกไฟล์)
 │   ├── wordlist/             # hsk30-level1.json (300), hsk30-level2.json (500 สะสม)
-│   ├── item-bank/            # ข้อสอบ + เฉลย + Q-matrix mapping (ผ่านหฤทัยตรวจแล้วเท่านั้น)
+│   ├── item-bank/            # ข้อสอบ + เฉลย + Q-matrix mapping (ผ่านทีมตรวจแล้วเท่านั้น)
 │   ├── thai-l1-catalog/      # คลังจุดผิด (โครงตาม §4) — เผยแพร่เป็น open dataset ได้
 │   └── seeds/                # SQL/สคริปต์ seed ลง Supabase
 ├── ml/                       # เทรน pyBKT offline
@@ -342,7 +342,7 @@ client โหลดผ่าน Serwist runtime cache (CacheFirst) → ฟัง
 | 7 | offline-first: Serwist + Dexie, Supabase = ตัวจริง | iOS ลบ IndexedDB ได้ (~7 วันไม่เปิด) · log การตอบ = ของมีค่าสุด ห้ามหาย | `10-เทคโนโลยี/Next.js-PWA.md`, `10-เทคโนโลยี/Supabase.md` |
 | 8 | โฮสต์ฟรี: Vercel/CF Pages + HF Spaces + Supabase | ยืนยันเงื่อนไข 2026 แล้ว · ❌ Render free (RAM 512MB) / Fly.io / Railway / Koyeb (เลิกฟรี) | `10-เทคโนโลยี/โฮสติ้งฟรี.md` |
 | 9 | Serwist ไม่ใช่ next-pwa | next-pwa เลิกพัฒนาแล้ว | `10-เทคโนโลยี/Next.js-PWA.md` |
-| 10 | แปลไทยทีเดียวจาก จีน+อังกฤษ (CC-CEDICT อ้างอิง) + หฤทัยตรวจ | กันความหมายเพี้ยนสะสมจากแปลทอดต่อทอด · CC BY-SA ต้องใส่เครดิต | `10-เทคโนโลยี/NLP-จีน-และเสียง.md` |
+| 10 | แปลไทยทีเดียวจาก จีน+อังกฤษ (CC-CEDICT อ้างอิง) + ทีมตรวจ | กันความหมายเพี้ยนสะสมจากแปลทอดต่อทอด · CC BY-SA ต้องใส่เครดิต | `10-เทคโนโลยี/NLP-จีน-และเสียง.md` |
 | 11 | LLM (Gemini Flash) = เสริมเท่านั้น เรียกจาก server | ไม่ใช่ส่วนที่ใช้ประเมินผลโครงงาน · key ใน env ห้ามฝัง frontend · ออกแบบสลับ provider ได้ | proposal §1.3.4, `40-การตัดสินใจ/ปรับขอบเขต-โฟกัสHSK.md` |
 | 12 | UX จาก mockup อาจารย์: กราฟรายทักษะ, ข้อสอบทีละข้อ+progress+ย้อนแก้, interaction เรียงคำ | ตรงทิศทางเรา — แต่ไม่เอาส่วนสอบพูด/ASR, เกณฑ์สมมติ, ข้อฟังเฉลยตัวเอง | `40-การตัดสินใจ/วิเคราะห์-mockup-อาจารย์.md` |
 

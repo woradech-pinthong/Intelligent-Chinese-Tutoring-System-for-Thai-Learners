@@ -8,8 +8,8 @@ create table if not exists public.words (
   pinyin text not null,
   pos text[] default '{}',
   meaning_en jsonb default '[]'::jsonb,          -- จาก CC-CEDICT/dataset (ตัวอ้างอิง — ใส่เครดิต CC BY-SA)
-  meaning_th text,                               -- คำแปลไทย (AI draft → หฤทัยตรวจ)
-  th_reviewed boolean not null default false,    -- true เมื่อหฤทัยตรวจแล้วเท่านั้น
+  meaning_th text,                               -- คำแปลไทย (AI draft → ทีมตรวจ)
+  th_reviewed boolean not null default false,    -- true เมื่อทีมตรวจแล้วเท่านั้น
   hsk_level int not null check (hsk_level in (1, 2)),
   audio_path text,                               -- path ใน Supabase Storage (เติมตอน generate เสียง)
   wordlist_version text not null,                -- เช่น 'HSK3.0-v2026.07' (ช่วงเปลี่ยนผ่านต้อง version-stamp)

@@ -173,7 +173,7 @@ export type SpeakCheck = {
   kc?: KcCode; // จุดผิดคนไทยที่เจอ (เฉพาะ tone/retro ที่อยู่ในคลัง)
   kc_label_th?: string; // ป้ายสั้นของ KC (SKILL_LABEL_TH)
   title_th: string; // ผลหลัก เช่น "วรรณยุกต์เพี้ยน: เป้าเสียง 3 แต่ได้ยินเสียง 2"
-  tip_th?: string; // วิธีแก้ 1 ประโยค: มี KC = kcTip (ร่าง รอหฤทัย) · ไม่มี = กฎสั้น (TONE_HOW / คำแนะนำของ classifyPair)
+  tip_th?: string; // วิธีแก้ 1 ประโยค: มี KC = kcTip (ร่าง รอทีม) · ไม่มี = กฎสั้น (TONE_HOW / คำแนะนำของ classifyPair)
   tip_draft?: boolean; // true = tip มาจากคำอธิบายฉบับร่าง (kc-tips) → หน้าจอติดป้าย "คำอธิบายฉบับร่าง"
 };
 

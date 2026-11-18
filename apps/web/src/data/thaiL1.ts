@@ -1,5 +1,5 @@
 // คลังจุดผิดคนไทย (Thai-L1 Error Catalog) ฝั่งเว็บ — อ่านจาก thai-l1-catalog.json
-// ⚠️ thai-l1-catalog.json = สำเนาตรงตัวของ data/thai-l1/catalog-v1.json (สถานะ v1-draft · รอหฤทัยตรวจ)
+// ⚠️ thai-l1-catalog.json = สำเนาตรงตัวของ data/thai-l1/catalog-v1.json (สถานะ v1-draft · รอทีมตรวจ)
 //    แก้ที่ต้นฉบับแล้วก๊อปมาใหม่ อย่าแก้สำเนา · ตัวเลข %/citation ในนั้นห้ามโชว์ผู้ใช้จนกว่าจะ verified
 // รหัส KC ชุดเดียวกับตาราง skills (supabase/migrations/20261007000006_seed_skills_catalog.sql):
 //    Thai-L1 15 + คำศัพท์รายหมวด 5 + ทักษะ 3 = 23 — ใช้เป็น skill_code ตอน logAttempt()
@@ -84,7 +84,7 @@ export type AnySkillCode = KcCode | SkillCode;
 /** ครบ 23 รหัส = ตาราง skills ทั้งตาราง */
 export const ALL_SKILL_CODES: readonly AnySkillCode[] = [...KC_CODES, ...SKILL_CODES];
 
-/** ป้ายสั้นภาษาไทย (= name_th ใน seed 0006 — ร่าง AI 8 ต.ค. รอหฤทัย) ใช้บนชิป/dashboard */
+/** ป้ายสั้นภาษาไทย (= name_th ใน seed 0006 — ร่าง AI 8 ต.ค. รอทีม) ใช้บนชิป/dashboard */
 export const SKILL_LABEL_TH: Record<AnySkillCode, string> = {
   "TL-TONE-T2AS3": "เสียง 2 เพี้ยนไปคล้ายเสียง 3",
   "TL-TONE-T3AS2": "เสียง 3 เพี้ยนไปคล้ายเสียง 2",
@@ -154,7 +154,7 @@ export function kcInfo(code: string): KcInfo | undefined {
   return INFO.get(code);
 }
 
-// ตอน dev: เตือนถ้า KC_CODES ในโค้ดเริ่มไม่ตรง kc_index ใน JSON (เช่น หฤทัยแก้คลังแล้วก๊อปมาใหม่)
+// ตอน dev: เตือนถ้า KC_CODES ในโค้ดเริ่มไม่ตรง kc_index ใน JSON (เช่น ทีมแก้คลังแล้วก๊อปมาใหม่)
 if (process.env.NODE_ENV !== "production") {
   const inJson = CATALOG.kc_index.map((k) => k.kc_code);
   const same = inJson.length === KC_CODES.length && inJson.every((c, i) => c === KC_CODES[i]);

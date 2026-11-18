@@ -40,7 +40,7 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
   const [peekId, setPeekId] = useState<number | null>(null); // แอบดูพินอินของบัตรไหนแล้ว (เปลี่ยนบัตร = ซ่อนใหม่เอง)
 
   // โหมดชุดวันนี้ (ค่าเริ่มต้น — กฎ m1-8/ON-06): เสิร์ฟทีละมื้อ 10 คำ ไม่โยนทั้งหมวด
-  // ?all=1 หรือโหมดตรวจของหฤทัย = เห็นทั้งชุดแบบเดิม
+  // ?all=1 หรือโหมดตรวจของทีม = เห็นทั้งชุดแบบเดิม
   const dailyMode = !all && !reviewMode;
 
   useEffect(() => {
@@ -367,7 +367,7 @@ function FlashcardsInner({ cat, reviewMode, all }: { cat: number | null; reviewM
       </div>
       {reviewMode && <div className="text-sm text-slate-400">{idx + 1} / {words.length}</div>}
 
-      {/* โหมดตรวจ (สำหรับหฤทัย) — เปิดด้วย ?review=1 เท่านั้น */}
+      {/* โหมดตรวจ (สำหรับทีม) — เปิดด้วย ?review=1 เท่านั้น */}
       {reviewMode && (
         <div className="mt-2 w-full rounded-2xl border border-dashed border-slate-300 bg-white/60 p-4">
           <div className="flex items-center gap-1.5 text-sm font-medium text-slate-600">

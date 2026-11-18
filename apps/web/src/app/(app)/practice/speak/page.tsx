@@ -321,7 +321,7 @@ function SpeakItem({
         target: word.hanzi,
         verdict: res.verdict,
         kc: res.kc ?? null,
-        alts: out.alternatives, // ทุกตัวที่ ASR ส่งมา — ไว้ตรวจย้อน/เทียบกับหูหฤทัยทีหลัง
+        alts: out.alternatives, // ทุกตัวที่ ASR ส่งมา — ไว้ตรวจย้อน/เทียบกับหูทีมทีหลัง
         focus: focus.find((f) => f.kc)?.kc ?? null, // จุดเสี่ยงแรกที่ผูก KC (คำแนะนำครึ่งเสียง 3 ไม่มี KC)
       },
       is_correct: null,
