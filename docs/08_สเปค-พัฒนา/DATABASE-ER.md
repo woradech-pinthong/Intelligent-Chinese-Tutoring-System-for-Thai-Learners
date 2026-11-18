@@ -416,7 +416,7 @@ erDiagram
 ---
 
 ### ปรับ 14 ส.ค. (หลังไล่ตรวจเทียบมติล่าสุด — พิมพ์เขียวเดิมตามไม่ทัน 4 จุด)
-1. `items.reviewed_by_human (boolean)` → **`status` 5 สถานะ** ตามวงจรโฟลว์แอดมิน 4.2 (ร่าง→รออนุมัติ→อนุมัติ→ตีกลับ→ระงับ) + `approved_by` บังคับ RO-03 เชิงข้อมูล
+1. `items.reviewed_by_human (boolean)` → **`status` 5 สถานะ** ตามวงจรโฟลว์แอดมิน 4.2 (ร่าง→รออนุมัติ→อนุมัติ→ตีกลับ→ระงับ) + `approved_by` บังคับ RO-03 เชิงข้อมูล (18 พ.ย.: approver 2 คน)
 2. `users` เพิ่ม `target_level`, `exam_date` (เก็บคำตอบ onboarding ①②) + `audio_rate`
 3. `words` เพิ่ม `image_path` (รูปประกอบ — แผน C5) และ `etymology_*` (การ์ดที่มาอักษร m1-7)
 4. เพิ่มตาราง **`sentences`** — ประโยคตัวอย่าง/เรียงคำเป็น "เนื้อหาเรียน" คนละชนิดกับ `items` ที่เป็นข้อสอบ (ตอนนี้อยู่ใน sentences.ts — จะยกขึ้นตารางนี้)
@@ -544,6 +544,11 @@ erDiagram
 - `scripts/db_migrate.py` — dry-run (BEGIN…ROLLBACK บน Supabase จริง) / `--apply` / `--status` / `--mark` · จดเวอร์ชันใน `public.schema_migrations` · dry-run 7 ต.ค. ผ่านบน Postgres 17.6 (25 ตาราง)
 - กติกาใหม่: **แก้โครงที่ `er-drawio.sql` ก่อน → ออก migration ใหม่ให้ตรง → ห้ามแก้ตารางมือใน SQL Editor อีก** · ตารางจริงใน Supabase วันนี้ยังเป็น words + roadmap_state (+ schema_migrations) จนกว่าจะรัน `--apply`
 - `skills.type` เพิ่มค่า `skill` (ทักษะฟัง/อ่าน/เรียงประโยค 3 ตัวตาม CG-08) · ผังเดิม regenerate แล้ว
+
+### ปรับ 18 พ.ย. 2026 — กฎผู้ตรวจเนื้อหา CG-01/RO-03 (ทีมเคาะ — หฤทัยเห็นด้วยเอง: ไม่ผูกหฤทัยคนเดียว)
+- **โครงตารางไม่เปลี่ยน** — เปลี่ยนความหมายของค่า: `users.role='approver'` ให้ทั้งบอลและหฤทัย (เดิมหฤทัยคนเดียว) · `items.approved_by` = ใครในทีมกด · ว่างได้เมื่อเป็นข้ออัตโนมัติที่ผ่านกฎ (CG-01 ก)
+- **ต้องเติมใน 0007:** `items.generator` (human | ai_draft | auto) + ข้อยกเว้นใน `items_approver_guard` ให้ approved_by ว่างเฉพาะ generator='auto' · `approval_transfers` หมดความจำเป็นหลัก (พิจารณาตัด)
+- คอมเมนต์ใน `er-drawio.sql` (reviewed_by · role · approved_by · sentences.status · approval_transfers) แก้แล้ว → ผัง mermaid/drawio เจนใหม่ · กฎเต็มดู `กฎการทำงานระบบ-BUSINESS-RULES.md` CG-01/RO-03 · เหตุผล: คิวตรวจค้างเป็นเดือน
 
 ## 2.1) ตรวจแบบด้วย query จริง (ขั้น 5)
 
