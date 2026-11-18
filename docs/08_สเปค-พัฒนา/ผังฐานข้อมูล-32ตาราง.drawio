@@ -737,7 +737,7 @@
           <mxGeometry height="28" width="600" x="40" y="3718" as="geometry" />
         </mxCell>
         <mxCell id="skills" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="29. ทักษะ" vertex="1">
-          <mxGeometry height="224" width="230" x="792" y="1633" as="geometry" />
+          <mxGeometry height="200" width="230" x="792" y="1633" as="geometry" />
         </mxCell>
         <mxCell id="skills__0" parent="skills" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสทักษะ" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -757,11 +757,8 @@
         <mxCell id="skills__5" parent="skills" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสระดับ" vertex="1">
           <mxGeometry height="24" width="230" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="skills__10" parent="skills" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสรอบฝึกโมเดล" vertex="1">
-          <mxGeometry height="24" width="230" y="176" as="geometry" />
-        </mxCell>
         <mxCell id="skills__11" parent="skills" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
-          <mxGeometry height="24" width="230" y="200" as="geometry" />
+          <mxGeometry height="24" width="230" y="176" as="geometry" />
         </mxCell>
         <mxCell id="bkt_training_runs" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="30. ประวัติการฝึกโมเดล" vertex="1">
           <mxGeometry height="320" width="230" x="422" y="725" as="geometry" />
@@ -1890,24 +1887,6 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="e59_ct" connectable="0" parent="e59" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" value="0..N" vertex="1">
-          <mxGeometry relative="1" x="0.8" as="geometry">
-            <mxPoint y="-10" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e60" edge="1" parent="1" source="bkt_training_runs__0" style="edgeStyle=none;rounded=1;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;html=1;endArrow=ERzeroToMany;startArrow=ERzeroToOne;endFill=0;startFill=0;strokeColor=#888888;" target="skills__10" value="">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="692" y="769" />
-              <mxPoint x="692" y="1917" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e60_cs" connectable="0" parent="e60" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" value="0..1" vertex="1">
-          <mxGeometry relative="1" x="-0.8" as="geometry">
-            <mxPoint y="-10" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="e60_ct" connectable="0" parent="e60" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" value="0..N" vertex="1">
           <mxGeometry relative="1" x="0.8" as="geometry">
             <mxPoint y="-10" as="offset" />
           </mxGeometry>
@@ -3851,7 +3830,7 @@
           <mxGeometry x="0" y="32" width="170" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p6_skills" value="ทักษะ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="422" y="248" width="230" height="224" as="geometry" />
+          <mxGeometry x="422" y="248" width="230" height="200" as="geometry" />
         </mxCell>
         <mxCell id="p6_skills__0" value="รหัสทักษะ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="p6_skills">
           <mxGeometry x="0" y="32" width="230" height="24" as="geometry" />
@@ -3871,11 +3850,8 @@
         <mxCell id="p6_skills__5" value="รหัสระดับ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p6_skills">
           <mxGeometry x="0" y="152" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p6_skills__10" value="รหัสรอบฝึกโมเดล" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p6_skills">
-          <mxGeometry x="0" y="176" width="230" height="24" as="geometry" />
-        </mxCell>
         <mxCell id="p6_skills__11" value="เวลาสร้าง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p6_skills">
-          <mxGeometry x="0" y="200" width="230" height="24" as="geometry" />
+          <mxGeometry x="0" y="176" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p6_bkt_training_runs" value="ประวัติการฝึกโมเดล" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="52" y="554" width="230" height="320" as="geometry" />
@@ -3991,24 +3967,6 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="p6_e1_ct" value="0..N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="p6_e1">
-          <mxGeometry x="0.8" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p6_e2" value="" style="edgeStyle=none;rounded=1;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;html=1;endArrow=ERzeroToMany;startArrow=ERzeroToOne;endFill=0;startFill=0;strokeColor=#666666;" edge="1" parent="1" source="p6_bkt_training_runs__0" target="p6_skills__10">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="322" y="598" />
-              <mxPoint x="322" y="532" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p6_e2_cs" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="p6_e2">
-          <mxGeometry x="-0.8" relative="1" as="geometry">
-            <mxPoint y="-10" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="p6_e2_ct" value="0..N" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="p6_e2">
           <mxGeometry x="0.8" relative="1" as="geometry">
             <mxPoint y="-10" as="offset" />
           </mxGeometry>
