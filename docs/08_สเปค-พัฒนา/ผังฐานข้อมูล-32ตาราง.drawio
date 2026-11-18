@@ -476,7 +476,7 @@
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
         <mxCell id="exam_forms" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="20. ชุดข้อสอบ" vertex="1">
-          <mxGeometry height="344" width="230" x="792" y="800" as="geometry" />
+          <mxGeometry height="368" width="230" x="792" y="800" as="geometry" />
         </mxCell>
         <mxCell id="exam_forms__0" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสชุด" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -508,17 +508,20 @@
         <mxCell id="exam_forms__9" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เผยแพร่เมื่อ" vertex="1">
           <mxGeometry height="24" width="230" y="248" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__10" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="กันข้อในชุดออกจากแบบฝึก" vertex="1">
+        <mxCell id="exam_forms__active" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เปิดใช้อยู่" vertex="1">
           <mxGeometry height="24" width="230" y="272" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__11" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
+        <mxCell id="exam_forms__10" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="กันข้อในชุดออกจากแบบฝึก" vertex="1">
           <mxGeometry height="24" width="230" y="296" as="geometry" />
         </mxCell>
-        <mxCell id="exam_forms__12" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาแก้" vertex="1">
+        <mxCell id="exam_forms__11" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
           <mxGeometry height="24" width="230" y="320" as="geometry" />
         </mxCell>
+        <mxCell id="exam_forms__12" parent="exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาแก้" vertex="1">
+          <mxGeometry height="24" width="230" y="344" as="geometry" />
+        </mxCell>
         <mxCell id="form_blueprints" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="21. พิมพ์เขียวชุดข้อสอบ" vertex="1">
-          <mxGeometry height="152" width="230" x="1172" y="1343" as="geometry" />
+          <mxGeometry height="176" width="230" x="1172" y="1343" as="geometry" />
         </mxCell>
         <mxCell id="form_blueprints__0" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสพิมพ์เขียว" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -526,14 +529,17 @@
         <mxCell id="form_blueprints__1" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสชุด" vertex="1">
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
-        <mxCell id="form_blueprints__2" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสทักษะ" vertex="1">
+        <mxCell id="form_blueprints__fmt" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="รูปแบบข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="form_blueprints__3" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสหมวด" vertex="1">
+        <mxCell id="form_blueprints__2" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสทักษะ" vertex="1">
           <mxGeometry height="24" width="230" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="form_blueprints__4" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="จำนวนข้อ" vertex="1">
+        <mxCell id="form_blueprints__3" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสหมวด" vertex="1">
           <mxGeometry height="24" width="230" y="128" as="geometry" />
+        </mxCell>
+        <mxCell id="form_blueprints__4" parent="form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="จำนวนข้อ" vertex="1">
+          <mxGeometry height="24" width="230" y="152" as="geometry" />
         </mxCell>
         <mxCell id="form_items" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="22. ข้อในชุด" vertex="1">
           <mxGeometry height="104" width="230" x="1950" y="1556" as="geometry" />
@@ -1524,7 +1530,7 @@
             <mxPoint y="-10" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="e35" edge="1" parent="1" source="categories__0" style="edgeStyle=none;rounded=1;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;html=1;endArrow=ERzeroToMany;startArrow=ERzeroToOne;endFill=0;startFill=0;strokeColor=#888888;" target="form_blueprints__3" value="">
+        <mxCell id="e35" edge="1" parent="1" source="categories__0" style="edgeStyle=none;rounded=1;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;endFill=0;startFill=0;strokeColor=#888888;" target="form_blueprints__3" value="">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="720" y="2429" />
@@ -1534,7 +1540,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="e35_cs" connectable="0" parent="e35" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" value="0..1" vertex="1">
+        <mxCell id="e35_cs" connectable="0" parent="e35" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" value="1" vertex="1">
           <mxGeometry relative="1" x="-0.8" as="geometry">
             <mxPoint y="-10" as="offset" />
           </mxGeometry>
@@ -3209,7 +3215,7 @@
           <mxGeometry x="0" y="56" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p4_exam_forms" value="ชุดข้อสอบ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="362" y="132" width="230" height="344" as="geometry" />
+          <mxGeometry x="362" y="132" width="230" height="368" as="geometry" />
         </mxCell>
         <mxCell id="p4_exam_forms__0" value="รหัสชุด" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="32" width="230" height="24" as="geometry" />
@@ -3241,17 +3247,20 @@
         <mxCell id="p4_exam_forms__9" value="เผยแพร่เมื่อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="248" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p4_exam_forms__10" value="กันข้อในชุดออกจากแบบฝึก" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
-          <mxGeometry x="0" y="272" width="230" height="24" as="geometry" />
+        <mxCell id="p4_exam_forms__active" parent="p4_exam_forms" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เปิดใช้อยู่" vertex="1">
+          <mxGeometry height="24" width="230" y="272" as="geometry" />
         </mxCell>
-        <mxCell id="p4_exam_forms__11" value="เวลาสร้าง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
+        <mxCell id="p4_exam_forms__10" value="กันข้อในชุดออกจากแบบฝึก" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="296" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p4_exam_forms__12" value="เวลาแก้" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
+        <mxCell id="p4_exam_forms__11" value="เวลาสร้าง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
           <mxGeometry x="0" y="320" width="230" height="24" as="geometry" />
         </mxCell>
+        <mxCell id="p4_exam_forms__12" value="เวลาแก้" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_exam_forms">
+          <mxGeometry x="0" y="344" width="230" height="24" as="geometry" />
+        </mxCell>
         <mxCell id="p4_form_blueprints" value="พิมพ์เขียวชุดข้อสอบ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="732" y="277" width="230" height="152" as="geometry" />
+          <mxGeometry x="732" y="277" width="230" height="176" as="geometry" />
         </mxCell>
         <mxCell id="p4_form_blueprints__0" value="รหัสพิมพ์เขียว" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="p4_form_blueprints">
           <mxGeometry x="0" y="32" width="230" height="24" as="geometry" />
@@ -3259,14 +3268,17 @@
         <mxCell id="p4_form_blueprints__1" value="รหัสชุด" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p4_form_blueprints">
           <mxGeometry x="0" y="56" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p4_form_blueprints__2" value="รหัสทักษะ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p4_form_blueprints">
-          <mxGeometry x="0" y="80" width="230" height="24" as="geometry" />
+        <mxCell id="p4_form_blueprints__fmt" parent="p4_form_blueprints" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="รูปแบบข้อ" vertex="1">
+          <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="p4_form_blueprints__3" value="รหัสหมวด" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p4_form_blueprints">
+        <mxCell id="p4_form_blueprints__2" value="รหัสทักษะ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p4_form_blueprints">
           <mxGeometry x="0" y="104" width="230" height="24" as="geometry" />
         </mxCell>
-        <mxCell id="p4_form_blueprints__4" value="จำนวนข้อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_form_blueprints">
+        <mxCell id="p4_form_blueprints__3" value="รหัสหมวด" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" vertex="1" parent="p4_form_blueprints">
           <mxGeometry x="0" y="128" width="230" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="p4_form_blueprints__4" value="จำนวนข้อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p4_form_blueprints">
+          <mxGeometry x="0" y="152" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p4_form_items" value="ข้อในชุด" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="732" y="489" width="230" height="104" as="geometry" />
@@ -3553,7 +3565,7 @@
             <mxPoint y="-10" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="p4_e16" value="" style="edgeStyle=none;rounded=1;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;html=1;endArrow=ERzeroToMany;startArrow=ERzeroToOne;endFill=0;startFill=0;strokeColor=#666666;" edge="1" parent="1" source="p4_categories__0" target="p4_form_blueprints__3">
+        <mxCell id="p4_e16" value="" style="edgeStyle=none;rounded=1;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;html=1;endArrow=ERzeroToMany;startArrow=ERmandOne;endFill=0;startFill=0;strokeColor=#666666;" edge="1" parent="1" source="p4_categories__0" target="p4_form_blueprints__3">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
               <mxPoint x="646" y="506" />
@@ -3561,7 +3573,7 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="p4_e16_cs" value="0..1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="p4_e16">
+        <mxCell id="p4_e16_cs" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=11;fontStyle=1;fontColor=#b85450;labelBackgroundColor=#ffffff;" vertex="1" connectable="0" parent="p4_e16">
           <mxGeometry x="-0.8" relative="1" as="geometry">
             <mxPoint y="-10" as="offset" />
           </mxGeometry>
