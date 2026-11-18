@@ -59,7 +59,7 @@
           <mxGeometry height="28" width="600" x="40" y="622" as="geometry" />
         </mxCell>
         <mxCell id="levels" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="2. ระดับ" vertex="1">
-          <mxGeometry height="272" width="230" x="52" y="1753" as="geometry" />
+          <mxGeometry height="224" width="230" x="52" y="1753" as="geometry" />
         </mxCell>
         <mxCell id="levels__0" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสระดับ" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -70,26 +70,20 @@
         <mxCell id="levels__wc" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="จำนวนคำตามหลักสูตร" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="levels__ic" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="จำนวนข้อสอบจริง" vertex="1">
+        <mxCell id="levels__4" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="คะแนนผ่าน" vertex="1">
           <mxGeometry height="24" width="230" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="levels__tm" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสอบ (นาที)" vertex="1">
+        <mxCell id="levels__5" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="คะแนนเต็ม" vertex="1">
           <mxGeometry height="24" width="230" y="128" as="geometry" />
         </mxCell>
-        <mxCell id="levels__4" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="คะแนนผ่าน" vertex="1">
+        <mxCell id="levels__qp" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เกณฑ์ผ่านควิซ" vertex="1">
           <mxGeometry height="24" width="230" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="levels__5" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="คะแนนเต็ม" vertex="1">
+        <mxCell id="levels__qs" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ข้อต่อควิซ" vertex="1">
           <mxGeometry height="24" width="230" y="176" as="geometry" />
         </mxCell>
-        <mxCell id="levels__qp" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เกณฑ์ผ่านควิซ" vertex="1">
-          <mxGeometry height="24" width="230" y="200" as="geometry" />
-        </mxCell>
-        <mxCell id="levels__qs" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ข้อต่อควิซ" vertex="1">
-          <mxGeometry height="24" width="230" y="224" as="geometry" />
-        </mxCell>
         <mxCell id="levels__ref" parent="levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="อ้างอิง" vertex="1">
-          <mxGeometry height="24" width="230" y="248" as="geometry" />
+          <mxGeometry height="24" width="230" y="200" as="geometry" />
         </mxCell>
         <mxCell id="categories" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="3. หมวด" vertex="1">
           <mxGeometry height="248" width="230" x="422" y="2385" as="geometry" />
@@ -2449,7 +2443,7 @@
           <mxGeometry x="0" y="32" width="170" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p2_levels" value="ระดับ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
-          <mxGeometry x="52" y="1032" width="230" height="272" as="geometry" />
+          <mxGeometry x="52" y="1032" width="230" height="224" as="geometry" />
         </mxCell>
         <mxCell id="p2_levels__0" value="รหัสระดับ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="p2_levels">
           <mxGeometry x="0" y="32" width="230" height="24" as="geometry" />
@@ -2460,26 +2454,20 @@
         <mxCell id="p2_levels__wc" parent="p2_levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="จำนวนคำตามหลักสูตร" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="p2_levels__ic" parent="p2_levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="จำนวนข้อสอบจริง" vertex="1">
-          <mxGeometry height="24" width="230" y="104" as="geometry" />
-        </mxCell>
-        <mxCell id="p2_levels__tm" parent="p2_levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสอบ (นาที)" vertex="1">
-          <mxGeometry height="24" width="230" y="128" as="geometry" />
-        </mxCell>
         <mxCell id="p2_levels__4" value="คะแนนผ่าน" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p2_levels">
-          <mxGeometry x="0" y="152" width="230" height="24" as="geometry" />
+          <mxGeometry x="0" y="104" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p2_levels__5" value="คะแนนเต็ม" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p2_levels">
-          <mxGeometry x="0" y="176" width="230" height="24" as="geometry" />
+          <mxGeometry x="0" y="128" width="230" height="24" as="geometry" />
         </mxCell>
         <mxCell id="p2_levels__qp" parent="p2_levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เกณฑ์ผ่านควิซ" vertex="1">
-          <mxGeometry height="24" width="230" y="200" as="geometry" />
+          <mxGeometry height="24" width="230" y="152" as="geometry" />
         </mxCell>
         <mxCell id="p2_levels__qs" parent="p2_levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ข้อต่อควิซ" vertex="1">
-          <mxGeometry height="24" width="230" y="224" as="geometry" />
+          <mxGeometry height="24" width="230" y="176" as="geometry" />
         </mxCell>
         <mxCell id="p2_levels__ref" parent="p2_levels" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="อ้างอิง" vertex="1">
-          <mxGeometry height="24" width="230" y="248" as="geometry" />
+          <mxGeometry height="24" width="230" y="200" as="geometry" />
         </mxCell>
         <mxCell id="p2_categories" value="หมวด" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
           <mxGeometry x="422" y="156" width="230" height="248" as="geometry" />
