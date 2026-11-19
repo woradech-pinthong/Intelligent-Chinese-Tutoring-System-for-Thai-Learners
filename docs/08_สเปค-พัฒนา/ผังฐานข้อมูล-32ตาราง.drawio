@@ -329,7 +329,7 @@
           <mxGeometry height="24" width="230" y="248" as="geometry" />
         </mxCell>
         <mxCell id="items" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="13. ข้อสอบ" vertex="1">
-          <mxGeometry height="344" width="230" x="2273" y="1442" as="geometry" />
+          <mxGeometry height="320" width="230" x="2273" y="1442" as="geometry" />
         </mxCell>
         <mxCell id="items__0" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -337,38 +337,35 @@
         <mxCell id="items__2" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="รูปแบบข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
-        <mxCell id="items__gen" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ตัวสร้าง" vertex="1">
+        <mxCell id="items__3" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสหมวด" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="items__3" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสหมวด" vertex="1">
+        <mxCell id="items__4" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="โจทย์" vertex="1">
           <mxGeometry height="24" width="230" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="items__4" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="โจทย์" vertex="1">
+        <mxCell id="items__sent" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสประโยค" vertex="1">
           <mxGeometry height="24" width="230" y="128" as="geometry" />
         </mxCell>
-        <mxCell id="items__sent" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสประโยค" vertex="1">
+        <mxCell id="items__dlg" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสบท" vertex="1">
           <mxGeometry height="24" width="230" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="items__dlg" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสบท" vertex="1">
+        <mxCell id="items__5" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เหตุผลของตัวลวง" vertex="1">
           <mxGeometry height="24" width="230" y="176" as="geometry" />
         </mxCell>
-        <mxCell id="items__5" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เหตุผลของตัวลวง" vertex="1">
+        <mxCell id="items__status" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="สถานะตรวจ" vertex="1">
           <mxGeometry height="24" width="230" y="200" as="geometry" />
         </mxCell>
-        <mxCell id="items__status" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="สถานะตรวจ" vertex="1">
+        <mxCell id="items__appr" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสผู้อนุมัติ" vertex="1">
           <mxGeometry height="24" width="230" y="224" as="geometry" />
         </mxCell>
-        <mxCell id="items__appr" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสผู้อนุมัติ" vertex="1">
+        <mxCell id="items__apprat" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="อนุมัติเมื่อ" vertex="1">
           <mxGeometry height="24" width="230" y="248" as="geometry" />
         </mxCell>
-        <mxCell id="items__apprat" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="อนุมัติเมื่อ" vertex="1">
+        <mxCell id="items__11" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
           <mxGeometry height="24" width="230" y="272" as="geometry" />
         </mxCell>
-        <mxCell id="items__11" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
-          <mxGeometry height="24" width="230" y="296" as="geometry" />
-        </mxCell>
         <mxCell id="items__12" parent="items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาแก้" vertex="1">
-          <mxGeometry height="24" width="230" y="320" as="geometry" />
+          <mxGeometry height="24" width="230" y="296" as="geometry" />
         </mxCell>
         <mxCell id="item_choices" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="14. ตัวเลือกของข้อ" vertex="1">
           <mxGeometry height="152" width="230" x="2699" y="370" as="geometry" />
@@ -2241,7 +2238,7 @@
           <mxGeometry height="24" width="170" y="32" as="geometry" />
         </mxCell>
         <mxCell id="p4_items" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="ข้อสอบ" vertex="1">
-          <mxGeometry height="344" width="230" x="362" y="653" as="geometry" />
+          <mxGeometry height="320" width="230" x="362" y="653" as="geometry" />
         </mxCell>
         <mxCell id="p4_items__0" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="32" as="geometry" />
@@ -2249,38 +2246,35 @@
         <mxCell id="p4_items__2" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="รูปแบบข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__gen" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ตัวสร้าง" vertex="1">
+        <mxCell id="p4_items__3" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสหมวด" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__3" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสหมวด" vertex="1">
+        <mxCell id="p4_items__4" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="โจทย์" vertex="1">
           <mxGeometry height="24" width="230" y="104" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__4" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="โจทย์" vertex="1">
+        <mxCell id="p4_items__sent" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสประโยค" vertex="1">
           <mxGeometry height="24" width="230" y="128" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__sent" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสประโยค" vertex="1">
+        <mxCell id="p4_items__dlg" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสบท" vertex="1">
           <mxGeometry height="24" width="230" y="152" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__dlg" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสบท" vertex="1">
+        <mxCell id="p4_items__5" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เหตุผลของตัวลวง" vertex="1">
           <mxGeometry height="24" width="230" y="176" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__5" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เหตุผลของตัวลวง" vertex="1">
+        <mxCell id="p4_items__status" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="สถานะตรวจ" vertex="1">
           <mxGeometry height="24" width="230" y="200" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__status" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="สถานะตรวจ" vertex="1">
+        <mxCell id="p4_items__appr" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสผู้อนุมัติ" vertex="1">
           <mxGeometry height="24" width="230" y="224" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__appr" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=2;" value="รหัสผู้อนุมัติ" vertex="1">
+        <mxCell id="p4_items__apprat" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="อนุมัติเมื่อ" vertex="1">
           <mxGeometry height="24" width="230" y="248" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__apprat" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="อนุมัติเมื่อ" vertex="1">
+        <mxCell id="p4_items__11" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
           <mxGeometry height="24" width="230" y="272" as="geometry" />
         </mxCell>
-        <mxCell id="p4_items__11" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
-          <mxGeometry height="24" width="230" y="296" as="geometry" />
-        </mxCell>
         <mxCell id="p4_items__12" parent="p4_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาแก้" vertex="1">
-          <mxGeometry height="24" width="230" y="320" as="geometry" />
+          <mxGeometry height="24" width="230" y="296" as="geometry" />
         </mxCell>
         <mxCell id="p4_item_choices" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="ตัวเลือกของข้อ" vertex="1">
           <mxGeometry height="152" width="230" x="732" y="933" as="geometry" />
