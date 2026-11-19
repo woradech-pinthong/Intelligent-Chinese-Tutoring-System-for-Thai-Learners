@@ -1,5 +1,5 @@
 # ตรวจว่าทุกช่องคีย์นอก (ตัวเอียง) ในผังฐานข้อมูลมีเส้นความสัมพันธ์ — ไม่แก้ไฟล์
-# ใช้: python -X utf8 scripts/erd/check_fk_edges.py "docs/08_สเปค-พัฒนา/ผังฐานข้อมูล-32ตาราง.drawio"
+# ใช้: python -X utf8 scripts/erd/check_fk_edges.py "docs/08_สเปค-พัฒนา/ผังฐานข้อมูล.drawio"
 import sys, re, html, xml.etree.ElementTree as ET
 root = ET.parse(sys.argv[1]).getroot()
 def txt(v):

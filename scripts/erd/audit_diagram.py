@@ -1,7 +1,7 @@
-# ตรวจผังฐานข้อมูล (docs/08_สเปค-พัฒนา/ผังฐานข้อมูล-32ตาราง.drawio) ทั้งไฟล์ — ไม่แก้ไฟล์
+# ตรวจผังฐานข้อมูล (docs/08_สเปค-พัฒนา/ผังฐานข้อมูล.drawio) ทั้งไฟล์ — ไม่แก้ไฟล์
 #   A เส้นทุกหน้า: ต้นทาง = คีย์หลัก (ตัวหนา) · ปลายทาง = ช่องตัวเอียง · ชื่อเข้าคู่ · ป้ายเลขตรงหัวเส้น · ไม่ซ้ำ
 #   B ตาราง/เส้น หน้าแยก 1–6 ตรงกับหน้าหลัก   C หน้าแนวคิด 7–10 ตรงกับความสัมพันธ์จริงของหน้าหลัก
-# ใช้: python -X utf8 scripts/erd/audit_diagram.py "docs/08_สเปค-พัฒนา/ผังฐานข้อมูล-32ตาราง.drawio"
+# ใช้: python -X utf8 scripts/erd/audit_diagram.py "docs/08_สเปค-พัฒนา/ผังฐานข้อมูล.drawio"
 import sys, re, html, xml.etree.ElementTree as ET
 from collections import defaultdict, Counter
 root = ET.parse(sys.argv[1]).getroot()

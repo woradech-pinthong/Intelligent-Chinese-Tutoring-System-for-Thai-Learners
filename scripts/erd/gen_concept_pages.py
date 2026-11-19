@@ -1,6 +1,6 @@
 # สร้างหน้าแนวคิด 7–10 ของผังฐานข้อมูลใหม่ทั้งหน้า (แก้ไฟล์) จากเส้นของหน้าหลัก "ผังอีอาร์" = ความจริงชุดเดียว
 #   ตารางตัวต่อ (LINK) ยุบเป็นเส้น M:N · กลุ่ม ก/ข/ค (HOME) กำหนดในไฟล์นี้ — เพิ่มตารางใหม่ต้องเติมชื่อใน HOME หรือ LINK
-# ใช้: python -X utf8 scripts/erd/gen_concept_pages.py "docs/08_สเปค-พัฒนา/ผังฐานข้อมูล-32ตาราง.drawio"   (รันหลัง layout_schema_pages.py)
+# ใช้: python -X utf8 scripts/erd/gen_concept_pages.py "docs/08_สเปค-พัฒนา/ผังฐานข้อมูล.drawio"   (รันหลัง layout_schema_pages.py)
 import re, html, sys, xml.etree.ElementTree as ET
 from collections import defaultdict
 PATH = sys.argv[1]; out = open(PATH, 'rb').read().decode('utf-8')
