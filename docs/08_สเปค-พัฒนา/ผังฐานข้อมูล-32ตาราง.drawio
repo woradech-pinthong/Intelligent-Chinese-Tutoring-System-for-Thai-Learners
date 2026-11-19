@@ -14,7 +14,7 @@
                     <mxGeometry height="28" width="600" x="40" y="110" as="geometry"/>
                 </mxCell>
                 <mxCell id="users" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="1. ผู้ใช้" vertex="1">
-                    <mxGeometry height="344" width="230" x="792" y="1204" as="geometry"/>
+                    <mxGeometry height="296" width="230" x="792" y="1204" as="geometry"/>
                 </mxCell>
                 <mxCell id="users__0" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" value="รหัสผู้ใช้" vertex="1">
                     <mxGeometry height="24" width="230" y="32" as="geometry"/>
@@ -37,23 +37,17 @@
                 <mxCell id="users__6" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ระดับตัวเอง" vertex="1">
                     <mxGeometry height="24" width="230" y="176" as="geometry"/>
                 </mxCell>
-                <mxCell id="users__7" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ความเร็วเสียง" vertex="1">
+                <mxCell id="users__9" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="กลุ่มผู้เรียน" vertex="1">
                     <mxGeometry height="24" width="230" y="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="users__8" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ซ่อนพินอิน" vertex="1">
+                <mxCell id="users__11" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ถอนความยินยอมเมื่อ" vertex="1">
                     <mxGeometry height="24" width="230" y="224" as="geometry"/>
                 </mxCell>
-                <mxCell id="users__9" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="กลุ่มผู้เรียน" vertex="1">
+                <mxCell id="users__12" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
                     <mxGeometry height="24" width="230" y="248" as="geometry"/>
                 </mxCell>
-                <mxCell id="users__11" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ถอนความยินยอมเมื่อ" vertex="1">
-                    <mxGeometry height="24" width="230" y="272" as="geometry"/>
-                </mxCell>
-                <mxCell id="users__12" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาสร้าง" vertex="1">
-                    <mxGeometry height="24" width="230" y="296" as="geometry"/>
-                </mxCell>
                 <mxCell id="users__13" parent="users" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="เวลาแก้" vertex="1">
-                    <mxGeometry height="24" width="230" y="320" as="geometry"/>
+                    <mxGeometry height="24" width="230" y="272" as="geometry"/>
                 </mxCell>
                 <mxCell id="g_ข" parent="1" style="text;html=1;fontSize=15;fontStyle=1;align=left;verticalAlign=middle;" value="กลุ่ม ข — โครงหลักสูตร" vertex="1">
                     <mxGeometry height="28" width="600" x="40" y="622" as="geometry"/>
@@ -1993,7 +1987,7 @@
                     <mxGeometry x="0" y="32" width="170" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="p1_users" value="ผู้ใช้" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
-                    <mxGeometry x="362" y="372" width="230" height="344" as="geometry"/>
+                    <mxGeometry x="362" y="372" width="230" height="296" as="geometry"/>
                 </mxCell>
                 <mxCell id="p1_users__0" value="รหัสผู้ใช้" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=1;" vertex="1" parent="p1_users">
                     <mxGeometry x="0" y="32" width="230" height="24" as="geometry"/>
@@ -2016,23 +2010,17 @@
                 <mxCell id="p1_users__6" value="ระดับตัวเอง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
                     <mxGeometry x="0" y="176" width="230" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1_users__7" value="ความเร็วเสียง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
+                <mxCell id="p1_users__9" value="กลุ่มผู้เรียน" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
                     <mxGeometry x="0" y="200" width="230" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1_users__8" value="ซ่อนพินอิน" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
+                <mxCell id="p1_users__11" value="ถอนความยินยอมเมื่อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
                     <mxGeometry x="0" y="224" width="230" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1_users__9" value="กลุ่มผู้เรียน" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
+                <mxCell id="p1_users__12" value="เวลาสร้าง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
                     <mxGeometry x="0" y="248" width="230" height="24" as="geometry"/>
                 </mxCell>
-                <mxCell id="p1_users__11" value="ถอนความยินยอมเมื่อ" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
-                    <mxGeometry x="0" y="272" width="230" height="24" as="geometry"/>
-                </mxCell>
-                <mxCell id="p1_users__12" value="เวลาสร้าง" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
-                    <mxGeometry x="0" y="296" width="230" height="24" as="geometry"/>
-                </mxCell>
                 <mxCell id="p1_users__13" value="เวลาแก้" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" vertex="1" parent="p1_users">
-                    <mxGeometry x="0" y="320" width="230" height="24" as="geometry"/>
+                    <mxGeometry x="0" y="272" width="230" height="24" as="geometry"/>
                 </mxCell>
                 <mxCell id="p1_review_states" value="คนกับคำ" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" vertex="1" parent="1">
                     <mxGeometry x="732" y="628" width="230" height="320" as="geometry"/>
