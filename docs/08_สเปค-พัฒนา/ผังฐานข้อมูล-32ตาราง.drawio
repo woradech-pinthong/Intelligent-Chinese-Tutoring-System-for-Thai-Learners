@@ -463,7 +463,7 @@
         <mxCell id="form_items__1" parent="form_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=3;" value="รหัสข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
-        <mxCell id="form_items__2" parent="form_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ข้อที่" vertex="1">
+        <mxCell id="form_items__2" parent="form_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ลำดับในชุด" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
         <mxCell id="sessions" parent="1" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=32;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=13;" value="19. รอบการทำ" vertex="1">
@@ -2375,7 +2375,7 @@
         <mxCell id="p4_form_items__1" parent="p4_form_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;fontStyle=3;" value="รหัสข้อ" vertex="1">
           <mxGeometry height="24" width="230" y="56" as="geometry" />
         </mxCell>
-        <mxCell id="p4_form_items__2" parent="p4_form_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ข้อที่" vertex="1">
+        <mxCell id="p4_form_items__2" parent="p4_form_items" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=8;overflow=hidden;html=1;fontSize=12;" value="ลำดับในชุด" vertex="1">
           <mxGeometry height="24" width="230" y="80" as="geometry" />
         </mxCell>
         <mxCell id="p4_e0" edge="1" parent="1" source="p4_categories__0" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=ERzeroToMany;startArrow=ERzeroToOne;endFill=0;startFill=0;strokeColor=#666666;exitX=1.0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.0;entryY=0.5;entryDx=0;entryDy=0;" target="p4_items__3" value="">
